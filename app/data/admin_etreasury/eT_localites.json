@@ -1,0 +1,86 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 2,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 3,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 4,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 5,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 6,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 7,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 8,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 9,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 10,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 11,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 12,
+		"code": "ABJ",
+		"ville": "COTE DIVOIRE",
+		"pays": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	}
+] }

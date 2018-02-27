@@ -1,0 +1,12 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"statut": "Validation niveau 1",
+		"debut": "11/09/2017",
+		"fin": "13/09/2017",
+		"date_valeur": "11/09/2017",
+		"montant": "10,000 XOF",
+		"echeance": "13/09/2017",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>remove_red_eye</i>"
+	}
+] }

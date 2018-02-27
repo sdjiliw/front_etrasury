@@ -1,0 +1,42 @@
+[
+    {
+        "time": "Il y a 15 minutes", 
+        "avatar": "data/profile/avatar-1.png",
+        "status": "disponible", 
+        "read": 0, 
+        "name": "E-treasury", 
+        "description": "SIB a répondu à votre demande"
+    }, 
+    {
+        "time": "Il y a 2 minutes", 
+        "avatar": "data/profile/avatar-2.png",
+        "status": "occupé", 
+        "read": 0, 
+        "name": "E-treasury", 
+        "description": "CIE a émis une nouvelle offre"
+    }, 
+    {
+        "time": "Il y a une heure", 
+        "avatar": "data/profile/avatar-3.png",
+        "status": "parti", 
+        "read": 1, 
+        "name": "E-treasury", 
+        "description": "CIE a modifié l'offre"
+    }, 
+    {
+        "time": "Hier", 
+        "avatar": "data/profile/avatar-4.png",
+        "status": "déconnecté", 
+        "read": 1, 
+        "name": "E-treasury", 
+        "description": "CIE a émis une nouvelle offre"
+    }, 
+    {
+        "time": "14 Mars", 
+        "avatar": "data/profile/avatar-5.png",
+        "status": "idle", 
+        "read": 1, 
+        "name": "E-treasury", 
+        "description": "CIE a modifié l'offre"
+    }
+]

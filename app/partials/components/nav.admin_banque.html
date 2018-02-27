@@ -1,0 +1,132 @@
+<!-- list -->
+<ul class="wraplist wrapper-menu" style="cursor:pointer;">
+    <li ui-sref-active="active">
+        <a ui-sref="app.statut" class="nosub" ng-click="app.settings.pagetitle = 'ACCUEIL';">
+            <i class="material-icons">home</i>
+            <span class="title">ACCUEIL</span>
+        </a>
+    </li>
+    <li href class="auto">
+        <a ui-sref="app.facebank" class="nosub" ng-click="app.settings.pagetitle = 'Historique';">
+            <i class="material-icons">history</i>
+            <span class="title">HISTORIQUE</span>
+        </a>
+    </li>
+    <li href class="auto">
+        <a href="javascript:;">
+            <i class="material-icons">person</i>
+            <span class="title">Mon Espace</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.nos-taux" ng-click="app.settings.pagetitle = 'Nos taux';">Nos taux</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.mes-docs" ng-click="app.settings.pagetitle = 'Mes documents';">Mes documents</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.docs-recus-bk" ng-click="app.settings.pagetitle = 'Documents reçus';">Documents reçus</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.contact-bk" ng-click="app.settings.pagetitle = 'Mes contacts';">Mes contacts</a>
+            </li>
+            <!--li-- ui-sref-active="active">
+                <a ui-sref="app.hos-doctor-profile">Doctor Profile</a>
+            </li-->
+        </ul>
+    </li>
+
+    <li href class="auto">
+        <a href="javascript:;">
+            <i class="material-icons">people</i>
+            <span class="title">Mes opérations</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.op-credit-spot" ng-click="app.settings.pagetitle = 'Crédit spot';">Crédit spot</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.change" ng-click="app.settings.pagetitle = 'Change';">Change</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.transfert" ng-click="app.settings.pagetitle = 'Transfert';">Transfert</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.depot-a-terme" ng-click="app.settings.pagetitle = 'Dépot à terme';">Dépot à terme</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.escompte" ng-click="app.settings.pagetitle = 'Escompte';">Escompte</a>
+            </li>
+        </ul>
+    </li>
+    <!-- <li ui-sref-active="active"> -->
+    <!-- <a ui-sref="app.hos-dashboard" class="nosub"> -->
+    <!-- <i class="material-icons">dashboard</i> -->
+    <!-- <span class="title">Administration</span> -->
+    <!-- </a> -->
+    <!-- </li> -->
+    <li href class="auto" ng-if="app.profile=='ADMIN_BANQUE'">
+        <a href="javascript:;">
+            <!-- <i class="material-icons">trending_up</i> -->
+            <span><img src="img/icon14.png"/></span>
+            <span class="title">ADMINISTRATION</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.adminbk_rh" ng-click="app.settings.pagetitle = 'Ressource humaine';">Ress. Humaines</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.adminbk_validation" ng-click="app.settings.pagetitle = 'Validations';">Validation</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.adminbk_conditionBank" ng-click="app.settings.pagetitle = 'Condition banque';">Cond. banque</a>
+            </li>
+            <!--<li ui-sref-active="active">
+                <a ui-sref="app.facebank" ng-click="app.settings.pagetitle = 'Facebank';">Facebank</a>
+            </li>-->
+        </ul>
+    </li>
+    <li href class="auto">
+        <a href="javascript:;">
+            <!-- <i class="material-icons">redeem</i> -->
+            <i class="material-icons">live_help</i>
+            <span class="title">Aide</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+            <!-- <span class="label label-accent">NEW</span> -->
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk" style="pointer-events: none;">
+            <li class='subgroup'><span>Assistance</span></li>
+            <li ui-sref-active="active">
+                <a ui-sref="access.login">Demande aide</a>
+            </li>
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="access.login">Login</a> -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active">  -->
+            <!-- <a ui-sref="access.register">Ajouter utilisateur</a>  -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="access.forgotpwd">Mot de passe oubliè</a> -->
+            <!-- </li> -->
+            <li ui-sref-active="active">
+                <a ui-sref="access.lockscreen">Mettre en veille</a>
+            </li>
+
+
+            <li class='subgroup'>
+                <span>Signaler erreur</span>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="access.lockscreen">Signaler incident</a>
+            </li>
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="access.404">404</a> -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="access.500">500</a> -->
+            <!-- </li> -->
+        </ul>
+    </li>

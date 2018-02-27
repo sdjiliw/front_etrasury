@@ -1,0 +1,51 @@
+<div class="content-wrapper"  ng-init="app.settings.pagetitle">
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">MODIFICATION MOT D'E-MAIL</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div> 
+            </header>
+            <div class="content-body">
+				<br>
+				<br>
+                <div class="row">
+                    <form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 ">
+							<div class="form-group">
+                                <label class="form-label" for="formfield8">Ancien e-mail <span style="color:red">*</span></label>
+                                <div class="controls">
+                                    <input type="email" class="form-control"  name="old_mail" ng-model="old_mail" required></input>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">Nouveau e-mail <span style="color:red">*</span></label>
+                                <div class="controls">
+                                    <input type="email" class="form-control"  name="new_mail" ng-model="new_mail" required></input>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="form-label" for="formfield8">Confirmation e-mail <span style="color:red">*</span></label>
+                                <div class="controls">
+                                    <input type="email" class="form-control"  name="conf_mail" ng-model="conf_mail" required></input>
+                                </div>
+                            </div>
+							<div class="form-group">
+								<div class="text-left">
+									<button type="submit" class="btn btn-success">Valider</button>
+									<button onclick="window.history.go(-1); return false;" style="background:#ff8000;" type="button" class="btn">Annuler</button>
+								</div>
+                            </div>
+							<div class="form-group">
+								<div class="form-group">
+									<span style="color:red">* Veuillez renseigner les champs obligatoires</span>
+								</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

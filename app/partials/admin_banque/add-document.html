@@ -1,0 +1,318 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Crédit spot';">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+        <form id="general_validate" action="javascript:;" name="form" class="form-validation">
+            <section class="box ">
+                <header class="panel_header">
+                    <h2 class="title pull-left">CARACTÉRISTIQUES PRINCIPALES DE LA DEMANDE</h2>
+                    <div class="actions panel_actions pull-right">
+                        <i class="box_toggle material-icons" style="color:#1065a8">expand_more</i>
+                    </div>
+                </header>
+                <div class="content-body" ng-controller="DatepickerDemoCtrl">
+                    <!-- START -->
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-5">
+                            <label class="form-label" for="field-1">MONTANT <span style="color:red">*</span></label>
+                            <div class='row'>
+                                <div class="col-xs-4">
+                                    <input name="montant" ng-change="showErrorNumb(montant)" type="number" ng-model="montant" value="0" class="form-control" required>
+                                </div>
+                                <div class="col-xs-1">
+                                    <span>XOF</span>
+                                </div>
+                            </div>
+                            <span ng-show="form.montant.$submitted && form.montant.$error.required" style="color:red">Le montant est obligatoire.</span>
+                            <span ng-show="form.montant.$touched && form.montant.$error.required" style="color:red">Ce champ est obligatoire.</span>
+                            <span ng-show="form.input.$error.number" style="color:red">Le format est incorrect.</span>
+                            <span ng-show="isErrorNumb" style="color:red">Le montant doit être supérieur à zéro.</span>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">DATE VALEUR <span style="color:red">*</span></label>
+                                <div class="input-group" inputgroup>
+                                    <input type="date" name="date_valeur" class="form-control datepicker" uib-datepicker-popup ng-model="date_valeur" is-open="dtpick.opened2" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                        ng-required="true" close-text="Close" required/>
+                                    <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                </div>
+                                <span ng-show="form.date_valeur.$submitted && form.date_valeur.$error.required" style="color:red">La date de valeur est obligatoire.</span>
+                                <span ng-show="form.date_valeurdv.$touched && form.date_valeur.$error.required" style="color:red">Ce champ est obligatoire.</span>
+                                <span ng-show="form.input.$error.date" style="color:red">Le format est incorrect.</span>
+                                <span ng-show=" date_valeur!=null&&
+																	(minDate.getFullYear()>date_valeur.getFullYear()||
+																	minDate.getFullYear()==date_valeur.getFullYear()&&
+																	(minDate.getMonth()+1)>(date_valeur.getMonth()+1)||
+																	minDate.getFullYear()==date_valeur.getFullYear()&&
+																	(minDate.getMonth()+1)==(date_valeur.getMonth()+1)&&
+																	minDate.getDate()>date_valeur.getDate())" style="color:red">
+														La date de valeur ne doit pas être inférieure à celle d'aujourd'hui.
+													</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield1">DEVISE <span style="color:red">*</span></label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <select name="devise" class="form-control" ng-model="devise" required>
+																		<!-- <option value=""></option> -->
+																		<option value="XOF" selected>XOF</option>
+                                                                        <option value="USD">USD</option>
+                                                                        <option value="CAD">CAD</option>
+                                                                        <option value="CHF">CHF</option>
+																		<option value="GBP">GBP</option>
+                                                                </select>
+                                    <span ng-show="form.devise.$submitted && form.devise.$error.required" style="color:red">La devise est obligatoire.</span>
+                                    <span ng-show="form.devise.$touched && form.devise.$error.required" style="color:red">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2"></div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">DATE ÉCHÉANCE <span style="color:red">*</span></label>
+                                <div class="input-group" inputgroup>
+                                    <input type="date" name="date_echeance" class="form-control datepicker" uib-datepicker-popup ng-model="date_echeance" is-open="dtpick.opened2" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                        ng-required="true" close-text="Close" required/>
+                                    <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                </div>
+                                <span ng-show="form.date_echeance.$submitted && form.date_echeance.$error.required" style="color:red">La date d'échéance est obligatoire.</span>
+                                <span ng-show="form.date_echeance.$touched && form.date_echeance.$error.required" style="color:red">Ce champ est obligatoire.</span>
+                                <span ng-show="form.input.$error.date" style="color:red">Le format est incorrect.</span>
+                                <span ng-show="date_valeur>date_echeance" style="color:red">La date d'échéance ne doit pas être inférieure à la date de valeur.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END -->
+                </div>
+            </section>
+            <section class="box ">
+                <header class="panel_header">
+                    <h2 class="title pull-left">OPTIONS DE LA DEMANDE</h2>
+                    <div class="actions panel_actions pull-right" ng-controller="myCtrl">
+                        <i ng-click="wasClicked()" class="box_toggle material-icons" style="color:#1065a8" on-load-clicker>expand_less</i>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <!-- START -->
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-5" style="height:auto">
+                            <div class='row'>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <label class="form-label" for="field-1">TOUTES</label>
+                                </div>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <input style="width:15px;height:15px" ng-model="toute1" type="radio" ng-checked="true" checked="checked"> Oui
+                                </div>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <input style="width:15px;height:15px" ng-model="toute2" ng-checked="false" type="radio"> Non
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-6">
+                            <div class='row'>
+                                <div class="col-xs-5 ">
+                                    <div class="form-group">
+                                        <label class="form-label" for="field-1">DATE DÉBUT <span style="color:red">*</span></label>
+                                        <div class="input-group" inputgroup>
+                                            <input type="date" name="date_debut" class="form-control datepicker" uib-datepicker-popup ng-model="date_debut" is-open="dtpick.opened2" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                                                close-text="Close" required/>
+                                            <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                        </div>
+                                        <span ng-show="form.date_debut.$submitted && form.date_debut.$error.required" style="color:red">La date de début est obligatoire.</span>
+                                        <span ng-show="form.date_debut.$touched && form.date_debut.$error.required" style="color:red">Ce champ est obligatoire.</span>
+                                        <span ng-show="form.input.$error.date" style="color:red">Le format est incorrect.</span>
+                                        <!-- <span ng-show="aujourdui!=miniDate&&dateName=='date_debut'" style="color:red">La date de début ne doit pas être inférieure à celle d'aujourd'hui.</span> -->
+                                        <span ng-show="date_debut!=null&&
+																				(aujourdhui.getFullYear()>date_debut.getFullYear()||
+																				aujourdhui.getFullYear()==date_debut.getFullYear()&&
+																				(aujourdhui.getMonth()+1)>(date_debut.getMonth()+1)||
+																				aujourdhui.getFullYear()==date_debut.getFullYear()&&
+																				(aujourdhui.getMonth()+1)==(date_debut.getMonth()+1)&&
+																				aujourdhui.getDate()>date_debut.getDate())" style="color:red">
+																		La date de début ne doit pas être inférieure à celle d'aujourd'hui.
+																	</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1"></div>
+                                <div class="col-xs-1" style="position:absolute; top:-16px;right:350px">
+                                    <div class="form-group" ng-controller="TimepickerDemoCtrl">
+                                        <div class="controls">
+                                            <uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-5">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield1">BANQUE <span style="color:red">*</span></label>
+                                <div class="controls">
+                                    <input type="text" name="banque_" ng-model="banque_">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-6">
+                            <div class='row'>
+                                <div class="col-xs-5 ">
+                                    <div class="form-group">
+                                        <label class="form-label" for="field-1">DATE FIN <span style="color:red">*</span></label>
+                                        <div class="input-group" inputgroup>
+                                            <input type="date" name="date_fin" class="form-control datepicker" uib-datepicker-popup ng-model="date_fin" is-open="dtpick.opened2" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                                                close-text="Close" required/>
+                                            <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                        </div>
+                                        <span ng-show="form.date_fin.$submitted && form.date_fin.$error.required" style="color:red">La date de fin est obligatoire.</span>
+                                        <span ng-show="form.date_fin.$touched && form.date_fin.$error.required" style="color:red">Ce champ est obligatoire.</span>
+                                        <span ng-show="form.input.$error.date" style="color:red">Le format est incorrect.</span>
+                                        <span ng-show="date_debut>date_fin" style="color:red">La date de fin ne doit pas être inférieure à la date de début.</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1"></div>
+                                <div class="col-xs-1" style="position:absolute; top:-16px;right:350px">
+                                    <div class="form-group" ng-controller="TimepickerDemoCtrl">
+                                        <div class="controls">
+                                            <uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-xs-1 " ng-controller="TimepickerDemoCtrl"> -->
+                                <!-- <div class="form-group"> -->
+                                <!-- <div class="controls"> -->
+                                <!-- <uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker> -->
+                                <!-- </div> -->
+                                <!-- </div> -->
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-5">
+                            <div class='row'>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <label class="form-label" for="field-1">ENCHÈRE MULTITOURS</label>
+                                </div>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <input style="width:15px;height:15px" ng-model="enchere_multi1" ng-checked="false" type="radio"> Oui
+                                </div>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <input style="width:15px;height:15px" ng-model="enchere_multi2" ng-checked="true" type="radio" checked="checked"> Non
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-6">
+                            <div class='row'>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <label class="form-label" for="field-1">ENCHÈRE ANONYME</label>
+                                </div>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <input style="width:15px;height:15px" ng-model="enchere_anony1" type="radio" ng-checked="true" checked="checked"> Oui
+                                </div>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <input style="width:15px;height:15px" ng-model="enchere_anony2" ng-checked="false" type="radio"> Non
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-6" style="height:auto">
+                            <div class='row'>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <label class="form-label" for="field-1">ATTACHER DOCUMENT</label>
+                                </div>
+                                <div class="col-xs-4 " style="width:auto">
+                                    <input type="file" ng-model="doc_attach" nv-file-select="" uploader="uploader" />
+                                </div>
+                            </div>
+                            <br>
+                            <div class='row'>
+                                <div class="col-xs-4 " style="width:auto">
+                                </div>
+                                <div class="col-xs-4 " style="width:auto">
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <button ng-hide="true" type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+															<span class="glyphicon glyphicon-ban-circle"></span> Annuler
+														</button>
+                                        <button ng-hide="true" ng-disabled="true" type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+															<span class="glyphicon glyphicon-trash"></span> supprimer
+														</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label class="form-label" for="field-1">TAUX MAX</label>
+                            <div class='row'>
+                                <div class="col-xs-4">
+                                    <input type="number" min="0" ng-change="showErrorTaux(taux_max)" ng-model="taux_max" value="0" placeholder="0" class="form-control">
+                                </div>
+                                <div class="col-xs-1">
+                                    <span>%</span>
+                                </div>
+                            </div>
+                            <span ng-show="isErrorTaux" style="color:red">Le montant doit être supérieur à zéro.</span>
+                        </div>
+                    </div>
+                    <!-- END -->
+                </div>
+                <br>
+                <div style="text-align:center;">
+                    <button type="submit" ng-disabled="
+												form.$invalid||
+												date_valeur>date_echeance||
+												date_debut>date_fin||
+												date_valeur!=null&&
+												date_echeance&&
+												date_debut!=null&&
+												date_fin&&
+												((minDate.getFullYear()>date_valeur.getFullYear()||
+												minDate.getFullYear()==date_valeur.getFullYear()&&
+												(minDate.getMonth()+1)>(date_valeur.getMonth()+1)||
+												minDate.getFullYear()==date_valeur.getFullYear()&&
+												(minDate.getMonth()+1)==(date_valeur.getMonth()+1)&&
+												minDate.getDate()>date_valeur.getDate())||
+											
+												(aujourdhui.getFullYear()>date_debut.getFullYear()||
+												aujourdhui.getFullYear()==date_debut.getFullYear()&&
+												(aujourdhui.getMonth()+1)>(date_debut.getMonth()+1)||
+												aujourdhui.getFullYear()==date_debut.getFullYear()&&
+												(aujourdhui.getMonth()+1)==(date_debut.getMonth()+1)&&
+												aujourdhui.getDate()>date_debut.getDate()))" class="btn btn-success">
+									VALIDER
+								</button> &nbsp; &nbsp;
+                    <button type="button" onclick="window.history.go(-1); return false;" class="btn" style="background:#ff8000;">ANNULER</button>
+                </div>
+                <br>
+                <br>
+                <span ng-show="form.$invalid" style="color:red">* Veuillez renseigner les champs obligatoires.</span>
+                <br>
+                <div ng-if="errorMessage!=null" style="color: #ff8000">
+                    <span>{{errorMessage}}</span>
+                </div>
+                <div ng-if="sucessMessage!=null" style="color: #1f93f6">
+                    <span>{{sucessMessage}}</span>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </section>
+        </form>
+    </div>
+</div>

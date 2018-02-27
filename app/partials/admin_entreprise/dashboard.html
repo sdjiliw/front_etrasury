@@ -1,0 +1,58 @@
+<div class="accueil_page_admin_ent">
+	<div class="login-wrapper" ng-controller="LoginFormController">
+		<h1><a class="classe_logo"  title="Tableau de bord" tabindex="-1">Tableau de bord</a></h1>       
+		<!-- <h2 style="text-align:center;color:#F5F5F5">Tableau de bord</h2>	 -->
+		<div class="container">
+				<div class="row" id="row_admin_ent">
+					<div class="col-md-4" style="-webkit-border-radius: 10px;">
+						<p id="accueil_admin_ent" ng-click="enTesPace()">
+							<img id="img_dash_admin_ent" src="img/home_admin_ent.png"/> <br/>
+							MON ESPACE
+						</p>
+					</div>
+					<div class="col-md-4" style="-webkit-border-radius: 10px;">
+						<p id="accueil1_admin_ent" ng-click="enToPerations()">
+							<img id="img_dash_admin_ent" src="img/operation_admin_ent.png"/> <br/>
+							MES OPÉRATIONS
+						</p>
+					</div>
+				</div>
+				<div class="row" id="row_admin_ent" ng-if="app.profile=='ADMIN_ENTREPRISE'">
+					<div class="col-md-4" style="-webkit-border-radius: 10px;">
+						<p id="accueil2_admin_ent" ng-click="enTmaRch()">
+							<img id="img_dash_admin_ent" src="img/market_admin_ent.png"/> <br/>
+							LE MARCHÉ
+						</p>
+					</div>
+					<div class="col-md-4" style="-webkit-border-radius: 10px;">
+						<p id="accueil3_admin_ent" ng-click="enTadMin()">
+							<img id="img_dash_admin_ent" src="img/parametre_admin_ent.png"/> <br/>
+							ADMINISTRATION
+						</p>
+					</div>
+				</div>
+				<div class="row" id="row_admin_ent" ng-if="app.profile=='USER_ENTREPRISE'">
+					<div class="col-md-2" >
+					</div>
+					<div class="col-md-4" style="-webkit-border-radius: 10px;">
+						<p id="accueil2_admin_ent" ng-click="enTmaRch()">
+							<img id="img_dash_admin_ent" src="img/market_admin_ent.png"/> <br/>
+							LE MARCHÉ
+						</p>
+					</div>
+				</div>
+		</div>
+			<footer class="classe_footer">
+						<label id="label_admin_ent">
+							Copyright © Etreasury | All rights reserved
+						</label>
+						<label id="label2_admin_ent">
+							Privacy policy | Terms of service
+						</label>
+			</footer>
+	</div>
+</div>
+
+
+
+

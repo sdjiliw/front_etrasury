@@ -1,0 +1,37 @@
+[	
+	{
+        "time": "Il y a 15 minutes", 
+        "status": "away", 
+        "statusicon": "info_outline", 
+        "read": 1, 
+		"message": "CIB : Offre soumise"
+    },
+    {
+        "time": "Il y a 45 minutes", 
+        "status": "busy", 
+        "statusicon": "info_outline", 
+        "read": 0, 
+        "message": "CIE : Nouvelle demande (change)"
+    }, 
+	{
+        "time": "Il y a 1 heure", 
+        "status": "available", 
+        "statusicon": "info_outline", 
+        "read": 0, 
+        "message": "NSIA : Offre acceptée"
+    },
+    {
+        "time": "Hier", 
+        "status": "offline", 
+        "statusicon": "info_outline", 
+        "read": 3, 
+        "message": "UBA : Nouveaux taux"
+    }, 
+    {
+        "time": "14 Mars", 
+        "status": "idle", 
+        "statusicon": "info_outline", 
+        "read": 1, 
+        "message": "CIB : Offre soumise"
+    }
+]

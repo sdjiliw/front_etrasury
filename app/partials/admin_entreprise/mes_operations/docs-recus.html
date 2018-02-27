@@ -1,0 +1,87 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Documents reçus';">
+    <form id="general_validat" action="javascript:;" name="form" role="form">
+        <div class="col-lg-12" data-ng-controller="DoctorsCtrl">
+            <div class="col-sm-11">
+                <div class="controls">
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="controls">
+                    <button type="button" class="btn btn-warning" ng-click="searchDocRecu();"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <section class="box ">
+                <header class="panel_header">
+                    <h2 class="title pull-left">Tous les documents reçus par institution</h2>
+                    <div class="actions panel_actions pull-right">
+                        <i class="box_toggle material-icons">expand_more</i>
+                    </div>
+                </header>
+                <div class="content-body padding-bottom-0">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-12">
+                                <section class="box nobox">
+                                    <div class="content-body">
+                                        <div class="row">
+                                            <div class="col-xs-12 padding-right-0">
+
+                                                <!-- /*DOCUMENTS OPERATIONS RECUS -->
+                                                <button style="background:#ff8000;color:#fff;-webkit-border-radius: 10px;" ng-if="isDocClicked" type="button" ng-click="deleteDocRecu();" class="btn">
+												<i class="material-icons" style="position:absolute;top:5px;left:0px;">delete</i>&nbsp;&nbsp;&nbsp;Supprimer le document {{nomDoc_}}.pdf
+											</button>
+                                                <!-- /*DOCUMENTS OPERATIONS RECUS-->
+                                            </div>
+                                            <div class="pull-right" ng-if="isDocClicked">
+                                                <button type="button" ng-click="auditDocument()" class="btn" style="background: #1f93f6;-webkit-border-radius: 10px;">
+												<i class="material-icons" style="position:absolute;top:5px;left:0px;">launch</i>&nbsp;&nbsp;&nbsp;Auditer {{nomDoc_}}.pdf
+											</button>
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                            <div class="col-md-2 col-sm-2 col-xs-2 padding-right-0 margin-top-30">
+                                                <div class="mail-wrapper">
+                                                    <div data-ng-controller="AccordionDemoCtrl" class='collapsed accordion' style="cursor: pointer">
+                                                        <uib-accordion close-others="oneAtATime">
+                                                            <div ng-repeat="bank in listInsDocsWithMe track by $index">
+                                                                <uib-accordion-group>
+                                                                    <uib-accordion-heading>
+                                                                        <a class="panel-title" ng-click="entDocEntLists(bank,bank.idInstitution,bank.nom)" ng-class="{'isMyInstitu': bank.nom==isMyInstitu}">
+                                                                            <span style="cursor:pointer;">
+																			{{bank.nom}}
+																			<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+																		</span>
+                                                                        </a>
+                                                                    </uib-accordion-heading>
+                                                                    <br>
+                                                                    <div style="text-align:center;">
+                                                                        <img id="mySpinner" src="img/loading.gif" ng-show="loading2" />
+                                                                    </div>
+                                                                    <!-- documents recus par linstitution -->
+                                                                    <ul ng-if="!loading2" ng-repeat="doc in listDocsRecusByInst | orderBy : '-idDocuments'" ng-class="{'accords': isDocClicked && idClickedDoc == doc.idDocuments}">
+                                                                        <a ui-sref-active="active" ng-click="entDocEntDetail(doc,bank.nom,doc.nom,doc.urlDocument,doc.idDocuments)" style="cursor:pointer;">{{doc.nom}}.pdf</a>
+                                                                    </ul>
+                                                                </uib-accordion-group>
+                                                            </div>
+                                                        </uib-accordion>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10 col-sm-10 col-xs-10  margin-top-30 padding-left-0">
+                                                <div class="mail_content">
+                                                    <div class="row">
+                                                        <div ui-view class="fade-in"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+</div>

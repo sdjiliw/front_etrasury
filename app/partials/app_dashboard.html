@@ -1,0 +1,566 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'LE REPORTING';" ng-controller="FlotChartCtrl">
+<div class="col-sm-12" ng-controller="BarCtrl">
+	<!-- <div class="col-sm-12">  -->
+		<!-- <div style="text-align:center;"> -->
+			<!-- <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-right-0 padding-left-0"> -->
+				<!-- <div class="r4_counter wid-stats db_box"> -->
+					<!-- <div class='stats-data'> -->
+						<!-- <i class="material-icons icon-primary pull-left">dashboard</i> -->
+						<!-- <div class="stats" style="padding-top: 10px;"> -->
+							<!-- <h3>LE REPORTING D'E-TREASURY</h3> -->
+							<!-- <!-- <span>Server&nbsp;Up</span> --> 
+						<!-- </div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </div> -->
+	<!-- </div> -->
+	<!-- <br> -->
+	
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Le taux de réponse des banques</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<label class="form-label" for="formfield1">LOCALITÉS :</label><br>
+						<select id="locality1" name="locality1" class="form-control" ng-change="changeLocality1(locality1)" ng-model="locality1">
+							<option value="all">Toutes</option>
+							<option ng-repeat="loc in lisAllLocs" value="{{loc.idLocalite}}">{{loc.ville}}_{{loc.pays}}</option>
+						</select>
+					</div>
+				</div>
+				<br>
+                <div class="row">
+					<div class="col-sm-12" ng-if="loading"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading" />
+						</div>
+					</div>
+                    <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
+                        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Le taux de succès des banques (offres retenues)</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<label class="form-label" for="formfield1">LOCALITÉS :</label><br>
+						<select id="locality2" name="locality2" class="form-control" ng-change="changeLocality2(locality2)" ng-model="locality2">
+							<option value="all">Toutes</option>
+							<option ng-repeat="loc in lisAllLocs" value="{{loc.idLocalite}}">{{loc.ville}}_{{loc.pays}}</option>
+						</select>
+					</div>
+				</div>
+				<br>
+                <div class="row">
+					<div class="col-sm-12" ng-if="loading_1"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_1" />
+						</div>
+					</div>
+                    <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
+						<canvas id="bar" class="chart chart-bar" chart-data="data_1" chart-labels="labels_1" chart-colours="colours_1"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Le nombre d'offres par banque</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<div class="col-xs-1 " style="width:auto">
+							<label class="form-label" for="formfield1">LOCALITÉS :</label><br>
+						</div>
+						<div class="col-xs-1 " style="width:auto">
+							<select id="locality3" name="locality3" class="form-control" ng-change="changeLocality3(locality3)" ng-model="locality3">
+								<option value="all">Toutes</option>
+								<option ng-repeat="loc in lisAllLocs" value="{{loc.idLocalite}}">{{loc.ville}}_{{loc.pays}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<div class="col-xs-1 " style="width:auto" ng-repeat="fil in filters3">
+                            <input style="width:15px;height:15px;" class="{{fil.id}}" id="{{fil.id}}" type="radio" ng-value="{{fil.id}}" ng-model="$parent.mychc3" ng-change="filTrer3($parent.mychc3)">
+                            {{fil.reponse}}
+                        </div>
+					</div>
+				</div>
+				<br>
+                <div class="row">
+					<div class="col-sm-12" ng-if="loading_3"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_3" />
+						</div>
+					</div>
+                    <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
+						<canvas id="bar" class="chart chart-bar" chart-data="data_3" chart-labels="labels_3" chart-colours="colours_3"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Comparatif des taux des jours des banques</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="col-sm-6">
+						<label class="form-label" for="formfield1">LOCALITÉS :</label><br>
+						<select id="locality4" name="locality4" class="form-control" ng-change="changeLocality4(locality4)" ng-model="locality4">
+							<option value="all">Toutes</option>
+							<option ng-repeat="loc in lisAllLocs" value="{{loc.idLocalite}}">{{loc.ville}}_{{loc.pays}}</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label class="form-label" for="formfield1">PRODUITS :</label><br>
+						<select id="produit4" name="produit4" class="form-control" ng-change="changeProduit4(produit4)" ng-model="produit4">
+							<option value="">Sélectionnez un produit</option>
+							<option ng-repeat="prod in listProduits" value="{{prod.nom}}">{{prod.nom}}</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<div class="row" ng-if="isChange">
+					<div class="col-sm-6">
+						<label class="form-label" for="formfield1">MOIS :</label><br>
+						<select id="mois4" name="mois4" class="form-control" ng-change="changeMois4(mois4)" ng-model="mois4">
+							<option value="">Sélectionnez un mois</option>
+							<option ng-repeat="moi in moisTableau" value="{{moi}}">{{moi}}</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label class="form-label" for="formfield1">DEVISES :</label><br>
+						<select id="devise4" name="devise4" class="form-control" ng-change="changeDevise4(devise4)" ng-model="devise4">
+							<option value="">Sélectionnez une devise</option>
+							<option ng-repeat="dev in listDevises" value="{{dev.description}}">{{dev.description}}</option>
+						</select>
+					</div>
+				</div>
+				<br>
+                <div class="row" ng-if="!isChange">
+					<div class="col-sm-12" ng-if="loading_4"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_4" />
+						</div>
+					</div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+						 <div line-chart line-data='barData_4' line-xkey='["y"]' line-ykeys='ykeys_4' line-labels='labels_4' line-colors='colors_4'></div>
+                    </div>
+                </div>
+				<div class="row" ng-if="isChange">
+					<div class="col-sm-12" ng-if="loading_4"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_4" />
+						</div>
+					</div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+							<div class="controls" style="width: 100%;height: 200px;overflow:auto;">
+								<table style="width: 100%;height: 100px;overflow:auto;" class="table table-hover">
+									<thead>
+										<tr>
+											<th>DATE VALIDITÉ</th>
+											<th>NOM BANQUE</th>
+											<th>ACHAT</th>
+											<th>VENTE</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in listN4">
+											<td>{{item.datee}}</td>
+											<td>{{item.nom}}</td>
+											<td>{{item.achat}}</td>
+											<td>{{item.vente}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	
+	 <!-- 
+	  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">La courbe d'évolution des taux du jour d’une banque</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<label class="form-label" for="formfield1">LOCALITÉS :</label><br>
+						<select id="locality5" name="locality5" class="form-control" ng-change="changeLocality5(locality5)" ng-model="locality5">
+							<option value="all">Toutes</option>
+							<option ng-repeat="bk in listBksByLocs" value="{{bk.idInstitution}}">{{bk.nom}}_{{bk.localityIdLocalite.ville}}_{{bk.localityIdLocalite.pays}}</option>
+						</select>
+					</div>
+				</div>
+				<br>
+                <div class="row">
+					<div class="col-sm-12" ng-if="loading_5"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_5" />
+						</div>
+					</div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	-->
+	 
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Le nombre de demandes par entreprise</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<div class="col-xs-1 " style="width:auto">
+							<label class="form-label" for="formfield1">LOCALITÉS :</label><br>
+						</div>
+						<div class="col-xs-1 " style="width:auto">
+							<select id="locality6" name="locality6" class="form-control" ng-change="changeLocality3(locality6)" ng-model="locality6">
+								<option value="all">Toutes</option>
+								<option ng-repeat="loc in lisAllLocs" value="{{loc.idLocalite}}">{{loc.ville}}_{{loc.pays}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<div class="col-xs-1 " style="width:auto" ng-repeat="fil in filters6">
+                            <input style="width:15px;height:15px;" class="{{fil.id}}" id="{{fil.id}}" type="radio" ng-value="{{fil.id}}" ng-model="$parent.mychc6" ng-change="filTrer6($parent.mychc6)">
+                            {{fil.reponse}}
+                        </div>
+					</div>
+				</div>
+				<br>
+                <div class="row">
+					<div class="col-sm-12" ng-if="loading_6"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_6" />
+						</div>
+					</div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <canvas id="bar" class="chart chart-bar" chart-data="data_6" chart-labels="labels_6" chart-colours="colours_6"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	
+     
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Les pistes du document</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<div class="col-xs-1 " style="width:auto">
+							<label class="form-label" for="formfield1">DOCUMENTS :</label><br>
+						</div>
+						<div class="col-xs-3 " style="width:auto">
+							<select id="locality7" name="locality7" class="form-control" ng-change="changeLocality7(locality7)" ng-model="locality7">
+								<option value="">Sélectionner un document</option> 
+								<option ng-repeat="doc in listDocuments" value="{{doc.idDocuments}}">{{doc.nom}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+                <div class="row">
+                    <div class="col-sm-12" ng-if="loading_7"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_7" />
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group" ng-if="isChanged7">
+							<div class="row">
+								<div class="col-sm-6">
+									<label class="form-label" for="field-1">AUTEUR :  </label>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-6">
+									<span>{{docsPiste.category.userIdUtilisateur.prenom}} {{docsPiste.category.userIdUtilisateur.nom}}</span>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-sm-6">
+									<label class="form-label" for="field-1">DATE DE CRÉATION : </label>
+								</div>
+								<div class="col-sm-1"></div>
+								<div class="col-sm-5">
+									<span>{{docsPiste.dateChargement | date:'dd/MM/yyyy'}}</span>
+								</div>
+							</div>
+							<br>
+							<!-- <div class="row"> -->
+								<!-- <div class="col-sm-6"> -->
+									<!-- <label class="form-label" for="field-1">DATE DE PUBLICATION : </label> -->
+								<!-- </div> -->
+								<!-- <div class="col-sm-6"> -->
+									<!-- <span>{{docsPiste.category.dateChargement | date:'dd/MM/yyyy'}}</span> -->
+								<!-- </div> -->
+							<!-- </div> -->
+							<!-- <br> -->
+							<!-- <div class="row"> -->
+								<!-- <div class="col-sm-6"> -->
+									<!-- <label class="form-label" for="field-1">TAILLE : </span> -->
+								<!-- </div> -->
+								<!-- <div class="col-sm-6"> -->
+									<!-- <span></span> -->
+								<!-- </div> -->
+							<!-- </div> -->
+						</div>
+					</div>
+                </div>
+            </div>
+        </section>
+    </div>
+	
+	
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-controller='MorrisCtrl'>
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Le comparatif des conditions standards des banques</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<label class="form-label" for="formfield1">LOCALITÉS :</label><br>
+						<select id="locality8" name="locality8" class="form-control" ng-change="changeLocality8(locality8)" ng-model="locality8">
+							<option value="all">Toutes</option>
+							<option ng-repeat="loc in lisAllLocs8" value="{{loc.idLocalite}}">{{loc.ville}}_{{loc.pays}}</option>
+						</select>
+					</div>
+				</div>
+				<br>
+                <div class="row">
+					<div class="col-sm-12" ng-if="loading_8"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_8" />
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+                        <div>
+                            <div line-chart line-data='barData_8' line-xkey='["y"]' line-ykeys='ykeys_8' line-labels='labels_8' line-colors='colors_8'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	<!--  
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Liste des offres des banques</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+				<br>
+				<div class="row">
+					<div class="pull-right">
+						<label class="form-label" for="formfield1">LOCALITÉS :</label><br>
+						<select ng-disabled="true" id="locality9" name="locality9" class="form-control" ng-change="changeLocality9(locality9)" ng-model="locality9">
+							<option value="all">Toutes</option>
+							<option ng-repeat="loc in lisAllLocs9" value="{{loc.idLocalite}}">{{loc.ville}}_{{loc.pays}}</option>
+						</select>
+					</div>
+				</div>
+				<br>
+                <div class="row">
+					<div class="col-sm-12" ng-if="loading_9"> 
+						<div style="text-align:center;">
+							<img id="mySpinner" src="img/loading.gif" ng-show="loading_9" />
+						</div>
+					</div>
+                </div>
+            </div>
+        </section>
+    </div>
+	-->
+	<!--  
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Tristate</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div ng-init="data8=[1, 1, 0, 1, -1, -1, 1, -1, 0, 0, 1, 1]" ui-jq="sparkline" ui-options="{{data8}}, {
+                type: 'tristate',
+                height: '200',
+                posBarColor: '{{app.color.primary}}',
+                negBarColor: '{{app.color.accent}}',
+                zeroBarColor: '#FF6E40',
+                barWidth: 20,
+                barSpacing: 2,
+                zeroAxis: true
+                }" class="sparkline inline">Loading...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Box Plot</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div ng-init="data9=[4, 27, 34, 52, 54, 59, 61, 68, 78, 82, 85, 87, 91, 93, 100]" ui-jq="sparkline" ui-options="{{data9}}, {
+                type: 'box',
+                width: '100%',
+                height: '200',
+                raw: false,
+                target: 27,
+                minValue: 34,
+                boxLineColor: '#FF6E40',
+                boxFillColor: '{{app.color.primary}}',
+                whiskerColor: '{{app.color.accent}}',
+                medianColor: '{{app.color.accent}}',
+                targetColor: '{{app.color.accent}}'
+                }" class="sparkline inline">Loading...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Pie</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div ng-init="data9=[3, 4, 1, 2]" ui-jq="sparkline" ui-options="{{data9}}, {
+                type: 'pie',
+                width: '100%',
+                height: '200',
+                sliceColors: ['{{app.color.primary}}', '{{app.color.accent}}', '{{app.color.warning}}', '{{app.color.success}}'],
+                offset: 0,
+                borderWidth: 0,
+                borderColor: '#00007f'
+                }" class="sparkline inline">Loading...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Bullet</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div ng-init="data10=[10, 12, 12, 9, 7]" ui-jq="sparkline" ui-options="{{data10}}, {
+                type: 'bullet',
+                height: '200',
+                width: '100%',
+                targetWidth: 10,
+                targetColor: '{{app.color.warning}}',
+                performanceColor: '#eaeaea',
+                rangeColors: ['{{app.color.primary}}', '#FF6E40', '{{app.color.accent}} ']
+                }" class="sparkline inline">Loading...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	-->
+</div>
+</div>

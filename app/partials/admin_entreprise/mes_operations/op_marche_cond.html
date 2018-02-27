@@ -1,0 +1,194 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Conditions Standard';" >  
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" ng-controller="DoctorsCtrl">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Recherche sur les conditions standard</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons" style="color:#1065a8">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <!-- START -->
+                <br>
+                <div class='row'>
+					<div class="col-lg-2"></div>
+                    <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3" ng-controller="DatepickerDemoCtrl">
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">DATE DÉBUT</label>
+                            <div class="input-group" inputgroup>
+                                <input type="date" class="form-control datepicker" uib-datepicker-popup ng-model="dt_deb2" ng-change="changeDate_Debut2(dt_deb2)" is-open="dtpick.opened2" max-date="'2040-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                <span class="input-group-addon" ng-click="open($event,'opened2')"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-xs-1"></div>
+                    <div class="col-xs-12 col-md-3 col-sm-3 col-lg-3" ng-controller="DatepickerDemoCtrl">
+                        <div class="form-group">
+							<div class="row">
+								 <label class="form-label" for="field-1">DATE FIN</label>
+								<div class="input-group" inputgroup>
+									<input type="date" class="form-control datepicker" uib-datepicker-popup ng-model="dt_fin2" ng-change="changeDate_Fin2(dt_fin2)" is-open="dtpick.opened2" max-date="'2040-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+									<span class="input-group-addon" ng-click="open($event,'opened2')"><i class="fa fa-calendar" style="color: #999;"></i></span>
+								</div>
+							</div>
+							<div class="row">
+								<span ng-show="dt_deb2>dt_fin2" style="color:#ff8000">La date de fin doit être supérieure ou égale à la date de début.</span> 
+							</div>
+                        </div>
+                    </div>
+                </div>
+				<br>
+                <div class='row'>
+					<div class="col-xs-2"></div>
+					<div class="col-xs-5" style="width:auto">
+                        <div class="form-group">
+                            <label class="form-label" for="field-1">TAUX STANDARD</label>
+                            <div class="input-group" inputgroup>
+								<input type="number" ng-model="taux_stand" ng-change="changeTauxStand(taux_stand)"></input>
+							</div>
+							<span ng-show="isInfZero" style="color:#ff8000">{{messageErr}}</span>
+						</div>
+                    </div>
+					<div class="col-xs-2"></div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label class="form-label" for="formfield1">PRODUIT</label>
+                            <div class="controls">
+                                <select id="selectProduct" name="product_cond2" class="form-control" ng-change="changeProduct2(product_cond2)" ng-model="product_cond2" >
+									<option value=""></option>
+									<option ng-repeat="produit in listProduitis2" value="{{produit.nom}}">{{produit.nom}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<br>
+                <div class='row'>
+					<div class="col-xs-12">
+						<div style="text-align:center;background-color:#1f93f6;">
+							<label class="form-label" for="formfield1" style="text-decoration: underline dotted black;">TOUTES LES BANQUES</label>
+						</div>
+					</div>
+				</div>
+				<br>
+                <div class='row'>
+					<div class="col-xs-12">
+						<div style="text-align:center;">
+							<img id="mySpinner" style="width:50px" src="img/loading.gif" ng-show="loading" />
+							<div ng-show="!loading && listBksByLoc.length==0">
+								<h2 style="cursor:pointer"><strong>Aucune banque trouvée pour cet utilisateur.</strong></h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12 table-responsive" style="height:300px;overflow:auto;" ng-if="listBksByLoc.length!=0">
+						<table id="cond" style="width:100%;" class="table table-striped" ui-jq="dataTable" ui-options="" class="table table-striped">
+							<thead>
+								<tr>
+									<th style="width: auto">SÉLECTION</th>
+									<th style="width: auto">NOM BANQUE</th>
+									<th style="width: auto">TÉLÉPHONE</th>
+									<th style="width: auto">VILLE</th>
+									<th style="width: auto">PAYS</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="bk in listBksByLoc">
+									<td>
+										<input id="checkbxinput" class="bk_{{bk.idInstitution}}" style="color:#1065a8;width:15px;height:15px" type="checkbox" value="{{bk.idInstitution}}" ng-checked="selectionbank2.indexOf(bk.idInstitution) > -1" ng-click="changeBanks2(bk.idInstitution)" class="input-sm"/> 
+									</td>
+									<td style="width: auto">{{bk.nom}}</td>
+									<td style="width: auto">
+									<span ng-if="bk.telephone1!=null && bk.telephone1!='null'">{{bk.telephone1}}</span>
+										<span ng-if="(bk.telephone1==null || bk.telephone1==='null') && (bk.telephone2!=null && bk.telephone2!='null')">{{bk.telephone2}}</span>
+									</td>
+										<td style="width: auto">{{bk.localityIdLocalite.ville}}</td>
+									<td style="width: auto">{{bk.localityIdLocalite.pays}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="row">
+					<div class="col-xs-12">
+						<div style="text-align:center;">
+							<button ng-disabled="isAllVide2 || isInfZero || dt_deb2>dt_fin2" type="submit" style="font-weight: 900;-webkit-border-radius: 10px;" ng-click="launchSearch2()" class="btn btn-success">LANCER LA RECHERCHE</button>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="row">
+					<div class="col-xs-12">
+						<div style="text-align:center;">
+							<img id="mySpinner" style="width:50px" src="img/loading.gif" ng-show="loading2" />
+							<div ng-if="isTdjReady2" style="background-color:#1f93f6;">
+								<label class="form-label" for="formfield1" style="text-decoration: underline dotted black;">CI-DESSOUS LES RÉSULTATS DE LA RECHERCHE</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class='row'>
+					<div class="content-body padding-bottom-15">
+						<div class="row">
+							<div class="col-xs-12" ng-if="(searchTdjResponse2.length==0 && isVide2) && !loading2">
+								<div style="text-align:center;">
+									<h2 style="cursor:pointer">Aucun résultat pour cette recherche.</h2>
+								</div>
+							</div>
+							<div class="col-md-12 col-sm-12 col-xs-12 table-responsive" ng-if="isTdjReady2 && !(searchTdjResponse2.length==0 && isVide2)">
+								<table style="width:100%;" class="table table-striped" ui-jq="dataTable" ui-options="" class="table table-striped">
+									<thead>
+										<tr>
+											<th style="width:auto">NUMÉRO</th>
+											<th style="width:auto">PRODUIT</th>
+											<th style="width:auto">DATE DÉBUT</th>
+											<th style="width:auto">DATE FIN</th>
+											<th style="width:auto">DATE CONDITION</th>
+											<th style="width:auto">CATÉGORIE</th>
+											<th style="width:auto">FAMILLE</th>
+											<th style="width:auto">NÉGOCIABLE</th>
+											<th style="width:auto">BANQUE</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="cond in searchTdjResponse2 | orderBy:'-idConditionBanque'">
+											<td>{{cond.idConditionBanque}}</td>
+											<td>{{cond.product.nom}}</td>
+											<td>
+												<span ng-if="cond.dateDebut==='' || cond.dateDebut==null || cond.dateDebut==='null' || cond.dateDebut==undefined || cond.dateDebut==='undefined'"></span>
+												<span ng-if="cond.dateDebut!='' && cond.dateDebut!=null && cond.dateDebut!='null' && cond.dateDebut!=undefined && cond.dateDebut!='undefined'">{{cond.dateDebut | date:'dd/MM/yyyy'}}</span>
+											</td>
+											<td>
+												<span ng-if="cond.dateFin==='' || cond.dateFin==null || cond.dateFin==='null' || cond.dateFin==undefined || cond.dateFin==='undefined'"></span>
+												<span ng-if="cond.dateFin!='' && cond.dateFin!=null && cond.dateFin!='null' && cond.dateFin!=undefined && cond.dateFin!='undefined'">{{cond.dateFin | date:'dd/MM/yyyy'}}</span>
+											</td>
+											<td>{{cond.dateCondition | date:'dd/MM/yyyy'}}</td>
+											<td>
+												<span ng-if="cond.categorie==='' || cond.categorie==null || cond.categorie==='null' || cond.categorie==undefined || cond.categorie==='undefined'"></span>
+												<span ng-if="cond.categorie!='' && cond.categorie!=null && cond.categorie!='null' && cond.categorie!=undefined && cond.categorie!='undefined'">{{cond.categorie}}</span>
+											</td>
+											<td>
+												<span ng-if="cond.famille==='' || cond.famille==null || cond.famille==='null' || cond.famille==undefined || cond.famille==='undefined'"></span>
+												<span ng-if="cond.famille!='' && cond.famille!=null && cond.famille!='null' && cond.famille!=undefined && cond.famille!='undefined'">{{cond.famille}}</span>
+											</td>
+											<td>
+												<span ng-if="cond.negociable==='' || cond.negociable==null || cond.negociable==='null' || cond.negociable==undefined || cond.negociable==='undefined'"></span>
+												<span ng-if="cond.negociable!='' && cond.negociable!=null && cond.negociable!='null' && cond.negociable!=undefined && cond.negociable!='undefined'">{{cond.negociable}}</span>
+											</td>
+											<td>{{cond.bank.nom}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+                <!-- END -->
+            </div>
+        </section>
+    </div>
+</div>
+

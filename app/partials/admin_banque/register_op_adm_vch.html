@@ -1,0 +1,121 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'VALIDATIONS';" >  
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <section class="box ">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Ajouter paramètrage chaine de validation</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i id="box_toggle_more" class="box_toggle material-icons" style="color:#1065a8" on-load-clicker>expand_more</i>
+                                </div>
+                            </header>
+                            <div class="content-body">
+							<form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                                    <!-- START -->
+									<br>
+                                    <div class='row'>
+                                        <div class="col-xs-6">
+                                                <div class='row'>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <label class="form-label" for="field-1">TYPE DE PRODUIT</label>
+                                                         </div>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <input style="width:15px;height:15px" type="radio" checked="checked">
+                                                                taux
+                                                        </div>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <input style="width:15px;height:15px" type="radio">
+                                                                change
+                                                        </div>
+														<div class="col-xs-4 " style="width:auto">
+                                                                <input style="width:15px;height:15px" type="radio">
+                                                                traite
+                                                        </div>
+														<div class="col-xs-4 " style="width:auto">
+                                                                <!-- <input style="width:15px;height:15px" type="radio"> -->
+                                                                <!-- doc -->
+                                                        </div>
+                                                </div>
+                                        </div>
+                                    </div>
+									<br>
+                                    <div class='row'>
+                                        <div class="col-xs-6">
+                                                <div class='row'>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <label class="form-label" for="field-1">SENS</label>
+                                                         </div>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <input style="width:15px;height:15px" type="radio" checked="checked">
+                                                                demande
+                                                        </div>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <input style="width:15px;height:15px" type="radio">
+                                                                offre
+                                                        </div>
+														<div class="col-xs-4 " style="width:auto">
+                                                                <input style="width:15px;height:15px" type="radio">
+                                                                demande et offre
+                                                        </div>
+                                                </div>
+                                        </div>
+                                    </div>
+									<br>
+                                    <div class='row'>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                        <label class="form-label" for="formfield1">PRODUIT <span style="color:#ff8000">*</span></label>
+                                                        <div class="controls">
+                                                                <select name="produit" class="form-control" ng-model="produit" required>
+																		<option value="">Sélectionnez le produit</option>
+																		<option value="tresorier">Trésorerie (Spot)</option>
+                                                                        <option value="dep_terme">Depot a terme</option>
+                                                                        <option value="bon_de_caisse">Bon de Caisse</option>
+                                                                        <option value="transfert">Transfert</option>
+                                                                </select>
+																<span ng-show="form.produit.$submitted && form.produit.$error.required" style="color:#ff8000">Le nom du produit est obligatoire.</span>
+																<span ng-show="form.produit.$touched && form.produit.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <br>
+                                    <div class='row'>
+                                        <div class="col-xs-6">
+                                                <div class='row'>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <label class="form-label" for="field-1">VALIDER TOUTE LA CHAINE</label>
+                                                         </div>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <input style="width:15px;height:15px" type="radio" checked="checked">
+                                                                Non
+                                                        </div>
+                                                        <div class="col-xs-4 " style="width:auto">
+                                                                <input style="width:15px;height:15px" type="radio">
+                                                                Oui
+                                                        </div>
+                                                </div>
+                                        </div>
+                                    </div>
+									<br>
+									<div class='row'>
+										<div class="col-xs-12">
+											<div style="text-align:center;">
+												<button type="submit" ng-click="ok()" ng-disabled="form.$invalid" class="btn btn-success">VALIDER</button>
+												&nbsp;
+												&nbsp;
+												<button type="button" ng-click="cancel()" class="btn" style="background:#ff8000;">ANNULER</button>
+											</div>
+										</div>
+									</div>
+									<br>
+                                    <div class='row'>
+										<div class="col-xs-12">
+											<span style="color:#ff8000" ng-show="form.$invalid">* Veuillez renseigner les champs obligatoires</span>
+										</div>
+                                    </div>
+                                    <!-- END -->
+								</form>
+                                </div>
+                    </section>
+        </div>
+</div>
+

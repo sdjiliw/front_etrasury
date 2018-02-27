@@ -1,0 +1,49 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'ACCEUIL';">
+    <div class="col-lg-12" ng-controller="statutController">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Publications</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <form name="form">
+                        <div class="col-sm-6">
+                            <div class="controls" style="margin-top: 15px;">
+                                <textarea class="form-control" required placeholder="Exprimez-vous, {{app.prenom}}" maxlength="250" id="field-6" name="statut" ng-model="statut"></textarea>
+                                <span ng-show="form.statut.$submitted && form.statut.$error.required" style="color: #ff8000"></span>
+                                <span ng-show="form.statut.$touched && form.statut.$error.required" style="color: #ff8000"> </span>
+                            </div>
+                            <div style="text-align: right; margin-top: 5px;">
+                                <button type="submit" ng-click="addStatut()" ng-disabled="form.$invalid" class="btn btn-default">
+                                Publier
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row" style="overflow: auto; height: 600px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="stat in statuts | orderBy:'date':true">
+                        <uib-alert type="default minimal" close="closeAlert(stat)">
+                            <div class="chatmsg">
+                                <div class="user-img">
+                                    <a><img src="data/profile/avatar-2.png" alt=""></a>
+                                </div>
+                                <div class="msg_info" style="color: rgb(8, 5, 150);"><b>
+                                    &nbsp;{{stat.user.prenom}}&nbsp;{{stat.user.nom}} ({{stat.user.groupeIdGroupe.institution.nom}})</b>
+                                    <span class="ts">&nbsp;&nbsp;<span style="color:gray">{{stat.datePublication | date: 'd'}} {{stat.datePublication | date: 'MMMM'}}, {{stat.datePublication | date:'HH:mm'}}</span></span>
+                                </div>
+                                <div style="margin-top: 15px; color:gray">
+                                    {{stat.contenu}}
+                                </div>
+                            </div>
+                        </uib-alert>
+                        <!-- <button class='btn btn-sm btn-default' ng-click="addAlert()">Add Alert</button>-->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

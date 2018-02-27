@@ -1,0 +1,249 @@
+<div class="content-wrapper" ng-init="app.settings.pagetitle">
+    <div class="col-lg-12">
+        <section class="box">
+            <header class="panel_header">
+                <h2 class="title pull-left">Details sur la demande de cotation</h2>
+                <div class="actions panel_actions pull-right">
+                    <i id="box_toggle_more" class="box_toggle material-icons" id="box_toggle" style="color: #1065a8" on-load-clicker>expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <form id="general_validate" action="javascript:;" name="form">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield2">ENTREPRISE </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="entreprise" ng-model="entOff" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="selectedRowOffer.demandeIdDemande.product.nom!='ESCOMPTE'">
+                                <label class="form-label" for="formfield2">DATE VALEUR </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="datevall" ng-model="datevallOff" class="form-control"> </input>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="selectedRowOffer.demandeIdDemande.product.nom=='ESCOMPTE'">
+                                <label class="form-label" for="formfield2">DATE VALEUR </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="datevallOffEscomp" ng-model="datevallOffEscomp" class="form-control"> </input>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield2">PRODUIT </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="prdt" ng-model="prdtOff" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield2">MONTANT
+									PROPOSE </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="montt" ng-model="monttOff" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield2">BANQUE </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="banque" ng-model="banqueV" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="selectedRowOffer.demandeIdDemande.product.nom!='SPOT' && selectedRowOffer.demandeIdDemande.product.nom!='CHANGE' && selectedRowOffer.demandeIdDemande.product.nom!='TRANSFERT'">
+                                <label class="form-label" for="formfield2">DATE MATURITE
+								</label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="duree" ng-model="dateMatOff" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="selectedRowOffer.demandeIdDemande.product.nom=='SPOT' && selectedRowOffer.demandeIdDemande.product.nom!='CHANGE' && selectedRowOffer.demandeIdDemande.product.nom!='TRANSFERT'">
+                                <label class="form-label" for="formfield2">DATE MATURITE
+								</label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="duree" ng-model="dateEchOff" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="selectedRowOffer.demandeIdDemande.product.nom!='DEPOT A TERME' && selectedRowOffer.demandeIdDemande.product.nom!='CHANGE'">
+                                <label class="form-label" for="formfield2">TAUX MAX
+									PROPOSE </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="tauxMax" ng-model="tauxMaxOff" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="selectedRowOffer.demandeIdDemande.product.nom=='DEPOT A TERME'">
+                                <label class="form-label" for="formfield2">TAUX MIN
+									PROPOSE </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="tauxMinOff" ng-model="tauxMinOff" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="selectedRowOffer.demandeIdDemande.product.nom=='CHANGE'">
+                                <label class="form-label" for="formfield2">COURS MAX
+									PROPOSE </label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="courMaxOff" ng-model="courMaxOff" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield2"></label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="text" disabled="disabled" name="enchA" ng-model="enchere" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <br>
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label ng-if="selectedRowDmd.requestHasBank!=undefined" class="form-label" for="formfield2">NOTRE TAUX<span
+									style="color: #ff8000">*</span>
+						<span ng-if="selectedRowDmd.requestHasBank.request.product.nom!='CHANGE'">(%)</span>
+					</label>
+                    <label ng-if="selectedRowOffer.demandeIdDemande!=undefined" class="form-label" for="formfield2">NOTRE TAUX<span
+									style="color: #ff8000">*</span>
+						<span ng-if="selectedRowOffer.demandeIdDemande.product.nom!='CHANGE'">(%)</span>
+					</label>
+                    <!-- <span class="desc"></span> -->
+                    <div class="controls">
+                        <input type="text" name="taux" class="form-control" disabled="disabled" ng-model="notretaux"> <span ng-show="form.taux.$submitted && form.taux.$error.required" style="color: #ff8000">Le taux est obligatoire.</span> <span ng-show="form.taux.$touched && form.taux.$error.required"
+                            style="color: #ff8000">Ce champ est obligatoire.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="form-label" for="formfield2">VOIR
+						DOCUMENTS(S) ATTACHE(S)</label>
+                    <div class='row'>
+                        <div class="col-xs-7">
+                            <div class="col-xs-3" style="width: auto">
+                                <div class="radio" style="cursor: pointer;">
+                                    <label> <input style="width: 15px; height: 15px" disabled="disabled"
+										name="voir" ng-click="ShowTable('Y')" type="radio"
+										ng-value="1" ng-model="doc"> OUI
+									</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-3" style="width: auto">
+                                <div class="radio" style="cursor: pointer;">
+                                    <label> <input style="width: 15px; height: 15px" disabled="disabled"
+										name="voir" ng-click="ShowTable('N')" ng-model="doc"
+										ng-value="2" type="radio"> NON
+									</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="controls"></div>
+                </div>
+                <div ng-show="IsVisible">
+                    <div style="height: 200px; overflow: auto; margin-top: 15px">
+                        <table style="width: 100%" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Select</th>
+                                    <th>Mes documents</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="doc in documentsbyUser">
+                                    <td><input id="checkbxinput" disabled="disabled" style="color: #1065a8; width: 15px; height: 15px" type="checkbox" value="{{doc.idDocuments}}" ng-checked="selectiond.indexOf(doc.idDocuments) > -1" ng-click="changeDoc(doc.idDocuments)"
+                                            class="input-sm" />
+                                        <!-- 									<input -->
+                                        <!-- 									ng-checked="$index == idDoc" -->
+                                        <!-- 									style="width: 15px; height: 15px; cursor: pointer;" -->
+                                        <!-- 									ng-model="doc.selected" ng-click="selectedDoc($event)" -->
+                                        <!-- 									type="checkbox" class="input-sm" /> -->
+                                    </td>
+                                    <td>{{doc.nom}}.pdf</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 					<div class="form-group"> -->
+                    <!-- 						<label class="form-label" for="field-1">Multiple Select</label> -->
+                    <!-- 						<div class="controls"> -->
+                    <!-- 							<select ui-jq="chosen" ng-repeat="doc in documentsbyUser" multiple class="form-control" -->
+                    <!-- 								data-placeholder="Selectionner les documents..."> -->
+                    <!-- 								<option value=""></option> -->
+                    <!-- 								<option>{{doc.nom}}.pdf</option> -->
+                    <!-- 							</select> -->
+                    <!-- 						</div> -->
+                    <!-- 					</div> -->
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+            <label class="title pull-left">Espace de calcul des commissions</label>
+            <div>
+                <table class="table table-striped" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: auto">En pourcentage du montant</th>
+                            <th style="width: auto">NATURE</th>
+                            <th style="width: auto">VALEUR</th>
+                            <th style="width: auto">DETAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in items">
+                            <td>{{item.type}}</td>
+                            <td>{{item.nature}}</td>
+                            <td>{{item.valeur}}</td>
+                            <td>{{item.detail}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="display: none;">
+                <input type="text" ng-model="idDemande">
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div style="text-align: center;">
+                        <img id="mySpinner" src="{{spinner}}" ng-show="loading" />&nbsp;&nbsp;&nbsp;
+                        <button type="submit" ng-click="validerOffer()" ng-disabled="form.$invalid || isErrorNumb || disabl" class="btn btn-success">Valider</button>
+                        <button style="background: #ff8000;" ng-click="cancel()" type="button" class="btn">Annuler</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div ng-if="errorMessage!=null" style="color: #ff8000">
+                        <span>{{errorMessage}}</span>
+                    </div>
+                    <div ng-if="sucessMessage!=null" style="color: #1f93f6">
+                        <span>{{sucessMessage}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

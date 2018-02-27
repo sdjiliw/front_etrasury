@@ -1,0 +1,106 @@
+<div class="content-wrapper" ng-init="app.settings.pagetitle">
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left" ng-if="selectedChange.idTauxJour==undefined">AJOUTER UN TAUX</h2>
+                <h2 class="title pull-left" ng-if="selectedChange.idTauxJour!=undefined">MODIFIER UN TAUX</h2>
+
+                <div class="actions panel_actions pull-right">
+                    <i id="box_toggle_more" class="box_toggle material-icons" on-load-clicker>expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 ">
+                            <div class="form-group">
+                                <!-- <label class="form-label" for="formfield8">DEVISE <span style="color:#ff8000">*</span></label> -->
+                                <div class="form-group">
+                                    <label class="form-label" for="formfield1">DEVISE <span style="color:#ff8000">*</span></label>
+                                    <div class="controls">
+                                        <select name="devise" ng-disabled="selectedChange.idTauxJour!=undefined" class="form-control" ng-model="deviseChang" required ng-options="deviseChang as deviseChang.description for deviseChang in deviseslist | 
+												orderBy:'description' track by deviseChang.idDevise">
+											</select>
+                                        <!--                                             <select name="devise" class="form-control" ng-model="deviseChang" required> -->
+                                        <!-- 												<option value=""></option> -->
+                                        <!--                                                 <option value="USD">USD</option> -->
+                                        <!--                                                 <option value="CAD">CAD</option> -->
+                                        <!--                                                 <option value="CHF">CHF</option> -->
+                                        <!-- 												<option value="GBP">GBP</option> -->
+                                        <!-- 												<option value="USD">JPY</option> -->
+                                        <!--                                             </select> -->
+                                        <span ng-show="form.devise.$submitted && form.devise.$error.required" style="color:#ff8000">La devise est obligatoire.</span>
+                                        <span ng-show="form.devise.$touched && form.devise.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">ACHAT <span style="color:#ff8000">*</span></label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" name="achat" ng-model="achatChang" required></input>
+                                    <span ng-show="form.achat.$submitted && form.achat.$error.required" style="color:#ff8000">L'achat est obligatoire.</span>
+                                    <span ng-show="form.achat.$touched && form.achat.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">VENTE <span style="color:#ff8000">*</span></label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" name="vente" ng-model="venteChang" required></input>
+                                    <span ng-show="form.vente.$submitted && form.vente.$error.required" style="color:#ff8000">La vente est obligatoire.</span>
+                                    <span ng-show="form.vente.$touched && form.vente.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">DATE DEBUT VALIDITé <span style="color:#ff8000">*</span></label>
+                                <div class="controls">
+                                    <div class="input-group" inputgroup>
+                                        <!-- <input type="date" value="12/08/2017" class="form-control"  name="date" ng-model="date" required></input> -->
+                                        <input type="date" ng-disabled="selectedChange.idTauxJour!=undefined" name="date_" class="form-control datepicker" uib-datepicker-popup ng-model="dateChang" ng-change="changeDateChang(dateChang);" is-open="dtpick.opened2" min-date="minDate" max-date="'2015-06-22'"
+                                            datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required/>
+                                        <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                    </div>
+                                </div>
+                                <span ng-show="form.date_.$submitted && form.date_.$error.required" style="color:#ff8000">La date est obligatoire.</span>
+                                <span ng-show="form.dated.$touched && form.date_.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                <span ng-show="form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span>
+                                <span ng-show="date_!=null&&
+											(minDate.getFullYear()>date_.getFullYear()||
+											minDate.getFullYear()==date_.getFullYear()&&
+											(minDate.getMonth()+1)>(date_.getMonth()+1)||
+											minDate.getFullYear()==date_.getFullYear()&&
+											(minDate.getMonth()+1)==(date_.getMonth()+1)&&
+											minDate.getDate()>date_.getDate())" style="color:#ff8000">
+									La date ne doit pas être inférieure à celle d'aujourd'hui.
+								</span>
+                            </div>
+                            <div class="form-group">
+                                <div style="text-align:center;">
+                                    <img id="mySpinner" src="{{spinner}}" ng-show="loading" />&nbsp;&nbsp;&nbsp;
+                                    <button type="submit" ng-click="submitTauxChange(deviseChang,achatChang,venteChang,dateChang)" ng-disabled="form.$invalid || date_!=null&&
+											(minDate.getFullYear()>date_.getFullYear()||
+											minDate.getFullYear()==date_.getFullYear()&&
+											(minDate.getMonth()+1)>(date_.getMonth()+1)||
+											minDate.getFullYear()==date_.getFullYear()&&
+											(minDate.getMonth()+1)==(date_.getMonth()+1)&&
+											minDate.getDate()>date_.getDate()) || disabl" class="btn btn-success">VALIDER</button> &nbsp; &nbsp;
+                                    <button type="button" ng-click="cancel()" class="btn" style="background:#ff8000;">ANNULER</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <span style="color:#ff8000" ng-show="form.$invalid">* Veuillez renseigner les champs obligatoires</span>
+                                </div>
+                                <div ng-if="errorMessage!=null" style="color: #ff8000">
+                                    <span>{{errorMessage}}</span>
+                                </div>
+                                <div ng-if="sucessMessage!=null" style="color: #1f93f6">
+                                    <span>{{sucessMessage}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

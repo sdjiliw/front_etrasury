@@ -1,0 +1,69 @@
+<div class="col-md-12 col-sm-12 col-xs-12 mail_list">
+	 <section class="box ">
+            <div class="content-body padding-bottom-0">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row" data-ng-controller="bankController">
+                        	<div class="col-md-12 col-sm-12 col-xs-12" ng-if="lesdocRecus.length==0">
+								<div style="text-align:center;">
+									<h4>Aucun document reçu.</h4>
+								</div> 
+							</div> 
+<!--                             <div class="col-lg-3 col-sm-6 col-md-4 col-md-12" ng-repeat="doc in lesdocRecus" style="margin-left:15px;"> -->
+<!--                                 <div class="team-member "> -->
+<!--                                     <div class="team-img col-md-12 col-sm-12 col-xs-12"> -->
+<!--                                         <img class="img-responsive" ng-src="{{doc.avatar}}" alt=""> -->
+<!-- 										<img class="img-responsive" ng-src="data/patients/pdf.png" alt=""> -->
+<!-- <!-- 										<i class='img-responsive material-icons' style="font-size:300px;color:#1f93f6;margin-left:0px;padding-left:0px;">picture_as_pdf</i> --> 
+<!--                                     </div> -->
+<!--                                     <div class="team-info col-md-12 col-sm-12 col-xs-12"> -->
+<!--                                         <h4 class='margin-top-15 margin-bottom-10 text-primary'><a ui-sref="app.hos-patient-profile">{{doc.nom}}</a></h4> -->
+<!--                                         <span class='team-member-edit'> -->
+<!--                                         	<a ui-sref="app.docs-recus-bk.visualbk_byname({name: name, named : doc.documents.nom, url_ : doc.documents.urlDocument,id : doc.documents.idDocuments})"> -->
+<!--                                         		<i class='material-icons icon-sm' ng-click="DocRecuEntDetail(doc)" style="cursor:pointer">remove_red_eye</i> -->
+<!--                                         	</a> -->
+<!--                                         	&nbsp;&nbsp;&nbsp; -->
+<!-- 	                                        <a title="piste d'audit" ng-click="showPiste(doc);"> -->
+<!-- 	                                        	<i class='fa fa-external-link' style="cursor:pointer;"></i> -->
+<!-- 	                                        </a> -->
+<!--                                         </span> -->
+<!--                                         <span>Document: {{doc.documents.nom}} <br>Catégorie: {{doc.documents.category.libelle}} yrs<br>Date de publication: {{doc.datePublication | date : 'dd/MM/yyyy'}} à {{doc.datePublication | date:'HH:mm:ss'}}</span> -->
+<!--                                         <div class="clearfix"></div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+                            <div class="col-lg-3 col-sm-6 col-md-4 col-md-12" 
+                            ng-repeat="doc in lesdocRecus">
+                                <div class="team-member">
+                                    <div class="team-img col-md-12 col-sm-12 col-xs-12">
+										<img class="img-responsive" ng-src="data/patients/pdf2.png" alt=""><br>
+                                       <div class="team-info" style="margin-left:10px">
+                                       <a ui-sref="app.docs-recus-bk.visualbk_byname({name: name, named : doc.documents.nom, url_ : doc.documents.urlDocument,id : doc.documents.idDocuments})">
+                                        	<i class='material-icons icon-sm' ng-click="goToshowPiste(doc)" style="cursor:pointer">remove_red_eye</i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a title="piste d'audit" ng-click="showPistedocRecu(doc);">
+                                        	<i class='fa fa-external-link' style="cursor:pointer;"></i>
+                                        </a>
+                                        <div style="margin-top:7px;"></div>
+                                        Document: <span style='color: #1f93f6;'>{{doc.documents.nom}}.pdf</span><br>
+                                        Entreprise: <span style='color: #1f93f6;'>{{doc.documents.category.userIdUtilisateur.groupeIdGroupe.institution.nom}}</span><br>
+                                        Date de publication: <span style='color: #1f93f6;'>{{doc.datePublication | date : 'dd/MM/yyyy'}} à {{doc.datePublication | date:'HH:mm:ss'}}</span><br>
+<!--                                         Mots Clefs: <span style='color: #1f93f6;'>{{doc.motsCles}}</span><br> -->
+                                        
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" data-ng-controller="PaginationDemoCtrl" ng-if="lesdocRecus.length>0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center padding-top-30 padding-bottom-30">
+                                <uib-pagination total-items="totalItems" ng-model="currentPage"></uib-pagination>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+</div>

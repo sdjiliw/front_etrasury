@@ -1,0 +1,30 @@
+<!-- General section box modal start -->
+<!-- modal end -->
+<!-- <div class="screen-type visible-xs">xs</div>
+<div class="screen-type visible-sm">sm</div>
+<div class="screen-type visible-md">md</div>
+<div class="screen-type visible-lg">lg</div>ng-repeat="item in items | orderBy:'-id'" -->
+<br>
+<br>
+<footer class="box footer_yes">
+	<div ng-controller="defilmtCtrl">
+	  <!-- <a href="https://www.finappli.net/">&nbsp; &nbsp; e-Treasury</a> &copy; 2017 -->
+	  <!-- <span class="float-right">Créer par<a href="http://coreui.io">Qualshore</a></span> -->
+	  <div class="row">
+		<div class="col-sm-2">
+			<div class="form-group">
+				<div class="controls"></div>
+			</div>
+		</div>
+		<div class="col-sm-9">
+			<div class="form-group">
+				<div class="controls">
+					<marquee behavior="scroll" direction="left"><span ng-repeat="item in itemsis" style="color:{{item.color}};">&nbsp;&nbsp;{{item.nom}}&nbsp;{{item.value}}{{item.separator}}</span></marquee>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div>
+</footer>
+
+

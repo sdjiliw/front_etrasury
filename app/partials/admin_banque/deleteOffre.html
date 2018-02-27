@@ -1,0 +1,21 @@
+<div class="modal-header">
+	<div style="text-align:center;">
+		<h2 class="modal-title">Attention&nbsp;&nbsp; 
+			<i class="material-icons" style="color: #ff8000;position: absolute;top: 25px;font-size: 40px;">warning</i>
+		</h2>
+	</div>
+</div>
+<div style="text-align:center;">
+	<div class="modal-body">
+		<span style="color:#ff8000">Voulez-vous vraiment supprimer l'offre rattachée à cette demande ?</span>
+	</div>
+</div>
+<div class="modal-footer"> 
+	<div style="text-align:center;">
+		<img id="mySpinner" src="{{spinner}}" ng-show="loading" />&nbsp;&nbsp;&nbsp;
+		<button class="btn btn-primary" style="background:#ff8000;" 
+		ng-click="confirmSuppOffre()"
+		ng-disabled="disabl">Confirmer</button> 
+		<button class="btn btn-default" style="background:#1f93f6;" ng-click="cancel()">Annuler</button> 
+	</div>
+</div> 

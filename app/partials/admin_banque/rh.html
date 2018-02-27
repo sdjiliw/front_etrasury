@@ -1,0 +1,182 @@
+<style>
+.not-active {
+  pointer-events: none;
+  cursor: default;
+}
+.loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  text-align:center;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+<div class='content-wrapper'
+	ng-init="app.settings.pagetitle = 'Ressources humaines';"
+	data-ng-controller="bankController">
+	<div class="col-lg-12">
+		<section class="box ">
+			<header class="panel_header">
+				<h2 class="title pull-left">NOS UTILISATEURS & GROUPES
+					D'UTILISATEURS</h2>
+				<div class="actions panel_actions pull-right">
+					<i class="box_toggle material-icons">expand_more</i>
+				</div>
+			</header>
+			<div class="content-body padding-bottom-15">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<!-- Horizontal - start -->
+						<div class="row">
+							<div class="col-md-12">
+								<div data-ng-controller="TabsDemoCtrl">
+									<uib-tabset class="tab-container"> <uib-tab>
+									<uib-tab-heading> GROUPE </uib-tab-heading>
+									<p>
+										<!-- <h3>LISTE DE NOS GROUPES</h3> -->
+									<h4>
+										<button type="submit" class="btn btn-success"
+											ng-click="addbKGroupe()">
+											<i class="material-icons"
+												style="position: absolute; top: 5px; left: 0px;">add</i>&nbsp;&nbsp;&nbsp;NOUVEAU
+											GROUPES
+										</button>
+									</h4>
+									<div class="content-body padding-bottom-15"
+										data-ng-controller="bankController">
+										<div class="row">
+											<div class="col-xs-6">
+											</div>
+											<div class="col-xs-6">
+												<div ng-if="loading">
+													<div class="loader"></div>
+												</div>
+											</div>
+											<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+												<table ng-if="isReadyDataBkbankGrps" style="width: 100%" class="table table-striped"
+													ui-jq="dataTable" ui-options="" class="table table-striped">
+													<thead>
+														<tr>
+															<th style="width: auto">NUMÉRO</th>
+															<th style="width: auto">CODE</th>
+															<th style="width: auto">LIBELLÉ</th>
+															<th style="width: auto">ACTIONS</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="groups in bankGrps | orderBy:'-idGroupe'">
+															<td style="width: auto">{{$index+1}}</td>
+															<td style="width: auto">{{groups.nom}}</td>
+															<td style="width: auto">{{groups.description}}</td>
+															<td style="width: auto"><a 
+																ng-click="openJuridiction(groups)"
+																style='color: #595d60; cursor: pointer;'><i
+																	class="material-icons">settings</i></a>&nbsp;&nbsp;
+																<span ng-if="groups.nom.indexOf('default') != 0 && groups.nom.indexOf('admin') != 0">
+																<a 
+																ng-click="editGroupeBank(groups)" ng-if="editGr===true"
+																style='color: #1f93f6; cursor: pointer;'><i
+																	class='material-icons'>mode_edit</i></a>&nbsp; 
+																<a
+																ng-click="suppGroupBank(groups)" ng-if="suppGr===true"
+																style='color: #ff8000; cursor: pointer;'><i
+																	class='material-icons'>delete</i></a>
+															</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									</p>
+									</uib-tab> <uib-tab> <uib-tab-heading>
+									UTILISATEURS </uib-tab-heading>
+									<p>
+										<!-- <h3>LISTE DE NOS UTILISATEURS</h3> -->
+									<h4>
+										<!-- 										<button type="submit" class="btn btn-success" -->
+										<!-- 											ng-click="addbKoadMrHu()"> -->
+										<!-- 											<i class="material-icons" -->
+										<!-- 												style="position: absolute; top: 5px; left: 0px;">add</i>&nbsp;&nbsp;&nbsp;NOUVEL -->
+										<!-- 											UTILISATEUR -->
+										<!-- 										</button> -->
+									</h4>
+									<div class="content-body padding-bottom-15">
+										<div class="row">
+											<div class="col-xs-6">
+											</div>
+											<div class="col-xs-6">
+												<div ng-if="loading">
+													<div class="loader"></div>
+												</div>
+											</div>
+											<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+												<table ng-if="isDataReadyBkbankUsers" id="example" style="width: 100%"
+													ui-jq="dataTable" ui-options=""
+													class="table table-striped" class="table table-striped">
+													<thead>
+														<tr>
+															<th style="width: auto">NUMÉRO</th>
+															<th style="width: auto">PRÉNOM</th>
+															<th style="width: auto">NOM</th>
+															<th style="width: auto">E-MAIL</th>
+															<th style="width: auto">TÉLÉPHONE MOBILE</th>
+															<th style="width: auto">TÉLÉPHONE FIXE</th>
+															<th style="width: auto">GROUPE</th>
+															<th style="width: auto">ACTIONS</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="users in bankUsers | orderBy:'-idUtilisateur'">
+															<td style="width: auto">{{$index+1}}</td>
+															<td style="width: auto">{{users.prenom}}</td>
+															<td style="width: auto">{{users.nom}}</td>
+															<td style="width: auto">{{users.email}}</td>
+															<td style="width: auto">{{users.telephone}}</td>
+															<td style="width: auto">{{users.telephoneFixe}}</td>
+															<td style="width: auto">{{users.groupeIdGroupe.nom}}</td>
+															<td style="width: auto">
+															<span ng-if="users.groupeIdGroupe.nom.indexOf('admin') != 0">
+															<a 
+																ng-click="editUserBank( users );"
+																style='color: #1f93f6; cursor: pointer;'><i
+																	class='material-icons'>mode_edit</i></a>
+															</span>
+															<span ng-if="users.groupeIdGroupe.nom.indexOf('default') != 0 && users.groupeIdGroupe.nom.indexOf('admin') != 0">
+															 &nbsp;&nbsp; <a
+																ng-click="suppUserBank( users )"
+																style='color: #ff8000; cursor: pointer;'><i
+																	class='material-icons'>delete</i></a>
+															</span>	
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									</p>
+									</uib-tab> </uib-tabset>
+								</div>
+							</div>
+						</div>
+						<!-- Vertical - end -->
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

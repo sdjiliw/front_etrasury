@@ -1,0 +1,92 @@
+<style type="text/css">
+#table-wrapper {
+	position: relative;
+}
+
+#table-scroll {
+	height: 500px;
+	overflow: auto;
+	margin-top: 20px;
+}
+
+#table-wrapper table {
+	width: 100%;
+}
+
+#table-wrapper table thead th .text {
+	position: absolute;
+	top: -20px;
+	z-index: 2;
+	height: 20px;
+	width: 35%;
+	border: 1px solid red;
+}
+</style>
+<div class="content-wrapper" ng-init="app.settings.pagetitle">
+	<div class="col-lg-12">
+		<section class="box ">
+			<header class="panel_header">
+				<h2 class="title pull-left">LISTE DES JURIDICTIONS</h2>
+
+				<div class="actions panel_actions pull-right">
+					<i id="box_toggle_more" class="box_toggle material-icons" on-load-clicker>expand_more</i>
+				</div>
+			</header>
+			<div class="content-body">
+				<div class="row">
+					<form id="general_validate" action="javascript:;" name="form"
+						class="form-validation">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div id="table-wrapper">
+												<div id="table-scroll">
+													<div class="col-sm-12">
+														<div class="col-sm-4" ng-repeat="juridic in juridictionList">
+															<!-- <input style="width: 15px; height: 15px" ng-model="juridic.selected" ng-click="selectedJuridiction($event)" type="checkbox" class="input-sm" />  -->
+															<input id="checkbxinput" class="jur_{{juridic.id}}" style="color:#1065a8;width:15px;height:15px" type="checkbox" value="{{juridic.id}}" ng-checked="selectionb.indexOf(juridic.id) > -1" ng-click="changeJuridiction(juridic.id)" class="input-sm"/>
+																{{juridic.libelle}}
+														</div>
+														<div class="col-sm-4" ng-repeat="juridic2 in juridictionList2">
+															<!-- <input style="width: 15px; height: 15px" ng-model="juridic2.selected" ng-click="selectedJuridiction($event)" type="checkbox" class="input-sm" />  -->
+															<input id="checkbxinput" class="jur_{{juridic2.id}}" style="color:#1065a8;width:15px;height:15px" type="checkbox" value="{{juridic2.id}}" ng-checked="selectionb.indexOf(juridic2.id) > -1" ng-click="changeJuridiction(juridic2.id)" class="input-sm"/>
+																{{juridic2.libelle}}
+														</div>
+														<div class="col-sm-4" ng-repeat="juridic3 in juridictionList3">
+															<!-- <input style="width: 15px; height: 15px" ng-model="juridic3.selected" ng-click="selectedJuridiction($event)" type="checkbox" class="input-sm" />  -->
+															<input id="checkbxinput" class="jur_{{juridic3.id}}" style="color:#1065a8;width:15px;height:15px" type="checkbox" value="{{juridic3.id}}" ng-checked="selectionb.indexOf(juridic2.id) > -1" ng-click="changeJuridiction(juridic3.id)" class="input-sm"/>
+																{{juridic3.libelle}}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div style="text-align: center;">
+										<br>
+										<img id="mySpinner" src="img/loading.gif" ng-show="loading" />&nbsp;&nbsp;&nbsp;
+										<button type="submit" ng-click="addJuridictions();" ng-disabled="form.$invalid" class="btn btn-success">
+											Valider
+										</button>
+										<button style="background: #ff8000;" ng-click="cancel()" type="button" class="btn">
+											Annuler
+										</button>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<!-- <span style="color:#ff8000" ng-show="form.$invalid && !isSuccess">* Veuillez renseigner les champs obligatoires</span> -->
+											<span style="color:#ff8000" ng-show="isSuccess">{{message}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

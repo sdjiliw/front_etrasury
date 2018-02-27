@@ -1,0 +1,103 @@
+<div class="content-wrapper" ng-init="app.settings.pagetitle">
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left" ng-if="selectedSpot.idTauxJour==undefined">AJOUTER UN TAUX</h2>
+                <h2 class="title pull-left" ng-if="selectedSpot.idTauxJour!=undefined">MODIFIER UN TAUX</h2>
+                <div class="actions panel_actions pull-right">
+                    <i id="box_toggle_more" class="box_toggle material-icons" on-load-clicker>expand_more</i>
+                </div>
+            </header>
+            <div class="content-body" data-ng-controller="DatepickerDemoCtrl">
+                <div class="row">
+                    <form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 ">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">DURÉE <span style="color:#ff8000">*</span></label>
+                                <div class="controls">
+                                    <div class="col-sm-6" style="margin-left:-15px;">
+                                        <input required="required" name="duree" type="number" ng-model="dureeSpot" min="0" class="form-control" max="36" ng-disabled="selectedSpot.idTauxJour!=undefined">
+                                        <span ng-show="form.duree.$submitted && form.duree.$error.required" style="color:#ff8000">La durée est obligatoire.</span>
+                                        <span ng-show="form.duree.$touched && form.duree.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                        <span ng-show="form.input.$error.number" style="color:#ff8000">Le format est incorrect.</span>
+                                        <span ng-show="isErrorCourMin" style="color:#ff8000">La durée doit être supérieure à zéro.</span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div style="margin-right:-28px;">
+                                            <select name="devise_" class="form-control" ng-disabled="selectedSpot.idTauxJour!=undefined" ng-model="maSpot" required="required">
+												<option value="M">M</option>
+												<option value="A">A</option>
+											</select> <span ng-show="form.devise_.$submitted && form.devise_.$error.required" style="color: #ff8000">Le champ est obligatoire.</span> <span ng-show="form.devise_.$touched && form.devise_.$error.required"
+                                                style="color: #ff8000">Ce champ est obligatoire.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><br>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">VALEUR TAUX (%) <span style="color:#ff8000">*</span></label>
+                                <div class="controls">
+                                    <input type="number" class="form-control" name="val_taux" ng-model="valTauxSpot" ng-change="showErrorNumb(valTauxSpot)" required></input>
+                                    <span ng-show="form.val_taux.$submitted && form.val_taux.$error.required" style="color:#ff8000">La valeur du taux est obligatoire.</span>
+                                    <span ng-show="form.val_taux.$touched && form.val_taux.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                    <span ng-show="form.input.$error.number" style="color:#ff8000">Le format est incorrect.</span>
+                                    <span ng-show="isErrorNumb" style="color:#ff8000">La valeur du taux doit être supérieure à zéro.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">DATE DEBUT VALIDITé <span style="color:#ff8000">*</span></label>
+                                <div class="controls">
+                                    <div class="input-group" inputgroup>
+                                        <!-- <input type="date" value="12/08/2017" class="form-control"  name="date" ng-model="date" required></input> -->
+                                        <input type="date" ng-change="changeDateSpot(dateSpot)" ng-disabled="selectedSpot.idTauxJour!=undefined" name="date_" class="form-control datepicker" uib-datepicker-popup ng-model="dateSpot" is-open="dtpick.opened2" min-date="minDate" max-date="'2015-06-22'"
+                                            datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required/>
+                                        <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                    </div>
+
+                                </div>
+                                <span ng-show="form.date_.$submitted && form.date_.$error.required" style="color:#ff8000">La date est obligatoire.</span>
+                                <span ng-show="form.dated.$touched && form.date_.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                <span ng-show="form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span>
+                                <span ng-show="dateSpot!=null&&
+											(minDate.getFullYear()>dateSpot.getFullYear()||
+											minDate.getFullYear()==dateSpot.getFullYear()&&
+											(minDate.getMonth()+1)>(dateSpot.getMonth()+1)||
+											minDate.getFullYear()==dateSpot.getFullYear()&&
+											(minDate.getMonth()+1)==(dateSpot.getMonth()+1)&&
+											minDate.getDate()>dateSpot.getDate())" style="color:#ff8000">
+									La date ne doit pas être inférieure à celle d'aujourd'hui.
+								</span>
+                            </div>
+
+                            <div class="form-group">
+                                <div style="text-align:center;">
+                                    <img id="mySpinner" src="{{spinner}}" ng-show="loading" />&nbsp;&nbsp;&nbsp;
+                                    <button type="submit" ng-click="submitTauxSpot(dureeSpot,valTauxSpot,dateSpot,maSpot)" ng-disabled="form.$invalid || isErrorNumb || isErrorCourMin ||
+											dateSpot!=null&&
+											(minDate.getFullYear()>dateSpot.getFullYear()||
+											minDate.getFullYear()==dateSpot.getFullYear()&&
+											(minDate.getMonth()+1)>(dateSpot.getMonth()+1)||
+											minDate.getFullYear()==dateSpot.getFullYear()&&
+											(minDate.getMonth()+1)==(dateSpot.getMonth()+1)&&
+											minDate.getDate()>dateSpot.getDate()) || disabl" class="btn btn-success">VALIDER</button> &nbsp; &nbsp;
+                                    <button type="button" ng-click="cancel()" class="btn" style="background:#ff8000;">ANNULER</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <span style="color:#ff8000" ng-show="form.$invalid">* Veuillez renseigner les champs obligatoires</span>
+                                </div>
+                                <div ng-if="errorMessage!=null" style="color: #ff8000">
+                                    <span>{{errorMessage}}</span>
+                                </div>
+                                <div ng-if="sucessMessage!=null" style="color: #1f93f6">
+                                    <span>{{sucessMessage}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

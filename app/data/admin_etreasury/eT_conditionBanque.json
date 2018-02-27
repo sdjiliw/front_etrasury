@@ -1,0 +1,12 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"famille": "",
+		"categorie": "",
+		"produit": "",
+		"specificite": "",
+		"negociable" : "",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	}
+	
+] }

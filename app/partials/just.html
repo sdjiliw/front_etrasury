@@ -1,0 +1,83 @@
+<div class="content-wrapper"  ng-init="app.settings.pagetitle">
+    <div class="col-lg-12" ng-controller="FormValidationCtrl">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">AJOUTER ENTREPRISE</h2>
+                <!-- <div class="actions panel_actions pull-right"> -->
+                    <!-- <i class="box_toggle material-icons">expand_more</i> -->
+                    <!-- <i class="box_setting material-icons" ng-click="section_modal()">mode_edit</i> -->
+                    <!-- <i class="box_close material-icons">close</i> -->
+                <!-- </div> -->
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 ">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield2">NOM</label>
+                                <span class="desc">*</span>
+                                <div class="controls">
+                                    <input type="text" name="nom" class="form-control" placeholder="Tapez le nom" ng-model="nom" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">TELEPHONE MOBILE</label>
+                                <span class="desc">*</span>
+                                <div class="controls">
+                                    <input type="text" class="form-control" placeholder="Tapez le téléphone mobile" name="telmobile" ng-model="telmobile" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield9">TELEPHONE FIXE</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="text" class="form-control" placeholder="Tapez le téléphone fixe"  name="telfixe" ng-model="telfixe">
+                                    <!-- <span class='help-block text-danger' ng-show='form.confirm_password.$error.validator'>Passwords do not match!</span> -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield3">NOMBRE AGENCE</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="number" name="nb_agence" class="form-control" placeholder="0" ng-model="nb_agence">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield3">CAPITAL (FCFA)</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="number" name="capital" class="form-control" placeholder="0" ng-model="capital" ng-pattern="/\([0-9]{3}\) ([0-9]{3}) ([0-9]{3})$/" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield3">LOCALITE</label>
+                                <span class="desc">*</span>
+                                <div class="controls">
+                                    <input type="text" name="localite" class="form-control" placeholder="Tapez ou sélectionner une localité" ng-model="localite" ui-validate="{blacklist : 'notBlackListed($value)' }" required>
+                                    <!-- <i class='material-icons' style='color:blue;cursor:pointer;'>details</i> -->
+									<span style="color:blue;cursor:pointer;" class="glyphicon glyphicon-collapse-down form-control-feedback"></span>
+									<!-- <span ng-show='form.email.$error.blacklist'></span> -->
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="form-label" for="formfield1">Cocher la case requis</label>
+                                <span class="desc">*</span>
+                                <div class="controls">
+                                    <label class="form-label checkbox icheck">
+                                        <input type="checkbox" ng-model="field.c" required><i></i> J'accepte les termes et conditions
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="text-left">
+                                <button type="submit" class="btn btn-success">Enrégistrer</button>
+                                <button style="background:#ff8000;" type="button" class="btn">Annuler</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,199 @@
+<style>
+    .not-active {
+        pointer-events: none;
+        cursor: default;
+    }
+    
+    .loader {
+        border: 10px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 10px solid #3498db;
+        text-align: center;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 1s linear infinite;
+        /* Safari */
+        animation: spin 1s linear infinite;
+    }
+    /* Safari */
+    
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Transfert';" data-ng-controller="bankController">
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">DEMANDES & VALIDATIONS</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body padding-bottom-15">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <!-- Horizontal - start -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    <uib-tabset class="tab-container">
+                                        <uib-tab>
+                                            <uib-tab-heading> DEMANDES </uib-tab-heading>
+                                            <p>
+                                                <div class="content-body padding-bottom-15">
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <div ng-if="loading">
+                                                                <div class="loader"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                                                            <table ng-if="isDataReadyBkReqbyProduitTr" style="width: 100%" class="table table-striped" ui-jq="dataTable" ui-options="" class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width: auto">N°</th>
+                                                                        <th style="width: auto">STATUT</th>
+                                                                        <th style="width: auto">ENTREPRISE</th>
+                                                                        <th style="width: auto">DATE DEBUT</th>
+                                                                        <th style="width: auto">DATE FIN</th>
+                                                                        <th style="width: auto">MONTANT</th>
+                                                                        <th style="width: auto">DEVISE</th>
+                                                                        <th style="width: auto">DATE VALEUR</th>
+                                                                        <!-- 															<th style="width: auto">DATE ECHEANCE</th> -->
+                                                                        <th style="max-width: 200px; width: 106px;min-width: 100px;">ACTIONS</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr ng-repeat="demand in demandesbyProduitTrans | orderBy:'-requestHasBank.requestHasBankPK.requestIdDemande'">
+                                                                        <td style="width: auto">{{demand.requestHasBank .request.numeroRequest}}
+                                                                        </td>
+                                                                        <td style="width: auto">
+                                                                            <span ng-if="demand.requestHasBank.hasOffer===true">
+																{{demand.offer.nextValidationGroup}}
+															</span>
+                                                                            <span style='color: #ff8000' ng-if="demand.requestHasBank.hasOffer===false">
+																Demande reçue
+															</span>
+                                                                            <!-- 															<span ng-if="demand.requestHasBank.request.etat==4 && demand.offer.etat==1"> -->
+                                                                            <!-- 																Offre refusée -->
+                                                                            <!-- 															</span> -->
+                                                                            <!-- 															<span ng-if="demand.requestHasBank.request.isValid===true"> -->
+                                                                            <!-- 																Offre envoyée -->
+                                                                            <!-- 															</span> -->
+                                                                            <!-- 															<span ng-if="demand.requestHasBank.request.etat==4 && demand.offer.etat==2"> -->
+                                                                            <!-- 																Offre acceptée -->
+                                                                            <!-- 															</span> -->
+
+                                                                        </td>
+                                                                        <td style="width: auto">{{demand.requestHasBank.request.userEntreprise.groupeIdGroupe.institution.nom}}</td>
+                                                                        <td style="width: auto">{{demand.requestHasBank.request.dateDebutDemande | date:'dd/MM/yyyy'}}</td>
+                                                                        <td style="width: auto">{{demand.requestHasBank.request.dateFinDemande | date:'dd/MM/yyyy'}}</td>
+                                                                        <td style="width: auto">{{demand.requestHasBank.request.montant}}</td>
+                                                                        <td style="width: auto">{{demand.requestHasBank.request.devise.description}}</td>
+                                                                        <td style="width: auto">{{demand.requestHasBank.request.dateValeur | date:'dd/MM/yyyy'}}</td>
+                                                                        <!-- 															<td style="width: auto">{{demand.requestHasBank.request.dateEcheance -->
+                                                                        <!-- 																| date:'dd/MM/yyyy'}}</td> -->
+                                                                        <td style="width: auto">
+                                                                            <a ng-click="offreBank(demand);" ng-if="demand.requestHasBank.hasOffer===false && addTrans===true" title="Ajouter une Offre" style='color: green; cursor: pointer;'> <i class="material-icons">add</i>
+                                                                            </a> &nbsp;
+                                                                            <a title="Editer Offre" ng-click="offreBank(demand);" ng-if="demand.requestHasBank.hasOffer===true && editTrans===true" style='color: #1f93f6; cursor: pointer;'> <i class='material-icons'>mode_edit</i>
+                                                                            </a> &nbsp;
+                                                                            <a title="Voire Offre" ng-click="vueOffre(demand);" style='color: #1f93f6; cursor: pointer;' ng-if="demand.requestHasBank.hasOffer===true"> <i class='material-icons'>remove_red_eye</i>
+                                                                            </a>&nbsp;
+                                                                            <a title="Supprimer Offre" ng-click="suppOffreBank(demand);" ng-if="demand.requestHasBank.hasOffer===true && suppTrans===true" style='color: #ff8000; cursor: pointer;'>
+                                                                            <i class='material-icons'>delete</i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                        </uib-tab>
+                                        <uib-tab>
+                                            <uib-tab-heading>
+                                                VALIDATIONS </uib-tab-heading>
+                                            <p>
+                                                <div class="content-body padding-bottom-15">
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <div ng-if="loading">
+                                                                <div class="loader"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                                                            <table ng-if="isDataReadyOffTrans" style="width: 100%" class="table table-striped" ui-jq="dataTable" ui-options="" class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width: auto">N°</th>
+                                                                        <th style="width: auto">STATUT</th>
+                                                                        <th style="width: auto">ENTREPRISE</th>
+                                                                        <th style="width: auto">DATE DEBUT</th>
+                                                                        <th style="width: auto">DATE FIN</th>
+                                                                        <th style="width: auto">MONTANT</th>
+                                                                        <th style="width: auto">DEVISE</th>
+                                                                        <th style="width: auto">NOTRE TAUX </th>
+                                                                        <th style="width: auto">DATE VALEUR</th>
+                                                                        <th style="max-width: 200px; width: 106px;min-width: 100px;">ACTIONS</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr ng-repeat="demand in offreEnAttentesTransfert">
+                                                                        <td style="width: auto">{{demand.idOffre}}</td>
+                                                                        <td style="width: auto">{{demand.nextValidationGroup}}</td>
+                                                                        <td style="width: auto">{{demand.demandeIdDemande.userEntreprise.groupeIdGroupe.institution.nom}}</td>
+                                                                        <td style="width: auto">{{demand.demandeIdDemande.dateDebutDemande | date:'dd/MM/yyyy'}}</td>
+                                                                        <td style="width: auto">{{demand.demandeIdDemande.dateFinDemande | date:'dd/MM/yyyy'}}</td>
+                                                                        <td style="width: auto">{{demand.demandeIdDemande.montant}}</td>
+                                                                        <td style="width: auto">{{demand.demandeIdDemande.devise.description}}</td>
+                                                                        <td style="width: auto">
+                                                                            <span ng-if="demand.taux!=0">{{demand.taux}}</span>
+                                                                            <span ng-if="demand.taux===0"> </span>
+                                                                        </td>
+                                                                        <td style="width: auto">{{demand.demandeIdDemande.dateValeur | date:'dd/MM/yyyy'}}</td>
+                                                                        <td style="width: auto">
+                                                                            <a ng-click="validerOffre(demand);" title="Ajouter une Offre" style='color: green; cursor: pointer;'> <i class="material-icons">done</i>
+                                                                            </a>&nbsp;
+                                                                            <a title="Editer Offre" ng-click="offreBank(demand);" style='color: #1f93f6; cursor: pointer;'> <i class='material-icons'>mode_edit</i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                        </uib-tab>
+                                    </uib-tabset>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Vertical - end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

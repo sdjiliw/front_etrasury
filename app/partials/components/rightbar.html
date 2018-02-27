@@ -1,0 +1,59 @@
+<h2 class="chatapi-head">Discussion(s)
+
+    <a href data-toggle="chatbar" class="toggle_chat" ng-click="app.settings.chatFolded = !app.settings.chatFolded; menuChatToggle('chat',app.settings.chatFolded) ">
+        <i class="material-icons">close</i>
+    </a>
+
+</h2>
+<div class="" ng-controller="chatController">
+
+    <!-- <i class="material-icons closewindow pull-right">close</i> -->
+    <!--<perfect-scrollbar class="chaton-window" wheel-propagation="true" 
+        suppress-scroll-x="true" min-scrollbar-length="20" max-scrollbar-length="300">-->
+    <div style="overflow: auto;" ng-style="{height: iframeHeight + 'px'}">
+        <div class="chatarea" ng-repeat="message in messages | orderBy:'dateMessage':true">
+            <div class="chatmsg msg_receive">
+                <div class="user-img">
+                    <a><img src="data/profile/avatar-2.png" alt=""></a>
+                </div>
+                <div class="msg_info">
+                    <span class="name">
+							{{message.user.prenom}}&nbsp;
+							<i class="fa fa-circle status available"></i>
+							<!-- <i class="fa fa-circle status away"></i> -->
+						</span>
+                    <span class="text">{{message.contenuMessage}}</span>
+                    <span class="ts">{{message.dateMessage | date:'HH:mm'}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="heightTest" style="margin-top: 100px">
+        <br><br><br>
+        <div class="typearea">
+            <form ng-submit="addMessage()" name="messageForm">
+                <i class="material-icons" ng-disabled="true" style="cusor:not-allowed">chat</i>
+                <input type="text" autocomplete='off' name="msn" placeholder="Tapez votre message" ng-model="message" class="form-control">
+                <i class="material-icons" style="left:240px;">send</i>
+            </form>
+        </div>
+    </div>
+    <!--</perfect-scrollbar>-->
+
+</div>
+
+<!--     <div ng-controller="ChatCtrl" class="container"> -->
+<!--       <form ng-submit="addMessage()" name="messageForm"> -->
+<!--         <input type="text" placeholder="Compose a new message..." ng-model="message" /> -->
+<!--         <div class="info"> -->
+<!--           <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span> -->
+<!--           <button ng-disabled="message.length > max || message.length === 0">Send</button> -->
+<!--         </div> -->
+<!--       </form> -->
+<!--       <hr /> -->
+<!--       <p ng-repeat="message in messages | orderBy:'time':true" class="message"> -->
+<!--         <time>{{message.time | date:'HH:mm'}}</time> -->
+<!--         <span ng-class="{self: message.self}">{{message.message}}</span> -->
+<!--       </p> -->
+<!--     </div> -->

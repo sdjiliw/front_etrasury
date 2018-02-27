@@ -1,0 +1,74 @@
+<div class="login_page">
+	<div class="login-wrapper" id="login_page">
+		<h1 class="loginPage"><a title="Page de login" class="classe_logo" >LOGIN E-TREASURY</a></h1>
+		<div id="login" style="box-shadow: 2px 2px 9px 2px #999;" class="login loginpage col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10">
+		   <h2 class="loginPage_" style="text-align:center;color:#F5F5F5;">Authentification</h2>
+		   
+			<form name="form" class="form-validation" ng-submit="login(log_in,pwd)">
+		
+			  <div class="text-danger text-center message" ng-show="loadLog">
+				  <img id="mySpinner" style="color:#fff;background:#ff;width: 20px;" src="img/loading.gif" ng-show="loadLog" />
+			  </div>
+
+				<p>		
+						<!-- <i class="fa fa-user" style="position: absolute;top: 125px;"></i> -->
+						<i class="material-icons" style="position:absolute; margin: 5px 0 15px 0;">person</i>
+						<input type="text" style="padding-left: 25px;" name="log_in" ng-change="myFunc()" id="user_login" class="input" ng-model="log_in" placeholder="Login ou Email" autocomplete='off' required>
+						<!-- <span ng-show="form.log_in.$touched && form.log_in.$invalid" style="color:red">Le login est oblibatoire.</span> -->
+						<span ng-show="authError && form.log_in.$submitted && form.log_in.$error.required" style="color:#ff8000">Le login est obligatoire.</span>
+						<span ng-show="authError && form.log_in.$touched && form.log_in.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+						<!-- <span ng-show="form.log_in.$dirty" style="color:red">Attention ce champ est oblibatoire.</span> -->
+						</label>
+				</p>
+				<p>
+						<!-- <i class="fa fa-lock" style="position: absolute;top: 190px;"></i>  -->
+						<i class="material-icons" style="position:absolute;margin: 5px 0 15px 0;">lock</i>
+						<input type="password" style="padding-left: 25px;" name="pwd" ng-change="myFunc()" id="user_pwd" class="input" ng-model="pwd" placeholder="Mot de passe" autocomplete='off' required>
+						<!-- <span ng-show="form.pwd.$touched && form.pwd.$invalid" style="color:red">Le mot de passe est oblibatoire.</span> -->
+						<span ng-show="authError && form.pwd.$submitted && form.pwd.$error.required" style="color:#ff8000">Le mot de passe est obligatoire.</span>
+						<span ng-show="authError && form.pwd.$touched && form.pwd.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+						<!-- <span ng-show="form.pwd.$dirty" style="color:red">Attention ce champ est oblibatoire.</span> -->
+						</label>
+				</p>
+				<p>
+						<span ng-if="!authError&&!isActive" style="color:#ff8000">{{messageLogin}}</span>
+						<span ng-if="isActive" style="color:#ff8000">{{messageLogin}}</span>
+						</label>
+				</p>
+				<p class="forgetmenot">
+						<label class="icheck icheck-white" for="rememberme">
+							<input type="checkbox" value="forever" name="rememberme" checked id="rememberme">
+							<i></i> Se souvenir de moi
+						</label>
+				</p>
+
+
+
+				<p class="submit">
+					<!-- <button type="submit" ng-click="login()" ng-disabled='form.$invalid' class="btn btn-accent btn-block">Se connecter</button> -->
+					<button type="submit" ng-disabled="form.log_in.$invalid||form.pwd.$invalid || loadLog"  class="btn btn-accent btn-block">Se connecter</button>
+				</p>
+			</form>
+
+			<p id="nav">
+				<a class="pull-left" ui-sref="access.forgotpwd" title="Mot de passe perdu">Mot de passe oublié?</a>
+				<!-- <a class="pull-right" ui-sref="access.register" title="Sign Up">S'inscrire</a> -->
+			</p>
+			
+			<footer class="classe_footer">
+					<label style="text-align:center;font-size:10px;margin-top:20px;">
+						Copyright © Etreasury | All rights reserved
+					</label>
+					<label style="text-align:center;font-size:10px;">
+						Privacy policy | Terms of service
+					</label>
+			</footer>
+
+		</div>
+		
+	</div>
+</div>
+
+
+
+

@@ -1,0 +1,134 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": " ",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 2,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": " ",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 3,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": " ",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 4,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": " ",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 5,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": " ",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 6,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": " ",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 7,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": " ",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 8,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": " ",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 9,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": "",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 10,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": "",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 11,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": "",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	},
+	{
+		"id": 12,
+		"prenom": "Boris",
+		"nom": "Tra BI",
+		"email": "btrabi@cie.ci",
+		"telmobile": "21233530",
+		"telfixe": "",
+		"groupe": "",
+		"entreprise": "CIE_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;<i class='material-icons' style='color:green;cursor:pointer;'>done</i>"
+	}
+] }

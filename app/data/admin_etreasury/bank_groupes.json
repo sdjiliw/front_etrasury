@@ -1,0 +1,87 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 2,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 3,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 4,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 5,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 6,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 7,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 8,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 9,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 10,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 11,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 12,
+		"code": "B_GINF_UBA_CIV",
+		"libelle": "Receptionne infos demande UBA_CIV",
+		"banque": "UBA_CIV",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	}
+	
+] }

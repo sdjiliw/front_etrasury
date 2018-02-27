@@ -1,0 +1,218 @@
+<style type="text/css">
+#table-wrapper {
+	position: relative;
+}
+
+#table-scroll {
+	height: 100%;
+	overflow: auto;
+	margin-top: 20px;
+}
+
+#table-wrapper table {
+	width: 100%;
+}
+
+#table-wrapper table thead th .text {
+	position: absolute;
+	top: -20px;
+	z-index: 2;
+	height: 20px;
+	width: 35%;
+	border: 1px solid red;
+}
+</style>
+<div class="content-wrapper" ng-init="app.settings.pagetitle">
+	<div class="col-lg-12">
+		<section class="box ">
+			<header class="panel_header">
+				<h2 class="title pull-left">PUBLICATION DU DOCUMENT</h2>
+				<div class="actions panel_actions pull-right">
+					<i id="box_toggle_more" class="box_toggle material-icons"
+						on-load-clicker>expand_more</i>
+				</div>
+			</header>
+			<div class="content-body">
+				<div class="row">
+					<form id="general_validate" action="javascript:;" name="form"
+						class="form-validation">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="row">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div style="text-align: center;">
+												<label class="form-label" for="formfield1">SÉLECTIONNER
+													À QUI PARTAGER LE DOCUMENT {{nom_doc}}.pdf</label>
+											</div>
+											<div id="table-wrapper">
+												<div id="table-scroll">
+													<div class="col-sm-12">
+														<div data-ng-controller="AccordionDemoCtrl"
+															class='transparent accordion'>
+															<uib-accordion close-others="oneAtATime">
+															<uib-accordion-group
+																heading="AUX UTILISATEURS DE MA BANQUE"
+																style="margin-top:12px">
+															<div class="form-group">
+																<div class="controls">
+																	<div
+																		style="height: 200px; overflow: auto; margin-top: 15px">
+																		<table id="tdj" style="width: 100%;"
+																			class="table table-striped table-bordered table-responsive"
+																			cellspacing="0">
+																			<thead>
+																				<tr>
+																					<th>CHOIX</th>
+																					<th>NOM & PRENOMS</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr ng-repeat="user in bankUsers">
+																					<td><input id="checkbxinput"
+																						style="color: #1065a8; cursor: pointer; width: 15px; height: 15px"
+																						type="checkbox" value="{{user.idUtilisateur}}"
+																						ng-checked="selectionb.indexOf(user.idUtilisateur) > -1"
+																						ng-click="changeUser(user.idUtilisateur)"
+																						class="input-sm" /></td>
+																					<td>{{user.nom}} {{user.prenom}}</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+															</div>
+															</uib-accordion-group> <!-- 																<uib-accordion-group --> <!-- 																	heading="AUX ENTREPRISES DE MA LOCALITÉ" style="margin-top:12px">	 -->
+															<!-- 																		<div class="form-group"> --> <!-- 																			<div class="controls"> -->
+															<!-- 																					<div style="height: 200px; overflow: auto; margin-top: 15px"> -->
+															<!-- 																						<table id="tdj" style="width: 100%;" -->
+															<!-- 																							class="table table-striped table-bordered" cellspacing="0"> -->
+															<!-- 																							<thead> --> <!-- 																								<tr> -->
+															<!-- 																									<th>CHOIX</th> --> <!-- 																									<th>NOM INSTITUTION</th> -->
+															<!-- 																								</tr> --> <!-- 																							</thead> -->
+															<!-- 																							<tbody> --> <!-- 																								<tr ng-repeat="inst in listEntrprise"> -->
+															<!-- 																									<td><input id="checkbxinput" -->
+															<!-- 																										style="color: #1065a8; cursor: pointer; width: 15px; height: 15px" -->
+															<!-- 																										type="checkbox" value="{{inst.idInstitution}}" -->
+															<!-- 																										ng-checked="selectionEN.indexOf(inst.idInstitution) > -1" -->
+															<!-- 																										ng-click="changeENt(inst.idInstitution)" class="input-sm" /> -->
+															<!-- 																										</td> --> <!-- 																									<td>{{inst.nom}}</td> -->
+															<!-- 																								</tr> --> <!-- 																							</tbody> -->
+															<!-- 																						</table> --> <!-- 																					</div> -->
+															<!-- 																			</div> --> <!-- 																		</div> -->
+															<!-- 																</uib-accordion-group> --> <uib-accordion-group
+																heading="TOUTES LES ENTRPRISES"
+																style="margin-top:12px"> <!-- 																		<div class="col-md-12 col-sm-12 col-xs-12"> -->
+															<div class="col-md-6 col-sm-6 col-xs-6">
+																<div class="form-group">
+																	<div class="controls">
+																		<div
+																			style="height: 300px; overflow: auto; margin-top: 15px">
+																			<table id="tdj" style="width: 100%;"
+																				class="table table-striped table-bordered table-responsive"
+																				cellspacing="0">
+																				<thead>
+																					<tr>
+																						<th>CHOIX</th>
+																						<th>NOM INSTITUTION</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					<tr ng-repeat="inst in listEntrpriseLocal">
+																						<td><input id="checkbxinput"
+																							style="color: #1065a8; cursor: pointer; width: 15px; height: 15px"
+																							type="checkbox" value="{{inst.idInstitution}}"
+																							ng-checked="selectionEntSpec.indexOf(inst.idInstitution) > -1"
+																							ng-click="changeEntSPEC(inst.idInstitution)"
+																							class="input-sm" /></td>
+																						<td>{{inst.nom}}</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																		<!-- 																								<div class="form-group" style="margin-top: 15px;">  -->
+																		<!-- 														 												<div class="controls">  -->
+																		<!-- 														 													<select id="entrprise" name="entrprise" class="form-control" ng-change="listEntrpriseUser(entrpr.idInstitution)" ng-model="entrpr" required> -->
+																		<!-- 														 														<option value="">Sélectionnez une entreprise</option> -->
+																		<!-- 														 														<option ng-repeat="entrpr in listEntrprise" ng-click="changeENt(entrpr.idInstitution)" value="{{entrpr.idInstitution}}"> -->
+																		<!-- 														 														{{entrpr.nom}} -->
+																		<!-- 														 														</option> -->
+																		<!-- 														 													</select>  -->
+																		<!-- 														 													<span  -->
+																		<!-- 														 														ng-show="form.entrprise.$submitted && form.entrprise.$error.required" -->
+																		<!-- 														 														style="color: #ff8000">Le nom de l'entreprise est -->
+																		<!-- 														 														obligatoire.</span> <span -->
+																		<!-- 														 														ng-show="form.entrprise.$touched && form.entrprise.$error.required" -->
+																		<!-- 														 														style="color: #ff8000">Ce champ est obligatoire.</span>  -->
+																		<!-- 														 												</div>  -->
+																		<!-- 														 										</div>  -->
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-6 col-sm-6 col-xs-6">
+																<div class="form-group">
+																	<div class="controls">
+																		<div
+																			style="height: 300px; overflow: auto; margin-top: 15px">
+																			<table id="tdj" style="width: 100%;"
+																				class="table table-striped table-bordered"
+																				cellspacing="0">
+																				<thead>
+																					<tr>
+																						<th>CHOIX</th>
+																						<th>NOM & PRENOMS</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					<tr ng-repeat="user in listEntUsers">
+																						<td><input id="checkbxinput"
+																							style="color: #1065a8; cursor: pointer; width: 15px; height: 15px"
+																							type="checkbox" value="{{user.idUtilisateur}}"
+																							ng-checked="selectionUserEnt.indexOf(user.idUtilisateur) > -1"
+																							ng-click="changeUserEnt(user.idUtilisateur)"
+																							class="input-sm" /></td>
+																						<td>{{user.nom}} {{user.prenom}}</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- 																		</div> --> </uib-accordion-group> </uib-accordion>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div style="text-align: center;">
+										<br> <img id="mySpinner" src="{{spinner}}"
+											ng-show="loading" />&nbsp;&nbsp;&nbsp;
+										<button type="submit" ng-click="publishDocument();"
+											ng-disabled="form.$invalid || disabl" class="btn btn-success">Valider</button>
+										<!-- 										<button ng-if="selectedRowGroupJurd.hasJuridiction===true" -->
+										<!-- 											type="submit" ng-click="updateJuridictionGroup();" -->
+										<!-- 											ng-disabled="form.$invalid" class="btn btn-success">Valider</button> -->
+										<button style="background: #ff8000;" ng-click="cancel()"
+											type="button" class="btn">Annuler</button>
+									</div>
+									<div class="row">
+										<div ng-if="errorMessage!=null" style="color: #ff8000">
+											<span>{{errorMessage}}</span>
+										</div>
+										<div ng-if="sucessMessage!=null" style="color: #1f93f6">
+											<span>{{sucessMessage}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+

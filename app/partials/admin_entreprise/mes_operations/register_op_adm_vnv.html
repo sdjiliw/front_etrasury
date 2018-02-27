@@ -1,0 +1,258 @@
+<div class='content-wrapper'
+	ng-init="app.settings.pagetitle = 'VALIDATIONS';">
+	<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+		<section class="box ">
+			<header class="panel_header">
+				<h2 class="title pull-left"
+					ng-if="selectedRowNlevel.groupe===undefined">Ajouter
+					niveau de validation</h2>
+				<h2 class="title pull-left"
+					ng-if="selectedRowNlevel.groupe!=undefined">Modifier
+					niveau de validation</h2>
+				<div class="actions panel_actions pull-right">
+					<i id="box_toggle_more" class="box_toggle material-icons"
+						style="color: #1065a8" on-load-clicker>expand_more</i>
+				</div>
+			</header>
+			<div class="content-body">
+				<form id="general_validate" action="javascript:;" name="form"
+					class="form-validation">
+					<!-- START -->
+					<br>
+					<div class='row'>
+						<div class="col-xs-6">
+							<div class='row' ng-if="false">
+								<div class="col-xs-4 " style="width: auto">
+									<label class="form-label" for="field-1">TYPE DE PRODUIT</label>
+								</div>
+								<div class="col-xs-4 " style="width: auto">
+									<input style="width: 15px; height: 15px" type="radio"
+										checked="checked"> taux
+								</div>
+								<div class="col-xs-4 " style="width: auto">
+									<input style="width: 15px; height: 15px" type="radio">
+									change
+								</div>
+								<div class="col-xs-4 " style="width: auto">
+									<input style="width: 15px; height: 15px" type="radio">
+									traite
+								</div>
+								<div class="col-xs-4 " style="width: auto">
+									<!-- <input style="width:15px;height:15px" type="radio"> -->
+									<!-- doc -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-6">
+							<div class='row' ng-if="false">
+								<div class="col-xs-4 " style="width: auto">
+									<label class="form-label" for="field-1">SENS</label>
+								</div>
+								<div class="col-xs-4 " style="width: auto">
+									<input style="width: 15px; height: 15px" type="radio"
+										checked="checked"> demande
+								</div>
+								<div class="col-xs-4 " style="width: auto">
+									<input style="width: 15px; height: 15px" type="radio">
+									offre
+								</div>
+								<div class="col-xs-4 " style="width: auto">
+									<input style="width: 15px; height: 15px" type="radio">
+									demande et offre
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label class="form-label" for="formfield1">Validation <span
+									style="color: #ff8000">*</span></label>
+								<div class="controls">
+									<select name="validation" class="form-control"
+										ng-disabled="selectedRowNlevel.groupe!=undefined"
+										ng-model="validation" required 
+										ng-options="validation as validation.product.nom + ' ( ' + validation.sens + ' ) ' for validation in validationLevelList | 
+										orderBy:'-idNiveauValidation' track by validation.idNiveauValidation">
+									</select>
+									<span
+										ng-show="form.nvalidation.$submitted && form.nvalidation.$error.required"
+										style="color: #ff8000">Le nom du produit est
+										obligatoire.</span> <span
+										ng-show="form.nvalidation.$touched && form.nvalidation.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label class="form-label" for="formfield1">NIVEAU DE
+									VALIDATION <span style="color: #ff8000">*</span>
+								</label>
+								<div class="controls">
+									<input type="number" name="nv_validation" ng-model="niveau"
+										value="0" class="form-control" required>
+										<span style="color: #ff8000" ng-if="niveau<0">
+										Le niveau de validation doit etre positif.
+										</span>
+										 <span
+										ng-show="form.nv_validation.$submitted && form.nv_validation.$error.required"
+										style="color: #ff8000">Le niveau de validation est
+										obligatoire.</span> <span
+										ng-show="form.nv_validation.$touched && form.nv_validation.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span> <span
+										ng-show="form.input.$error.number" style="color: #ff8000">Le
+										format est incorrect.</span> <span ng-show="isErrorNumb"
+										style="color: #ff8000">Le niveau de validation doit
+										être supérieur à zéro.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label class="form-label" for="formfield1">GROUPE
+									UTILISATEUR <span style="color: #ff8000">*</span>
+								</label>
+								<div class="controls">
+									<select name="groupe" class="form-control" ng-model="groupe"
+										required
+										ng-options="groupe as groupe.nom for groupe in entrepriseGrps | 
+										orderBy:'nom' track by groupe.idGroupe">
+									</select> <span
+										ng-show="form.groupe.$submitted && form.groupe.$error.required"
+										style="color: #ff8000">Le groupe utilisateur est
+										obligatoire.</span> <span
+										ng-show="form.groupe.$touched && form.groupe.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-6">
+							<label class="form-label" for="field-1">VALEUR MIN <span
+								style="color: #ff8000">*</span></label> <input type="number"
+								name="val_min" ng-model="val_min"
+								ng-change="showErrorCourMin(val_min)" value="0"
+								class="form-control" required>
+								<span style="color: #ff8000" ng-if="val_min<0">
+										La valeur MIN doit etre positif.
+										</span>
+								<span
+								ng-show="form.val_min.$submitted && form.val_min.$error.required"
+								style="color: #ff8000">Le champ valeur minimale est
+								obligatoire.</span> <span
+								ng-show="form.val_min.$touched && form.val_min.$error.required"
+								style="color: #ff8000">Ce champ est obligatoire.</span> <span
+								ng-show="form.input.$error.number" style="color: #ff8000">Le
+								format est incorrect.</span> <span ng-show="isErrorCourMin"
+								style="color: #ff8000">La valeur minimale doit être
+								supérieure à zéro.</span>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-6">
+							<label class="form-label" for="field-1">VALEUR MAX <span
+								style="color: #ff8000">*</span></label> <input type="number"
+								nam="val_max" ng-model="val_max"
+								ng-change="showErrorCourMax(val_max)" value="0"
+								class="form-control" required> 
+								<span style="color: #ff8000" ng-if="val_max<0">
+										La valeur MAX doit etre positif.
+										</span>
+								<span
+								ng-if="val_min > val_max"
+								style="color: #ff8000">Valeur MAX inférieur à valeur MIN .</span>
+								<span
+								ng-show="form.val_max.$submitted && form.val_max.$error.required"
+								style="color: #ff8000">Le champ valeur maximale est
+								obligatoire.</span> <span
+								ng-show="form.val_max.$touched && form.val_max.$error.required"
+								style="color: #ff8000">Ce champ est obligatoire.</span> <span
+								ng-show="form.input.$error.number" style="color: #ff8000">Le
+								format est incorrect.</span> <span ng-show="isErrorCourMax"
+								style="color: #ff8000">La valeur maximale doit être
+								supérieure à zéro.</span>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label class="form-label" for="formfield1">DEVISE <span
+									style="color: #ff8000">*</span></label> <span class="desc"></span>
+								<div class="controls">
+<!-- 									<select name="devise_" class="form-control" ng-model="devise_" -->
+<!-- 										required> -->
+<!-- 										<option value=""></option> -->
+<!-- 										<option value="XOF" selected>XOF</option> -->
+<!-- 										<option value="USD">USD</option> -->
+<!-- 										<option value="EUR">EUR</option> -->
+<!-- 										<option value="CAD">CAD</option> -->
+<!-- 										<option value="CHF">CHF</option> -->
+<!-- 										<option value="GBP">GBP</option> -->
+<!-- 									</select>  -->
+									<input type="text"
+										nam="devise_" ng-model="devise_"
+										class="form-control" disabled="disabled">
+<!-- 									<select name="devise_" class="form-control" ng-model="devise_" -->
+<!-- 										required -->
+<!-- 										ng-options="dev as dev.description for dev in deviseslist |  -->
+<!-- 										orderBy:'description' track by dev.idDevise"> -->
+<!-- 									</select> -->
+									<span
+										ng-show="form.devise_.$submitted && form.devise_.$error.required"
+										style="color: #ff8000">La devise est obligatoire.</span> <span
+										ng-show="form.devise_.$touched && form.devise_.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-12">
+							<div style="text-align: center;">
+								<img id="mySpinner" src="{{spinner}}" ng-show="loading" />&nbsp;&nbsp;&nbsp;
+								<button type="submit" ng-click="submitNlevel()"
+									ng-disabled="form.$invalid || isErrorCourMax || isErrorCourMin || isErrorNumb
+									|| val_min > val_max || nv_validation<0 || val_max<0 || val_min<0 || disabl"
+									class="btn btn-success">VALIDER</button>
+								&nbsp; &nbsp;
+								<button type="button" ng-click="cancel()" class="btn"
+									style="background: #ff8000;">ANNULER</button>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class='row'>
+						<div class="col-xs-12">
+							<span style="color: #ff8000" ng-show="form.$invalid">*
+								Veuillez renseigner les champs obligatoires</span>
+						</div>
+						<div ng-if="errorMessage!=null" style="color: #ff8000">
+							<span>{{errorMessage}}</span>
+						</div>
+						<div ng-if="sucessMessage!=null" style="color: #1f93f6">
+							<span>{{sucessMessage}}</span>
+						</div>
+					</div>
+					<!-- END -->
+				</form>
+			</div>
+		</section>
+	</div>
+</div>
+

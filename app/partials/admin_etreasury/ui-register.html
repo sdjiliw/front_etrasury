@@ -1,0 +1,61 @@
+<div class="login_page">
+<div class="login-wrapper" ng-controller="RegisterFormController">
+	<!-- <h1><a href="#" title="Ajout utilisateur" class="classe_logo" >Inscription d'un utilisateur E-TREASURRY</a></h1> -->
+    <div id="login" class="login  loginpage col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">
+        <h2 style="text-align:center;color:#F5F5F5;">Ajout utilisateur</h2>
+
+        <form  name="form" class="form-validation">
+          <div class="text-danger wrapper text-center" ng-show="authError">
+              {{authError}}
+          </div>
+            <p>
+
+                    <input type="text" name="name" id="user_name" class="input"  ng-model="user.name" placeholder="Nom et prénom" required /></label>
+            </p>
+			<p>
+
+                    <input type="login" name="log" id="user_login" class="input" ng-model="user.login" placeholder="Login" required /></label>
+            </p>
+            <p>
+
+                    <input type="email" name="email" id="user_email" class="input" ng-model="user.email" placeholder="Email" required /></label>
+            </p>
+            <p>
+
+                    <input type="password" name="pwd" id="user_pass" class="input" ng-model="user.password" placeholder="Mot de passe" required/></label>
+            </p>
+            <p class="forgetmenot">
+                            <label class="icheck icheck-white" for="rememberme">
+                                <input type="checkbox" value="forever" name="rememberme" checked id="rememberme">
+                                <i></i> Accepttez les conditions du terme
+                            </label>
+            </p>
+
+
+
+            <p class="submit">
+            <button type="submit" name="wp-submit" id="wp-submit" class="btn btn-accent btn-block" ng-click="register()" ng-disabled='form.$invalid'>Ajouter</button>
+            </p>
+        </form>
+
+        <!-- <p id="nav"> -->
+            <!-- <a class="pull-left" ui-sref="access.forgotpwd"  title="Password Lost and Found">Mot de passe oubliè?</a> -->
+            <!-- <!-- <a class="pull-right"  ui-sref="access.login" title="Sign Up">Se connecter</a> --> 
+        <!-- </p> -->
+        <!-- <div class="clearfix"></div> -->
+       <!-- <footer class="classe_footer"> -->
+					<!-- <label style="text-align:center;font-size:10px;margin-top:100px;color:#e1e1e1;"> -->
+						<!-- Copyright © Etreasury | All right reserved -->
+					<!-- </label> -->
+					<!-- <label style="text-align:center;font-size:10px;color:#e1e1e1;"> -->
+						<!-- Privacy policy | Terms of service -->
+					<!-- </label> -->
+		<!-- </footer> -->
+
+    </div>
+</div>
+</div>
+
+
+
+

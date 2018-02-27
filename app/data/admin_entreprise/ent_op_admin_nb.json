@@ -1,0 +1,10 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"sens": "offre",
+		"produit": "Bon de caisse",
+		"nb_validation": "1",
+		"date": "13/09/2017",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>remove_red_eye</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;"
+	}
+] }

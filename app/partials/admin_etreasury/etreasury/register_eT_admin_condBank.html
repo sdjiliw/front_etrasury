@@ -1,0 +1,159 @@
+<div class="content-wrapper" ng-init="app.settings.pagetitle"
+	data-ng-controller="eTEnController">
+	<div class="col-lg-12">
+		<section class="box ">
+			<header class="panel_header">
+				<h2 class="title pull-left">AJOUTER UNE CONDITION DE BANQUE</h2>
+				<div class="actions panel_actions pull-right">
+					<i id="box_toggle_more" class="box_toggle material-icons"
+						on-load-clicker>expand_more</i>
+				</div>
+			</header>
+			<div class="content-body">
+				<div class="row">
+					<form id="genéral_validate" action="javascript:;" name="form"
+						class="form-validation">
+						<div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 ">
+							<div class="form-group">
+								<!-- <label class="form-label" for="formfield8">DEVISE <span style="color:#ff8000">*</span></label> -->
+								<div class="form-group">
+									<label class="form-label" for="formfield1">FAMILLE <span
+										style="color: #ff8000">*</span></label>
+									<div class="controls">
+										<select name="famille" class="form-control" ng-model="famille"
+											required>
+											<option value=""></option>
+											<option value="cond_bank">CONDITIONS GÉNÉRALE</option>
+											<option value="op_avec_etr">OPÉRATIONS AVEC
+												L'ÉTRANGER</option>
+											<option value="credit">LES CRÉDITS</option>
+											<option value="placement">LES PLACEMENTS</option>
+											<option value="op_divérs">OPÉRATIONS DIVERSES</option>
+											<option value="op_bourse">OPÉRATIONS DE BOURSE</option>
+										</select> <span
+											ng-show="form.famille.$submitted && form.famille.$error.required"
+											style="color: #ff8000">La famille est obligatoire.</span> <span
+											ng-show="form.famille.$touched && form.famille.$error.required"
+											style="color: #ff8000">Ce champ est obligatoire.</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<!-- <label class="form-label" for="formfield8">DEVISE <span style="color:#ff8000">*</span></label> -->
+								<div class="form-group">
+									<label class="form-label" for="formfield1">CATÉGORIE <span
+										style="color: #ff8000">*</span></label>
+									<div class="controls">
+										<select name="categorie" class="form-control"
+											ng-model="categorie" required>
+											<option value=""></option>
+											<option value="1">Opération de caisse</option>
+											<option value="2">Opération sur chèques</option>
+											<option value="3">Opération sur effets</option>
+											<option value="4">Opération sur virements</option>
+											<option value="5">Opération sur transfert</option>
+											<option value="6">Opération sur effets (Simples)</option>
+											<option value="7">Opération documentaire</option>
+											<option value="8">Crédits d'exploitation</option>
+											<option value="9">Crédits d'investssement</option>
+											<option value="10">Frais extrait de compte</option>
+											<option value="11">Frais de fermeture de compte</option>
+											<option value="12">Frais de réouverture de compte</option>
+											<option value="13">Demande de documents</option>
+											<option value="14">Lettre d'audit</option>
+											<option value="15">Attestation</option>
+											<option value="16">Avis a tiers detenteur, saisie
+												arret, saisie attribution</option>
+											<option value="17">Delivrance d'un chèquier</option>
+											<option value="18">Frais de timbre pour vérsement
+												espece en compte</option>
+											<option value="19">Frais de constitution de
+												garanties</option>
+											<option value="20">Service de tenue de compte /
+												conservation</option>
+											<option value="21">Gestion d'OPCVM</option>
+											<option value="22">Demande de documents</option>
+											<option value="23">Épargne</option>
+											<option value="24">Dépôt</option>
+										</select> <span
+											ng-show="form.categorie.$submitted && form.categorie.$error.required"
+											style="color: #ff8000">La catégorie est obligatoire.</span> <span
+											ng-show="form.categorie.$touched && form.categorie.$error.required"
+											style="color: #ff8000">Ce champ est obligatoire.</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="formfield1">BANQUE <span
+									style="color: #ff8000">*</span></label>
+								<div class="controls">
+									<select name="bank" class="form-control" ng-model="bank"
+										required>
+										<option value=""></option>
+										<option value="1">ORA BANK</option>
+										<option value="2">ECOBANK</option>
+									</select> <span
+										ng-show="form.bank.$submitted && form.bank.$error.required"
+										style="color: #ff8000">La banque est obligatoire.</span> <span
+										ng-show="form.bank.$touched && form.bank.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="formfield1">DATE DÉBUT <span
+									style="color: #ff8000">*</span></label>
+								<div class="controls">
+									<input type="text" class="form-control" name="datedebu"
+										ng-model="datedebu" autocomplete='off'></input> <span
+										ng-show="form.datedebu.$submitted && form.datedebu.$error.required"
+										style="color: #ff8000">La date de debut est
+										obligatoire.</span> <span
+										ng-show="form.datedebu.$touched && form.datedebu.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="formfield1">DATE FIN <span
+									style="color: #ff8000">*</span></label>
+								<div class="controls">
+									<input type="text" class="form-control" name="datefin"
+										ng-model="datefin" autocomplete='off'></input> <span
+										ng-show="form.datefin.$submitted && form.datefin.$error.required"
+										style="color: #ff8000">La date de fin est obligatoire.</span>
+									<span
+										ng-show="form.datefin.$touched && form.datefin.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="formfield8">SPÉCIFICITÉ</label>
+								<div class="controls">
+									<input type="text" class="form-control" name="specificite"
+										ng-model="specificite" autocomplete='off'></input>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div style="text-align: center;">
+										<button type="submit" ng-click="ok()"
+											ng-disabled="form.$invalid" class="btn btn-success">Valider</button>
+										<button style="background: #ff8000;" ng-click="cancel()"
+											type="button" class="btn">Annuler</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="text-left">
+										<span style="color: #ff8000" ng-show="form.$invalid">*
+											Veuillez renseigner les champs obligatoires.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

@@ -1,0 +1,201 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Mes documents';">
+    <form id="general_validat" action="javascript:;" name="form" role="form">
+        <div class="col-lg-12" data-ng-controller="bankController">
+            <!-- ng-click="bKesPmesDocaddCat()" -->
+            <div class="col-sm-11">
+                <button type="submit" class="btn btn-success" ng-click="addCategorieBank()">
+				<i class="material-icons"
+					style="position: absolute; top: 5px; left: 0px;">add</i>&nbsp;&nbsp;&nbsp;Ajouter
+				catégorie
+			</button>
+                <button type="submit" class="btn btn-success" ng-click="addSousCategorieBank()">
+				<i class="material-icons"
+					style="position: absolute; top: 5px; left: 0px;">add</i>&nbsp;&nbsp;&nbsp;Ajouter
+				sous-catégorie
+			</button>
+                <!-- ng-click="bKesPmesDocaddDoc()"  -->
+                <button style="background: #1f93f6; color: #fff" type="button" class="btn" ng-click="addDocumentBank()">
+				<i class="material-icons"
+					style="position: absolute; top: 5px; left: 0px;">add</i>&nbsp;&nbsp;&nbsp;Ajouter
+				document
+			</button>
+            </div>
+            <div class="col-sm-1">
+                <div class="controls">
+                    <button type="button" title="Recherche sur mes documents" class="btn btn-warning" ng-click="showRecherche();">
+						<i class="fa fa-search"></i>
+						</button>
+                    <!-- 						Rechercher sur mes documents &nbsp;<a ng-click="showRecherche();" style="cursor: pointer;" title="Recherche"><i class="material-icons">search</i></a> -->
+                    <!-- 					<div class="input-group primary"> -->
+                    <!-- 						<span class="input-group-addon"> <i class="material-icons">search</i> -->
+                    <!-- 						</span>  -->
+                    <!-- 						<input type="text"  -->
+                    <!-- 							ng-click="showRecherche();"  -->
+                    <!-- 							class="form-control"  -->
+                    <!-- 							placeholder="Recherche sur mes documents..."> -->
+                    <!-- 					</div> -->
+                </div>
+            </div>
+            <!-- 		 <div class="input-group pull-right" inputgroup> -->
+            <!--                             <span class="input-group-addon"> -->
+            <!--                             <span class="arrow"></span> -->
+            <!--                             <i class="material-icons">search</i> -->
+            <!--                             </span> -->
+            <!--                             <input type="text" class="form-control" placeholder="Default"> -->
+            <!--                         </div> -->
+            <section class="box ">
+                <header class="panel_header">
+                    <h2 class="title pull-left">MES DOCUMENTS</h2>
+                    <div class="actions panel_actions pull-right">
+                        <i class="box_toggle material-icons">expand_more</i>
+                    </div>
+                </header>
+                <div class="content-body padding-bottom-0">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-12">
+                                <section class="box nobox">
+                                    <div class="content-body">
+                                        <div class="row">
+                                            <div class="col-xs-11 padding-right-0">
+                                                <!-- /*CATEGORIES OPERATIONS -->
+                                                <button type="submit" ng-if="boolCat" class="btn btn-success" ng-click="editCategorie();">
+													<i class="material-icons"
+														style="position: absolute; top: 5px; left: 0px;">mode_edit</i>&nbsp;&nbsp;&nbsp;Modifier
+													la catégorie {{nomCate}}
+												</button>
+
+                                                <button style="background: #ff8000; color: #fff" type="button" ng-if="boolCat" class="btn" ng-click="suppCategorie();">
+													<i class="material-icons"
+														style="position: absolute; top: 5px; left: 0px;">delete</i>&nbsp;&nbsp;&nbsp;Supprimer
+													la catégorie {{nomCate}}
+												</button>
+                                                <!-- /* FIN CATEGORIES OPERATIONS -->
+                                                <!-- /*CATEGORIES OPERATIONS -->
+                                                <button type="submit" ng-if="boolSsCat" class="btn btn-success" ng-click="editSsCategorie();">
+													<i class="material-icons"
+														style="position: absolute; top: 5px; left: 0px;">mode_edit</i>&nbsp;&nbsp;&nbsp;Modifier
+													la sous catégorie {{nomSsCat}}
+												</button>
+
+                                                <button style="background: #ff8000; color: #fff" type="button" ng-if="boolSsCat" class="btn" ng-click="suppSsCategorie();">
+													<i class="material-icons"
+														style="position: absolute; top: 5px; left: 0px;">delete</i>&nbsp;&nbsp;&nbsp;Supprimer
+													la sous catégorie {{nomSsCat}}
+												</button>
+                                                <!-- /* FIN CATEGORIES OPERATIONS -->
+                                                <!-- /*DOCUMENTS OPERATIONS -->
+                                                <button style="background: #ff8000; color: #fff" type="button" ng-if="boolDoc" ng-click="suppDocs();" class="btn">
+													<i class="material-icons"
+														style="position: absolute; top: 5px; left: 0px;">delete</i>&nbsp;&nbsp;&nbsp;Supprimer
+													le document {{nameDoc}}
+												</button>
+                                                <button style="background: #1f93f6; color: #fff" type="button" ng-if="boolDoc" class="btn" ng-click="rangerBankdoc();">
+													<i class="material-icons"
+														style="position: absolute; top: 5px; left: 0px;">reorder</i>&nbsp;&nbsp;&nbsp;Ranger
+													le document {{nameDoc}}
+												</button>
+                                                <button style="background: #1f93f6; color: #fff" type="button" ng-if="boolDoc" class="btn" ng-click="publishBankdoc();">
+													<i class="material-icons"
+														style="position: absolute; top: 5px; left: 0px;">publish</i>&nbsp;&nbsp;&nbsp;Publier
+													le document {{nameDoc}}
+												</button>
+                                                <!-- /*DOCUMENTS OPERATIONS -->
+                                            </div>
+                                            <div class="col-xs-1">
+                                                <div class="controls">
+                                                    <button type="button" ng-if="boolDoc" style="background-color:#1f93f6;" title="Piste d'audit" class="btn btn-warning" ng-click="showPiste2();">
+													<i class='fa fa-external-link' style="cursor:pointer;"></i>
+													</button>
+                                                </div>
+                                                <div class="controls">
+                                                    <button type="button" ng-if="boolAudit" style="background-color:#1f93f6;" title="Piste d'audit" class="btn btn-warning" ng-click="showPiste2();">
+													<i class='fa fa-external-link' style="cursor:pointer;"></i>
+													</button>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-xs-9 padding-left-0"> -->
+                                            <!-- <a class="btn btn-lg pull-right btn-accent"> -->
+                                            <!-- Commission -->
+                                            <!-- </a> -->
+                                            <!-- </div> -->
+                                            <div class="clearfix"></div>
+
+                                            <div class="col-md-2 col-sm-2 col-xs-2 padding-right-0 margin-top-30">
+                                                <div class="mail-wrapper">
+                                                    <div data-ng-controller="AccordionDemoCtrl" class='collapsed accordion'>
+                                                        <uib-accordion close-others="oneAtATime">
+                                                            <div ng-repeat="fold in entCategorie | orderBy : '-idCategory'">
+                                                                <uib-accordion-group>
+                                                                    <uib-accordion-heading>
+                                                                        <a class="panel-title" style="cursor: pointer" ng-click="listSsCatandDocByCat(fold.idCategory,fold.libelle,fold)">
+                                                                            <span style="cursor: pointer;"> {{fold.libelle}}
+																	<i class="pull-right glyphicon"
+																	ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+															</span>
+                                                                        </a>
+                                                                    </uib-accordion-heading>
+                                                                    <div ng-repeat="sscat in sousCatList | orderBy : '-idCategory'">
+                                                                        <uib-accordion close-others="oneAtATime">
+                                                                            <uib-accordion-group>
+                                                                                <uib-accordion-heading>
+                                                                                    <a class="panel-title" style="cursor: pointer" ng-click="listDocbySscat(sscat.idCategory,sscat.libelle,sscat)">
+                                                                                        <span style="cursor: pointer"> {{sscat.libelle}}
+																		<i class="pull-right glyphicon"
+																		ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+																</span>
+                                                                                    </a>
+                                                                                </uib-accordion-heading>
+                                                                                <ul ng-repeat="doc in documentsUserBank">
+                                                                                    <a style="cursor: pointer" ng-click="catDocBankDetail(doc,doc.nom,doc.nom,doc.idDocuments,sscat)" style="cursor:pointer">{{doc.nom}}.pdf</a>
+                                                                                </ul>
+                                                                            </uib-accordion-group>
+                                                                        </uib-accordion>
+                                                                    </div>
+                                                                    <br>
+                                                                    <ul ng-repeat="docs in DocsCatList">
+                                                                        <a style="cursor: pointer" ng-click="catDocBankDetail(docs,docs.nom,docs.idDocuments,docs.urlDocument,fold)">
+																	{{docs.nom}}.pdf </a>
+                                                                    </ul>
+                                                                    <!-- 															<div ng-repeat="doc in fold.docs"><span ng-if="doc.name!=''" ng-click="catDocBkDetail(1)" style="cursor:pointer">{{doc.name}}</span></div> -->
+                                                                </uib-accordion-group>
+                                                            </div>
+                                                        </uib-accordion>
+                                                    </div>
+
+                                                    <!-- 								<div ng-controller="AccordionDemoCtrl" class=''> -->
+                                                    <!--                                     <uib-accordion close-others="oneAtATime"  -->
+                                                    <!--                                     	ng-repeat="fold in entCategorie"> -->
+                                                    <!--                                         <uib-accordion-group is-open="false"> -->
+                                                    <!--                                             <uib-accordion-heading> -->
+                                                    <!--                                             	<span ng-click="listSsCatandDocByCat(fold.idCategory,fold.libelle)" -->
+                                                    <!-- 														style="cursor:pointer;"  -->
+                                                    <!-- 														 >{{fold.libelle}}</span> -->
+                                                    <!--                                                 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i> -->
+                                                    <!--                                             </uib-accordion-heading> -->
+                                                    <!--                                             This is just some content to illustrate fancy headings. -->
+                                                    <!--                                         </uib-accordion-group> -->
+                                                    <!--                                     </uib-accordion> -->
+                                                    <!--                                 </div> -->
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10 col-sm-10 col-xs-10  margin-top-30 padding-left-0">
+
+                                                <div class="mail_content">
+                                                    <div class="row">
+                                                        <div ui-view class="fade-in"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+</div>

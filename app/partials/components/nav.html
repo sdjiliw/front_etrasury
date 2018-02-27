@@ -1,0 +1,214 @@
+<!-- list -->
+<ul class="wraplist wrapper-menu" style="cursor:pointer;">
+
+    <li ui-sref-active="active">
+        <a ui-sref="app.statut" class="nosub" ng-click="app.settings.pagetitle = 'ACCUEIL';">
+            <i class="material-icons">home</i>
+            <span class="title">ACCUEIL</span>
+        </a>
+    </li>
+    <li href class="auto">
+        <a ui-sref="app.facebank" class="nosub" ng-click="app.settings.pagetitle = 'Historique';">
+            <i class="material-icons">history</i>
+            <span class="title">HISTORIQUE</span>
+        </a>
+    </li>
+
+    <!--************************ Charts********************* -->
+    <!-- <li href class="auto">  -->
+    <!-- <a href="javascript:;"> -->
+    <!-- <i class="material-icons">equalizer</i> -->
+    <!-- <span class="title">Charts</span> -->
+    <!-- <span class="arrow material-icons">keyboard_arrow_right</span> -->
+    <!-- </a> -->
+    <!-- <ul class="wraplist wraplist-sub sub-menu dk" > -->
+    <!-- <li ui-sref-active="active"> -->
+    <!-- <a ui-sref="app.charts.chartjs">Chart JS</a> -->
+    <!-- </li> -->
+    <!-- <li ui-sref-active="active"> -->
+    <!-- <a ui-sref="app.charts.sparkline">Sparkline</a> -->
+    <!-- </li> -->
+    <!-- <li ui-sref-active="active"> -->
+    <!-- <a ui-sref="app.charts.flot">Flot</a> -->
+    <!-- </li> -->
+    <!-- <li ui-sref-active="active"> -->
+    <!-- <a ui-sref="app.charts.morris">Morris</a> -->
+    <!-- </li> -->
+    <!-- <li ui-sref-active="active"> -->
+    <!-- <a ui-sref="app.charts.rickshaw">Rickshaw</a> -->
+    <!-- </li> -->
+    <!-- <li ui-sref-active="active"> -->
+    <!-- <a ui-sref="app.charts.easypiechart">PIE & Knobs</a> -->
+    <!-- </li> -->
+    <!-- </ul> -->
+    <!-- </li> -->
+
+    <!--************ ENTREPRISE**************************** -->
+    <li href class="auto">
+        <a href="javascript:;">
+            <!-- <i class="material-icons">list</i> -->
+            <!-- <i class="material-icons">group</i> -->
+            <i class="material-icons">business</i>
+            <span class="title">Entreprise</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.entrepriseeTadmin.entreprise" ng-click="app.settings.pagetitle = 'Entreprise';">Entreprise</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.entrepriseeTadmin.groupe" ng-click="app.settings.pagetitle = 'Groupe';">Groupe</a>
+            </li>
+            <li ui-sref-active="active">
+                <!-- <a ui-sref="app.tables.footable" > -->
+                <a ui-sref="app.entrepriseeTadmin.utilisateur" ng-click="app.settings.pagetitle = 'Utilisateur';">Utilisateur</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.entrepriseeTadmin.journal" ng-click="app.settings.pagetitle = 'Journal';">Journal</a>
+            </li>
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="app.tables.uigrid">uiGrid</a> -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="app.tables.editable">Editable</a> -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active">
+                                    <a ui-sref="app.tables.nggrid">ngGrid</a>
+                                </li> -->
+        </ul>
+    </li>
+    <!--**************************FIN Entreprise*************** -->
+
+    <!--*********************** Banque**************************** -->
+    <li href class="auto">
+        <a href="javascript:;">
+            <!-- <i class="material-icons">list</i> -->
+            <!-- <i class="material-icons">group</i> -->
+            <i class="material-icons">account_balance</i>
+            <span class="title">Banque</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.banqueeTadmin.banque" ng-click="app.settings.pagetitle = 'Banque';">Banque</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.banqueeTadmin.groupe" ng-click="app.settings.pagetitle = 'Groupe';">Groupe</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.banqueeTadmin.utilisateur" ng-click="app.settings.pagetitle = 'Utilsateur';">Utilisateur</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.banqueeTadmin.contact" ng-click="app.settings.pagetitle = 'Contact';">Contact</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.banqueeTadmin.journal" ng-click="app.settings.pagetitle = 'Journal';">Journal</a>
+            </li>
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="app.tables.editable">Editable</a> -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active">
+                                    <a ui-sref="app.tables.nggrid">ngGrid</a>
+                                </li> -->
+        </ul>
+    </li>
+    <!--**************************Fin Banque*************** -->
+
+    <!--************************** eTreasury*************** -->
+    <li href class="auto">
+        <a href="javascript:;">
+            <!-- <i class="material-icons">list</i> -->
+            <!-- <i class="material-icons">group</i> -->
+            <span><img src="img/eTreasury.png"/></span>
+            <span class="title">Administration</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.administrationeTadmin.groupe" ng-click="app.settings.pagetitle = 'Groupe';">Groupe</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.administrationeTadmin.utilisateur" ng-click="app.settings.pagetitle = 'Utilisateur';">Utilisateur</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.administrationeTadmin.localite" ng-click="app.settings.pagetitle = 'Localité';">Localité</a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.administrationeTadmin.produit" ng-click="app.settings.pagetitle = 'Produit';">Produit</a>
+            </li>
+            <li ui-sref-active="active" style="pointer-events: none;">
+                <a ui-sref="app.administrationeTadmin.produitTaux" ng-click="app.settings.pagetitle = 'Produit taux';">Produit taux</a>
+            </li>
+            <!--                                 <li ui-sref-active="active"> -->
+            <!--                                     <a ui-sref="app.administrationeTadmin.conditionBanque" ng-click="app.settings.pagetitle = 'Condition banque';">Cond. banque</a> -->
+            <!--                                 </li> -->
+            <li ui-sref-active="active">
+                <a ui-sref="app.administrationeTadmin.devises" ng-click="app.settings.pagetitle = 'Devises';">Devises</a>
+            </li>
+            <!-- <li ui-sref-active="active">
+                                    <a ui-sref="app.tables.nggrid">ngGrid</a>
+                                </li> -->
+        </ul>
+    </li>
+    <li href class="auto">
+        <a href="javascript:;" ui-sref="app.charts.sparkline">
+            <!-- <i class="material-icons">list</i> -->
+            <!-- <i class="material-icons">group</i>  -->
+            <i class="material-icons">dashboard</i>
+            <!-- <span><img src="img/eTreasury.png"/></span> -->
+            <span class="title">REPORTING</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk">
+        </ul>
+    </li>
+    <!--**************************FIN eTreasury*************** -->
+
+    <!--***************************** Administration pages******************** -->
+    <li href class="auto">
+        <a href="javascript:;">
+            <!-- <i class="material-icons">redeem</i> -->
+            <i class="material-icons">live_help</i>
+            <span class="title">Aide</span>
+            <span class="arrow material-icons">keyboard_arrow_right</span>
+            <!-- <span class="label label-accent">NEW</span> -->
+        </a>
+        <ul class="wraplist wraplist-sub sub-menu dk" style="pointer-events: none;">
+            <li class='subgroup'><span>Assistance</span></li>
+            <li ui-sref-active="active">
+                <a ui-sref="access.login">Demande aide</a>
+            </li>
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="access.login">Login</a> -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active">  -->
+            <!-- <a ui-sref="access.register">Ajouter utilisateur</a>  -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="access.forgotpwd">Mot de passe oubliè</a> -->
+            <!-- </li> -->
+            <li ui-sref-active="active">
+                <a ui-sref="access.lockscreen">Mettre en veille</a>
+            </li>
+
+
+            <li class='subgroup'>
+                <span>Signaler erreur</span>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="access.lockscreen">Signaler incident</a>
+            </li>
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="access.404">404</a> -->
+            <!-- </li> -->
+            <!-- <li ui-sref-active="active"> -->
+            <!-- <a ui-sref="access.500">500</a> -->
+            <!-- </li> -->
+        </ul>
+    </li>
+</ul>
+<!-- / list -->
+<!-- footer -->
+<!-- <div data-ng-include=" 'partials/components/footer.html' "> -->
+<!-- </div> -->
+<!-- / footer -->

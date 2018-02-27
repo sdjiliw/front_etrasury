@@ -1,0 +1,383 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Transfert';">  
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+		<form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                    <section class="box ">
+                            <header class="panel_header">
+                                <h2 class="title pull-left" ng-if="isOperation">Caracteristiques générales de la demande</h2>
+								<h2 class="title pull-left" ng-if="!isOperation && isOperation!=null">Modifier informations de la demande</h2>
+								<h2 class="title pull-left" ng-if="idDetail && isOperation==null">Détails de la demande</h2>
+								<h2 class="title pull-left" ng-if="!idDetail && isOperation==null">VALIDATION DE LA DEMANDE</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i id="box_toggle_more" class="box_toggle material-icons" style="color:#1065a8" on-load-clicker>expand_more</i>
+                                </div>
+                            </header>
+                            <div class="content-body">
+                                <!-- START -->
+                                <br>
+                                <div class='row'>
+									<div class="col-sm-6"> 
+										<div class="form-group">
+											<label class="form-label" for="field-1">MONTANT <span style="color:#ff8000">*</span></label>
+											<div class="controls">
+												<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" name="montant_tr" type="number" ng-model="montant_tr" ng-change="changeMontant(montant_tr)" placeholder="0" class="form-control" required>
+												<span ng-show="erreurReady && form.montant_tr.$submitted && form.montant_tr.$error.required" style="color:#ff8000">Le montant_tr est obligatoire.</span>
+												<span ng-show="erreurReady && form.montant_tr.$touched && form.montant_tr.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+												<span ng-show="erreurReady && form.input.$error.number" style="color:#ff8000">Le format est incorrect.</span>
+												<span ng-show="erreurReady && isErrorNumb" style="color:#ff8000">Le montant doit être supérieur à zéro.</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="form-label" for="formfield1">DEVISE <span style="color:#ff8000">*</span></label>
+                                            <div class="controls">
+                                                <select ng-disabled="true" name="devise_tr" class="form-control" ng-model="devise_tr" ng-change="changeDevise(devise_tr)" required>
+													<option ng-repeat="devis in listDevises" value="{{devis.description}}">{{devis.description}}</option>
+													<!-- <option value="CAD">CAD</option> -->
+													<!-- <option value="CHF">CHF</option> -->
+													<!-- <option value="GBP">GBP</option> -->
+													<!-- <option value="JPY">JPY</option> -->
+													<!-- <option value="AUD">AUD</option> -->
+													<!-- <option value="DKK">DKK</option> -->
+													<!-- <option value="USD">USD</option> -->
+                                                </select>
+												<span ng-show="erreurReady && form.devise_tr.$submitted && form.devise_tr.$error.required" style="color:#ff8000">La devise est obligatoire.</span>
+                                            </div>
+										</div>
+									</div>
+									<!-- fin col 6 1 -->
+									<div class="col-sm-6"> 
+										<div class="form-group">
+											<label class="form-label" for="field-1">DATE VALEUR <span style="color:#ff8000">*</span></label>
+                                            <div class="input-group" inputgroup>
+                                                <input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="date" name="date_valeur_tr" class="form-control datepicker" uib-datepicker-popup ng-model="date_valeur_tr" ng-change="changeDate_valeur(date_valeur_tr)" is-open="dtpick.opened2" min-date="aujourdhui" max-date="'2020-11-28'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required/>
+                                                <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                            </div>
+											<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.date_valeur_tr.$submitted && form.date_valeur_tr.$error.required" style="color:#ff8000">La date de valeur est obligatoire.</span>
+											<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.date_valeur_trd.$touched && form.date_valeur_tr.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+											<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span>
+											<span ng-show="erreurReady && (!(idDetail && isOperation==null)&&!(!idDetail && isOperation==null)&&!(!isOperation && isOperation!=null))&&
+															(isOperation || !isOperation && isOperation!=null) && date_valeur_tr!=null&&
+																		(aujourdhui.getFullYear()>date_valeur_tr.getFullYear()||
+																		aujourdhui.getFullYear()==date_valeur_tr.getFullYear()&&
+																		(aujourdhui.getMonth()+1)>(date_valeur_tr.getMonth()+1)||
+																		aujourdhui.getFullYear()==date_valeur_tr.getFullYear()&&
+																		(aujourdhui.getMonth()+1)==(date_valeur_tr.getMonth()+1)&&
+																		aujourdhui.getDate()>date_valeur_tr.getDate())" style="color:#ff8000">
+												La date de valeur ne doit pas être inférieure à celle d'aujourd'hui.
+											</span>
+										</div>
+										<div class="form-group">
+											<label class="form-label" for="field-1">SENS OPÉRATION(euro)</label>
+											<div class="controls">
+                                                <div class='row'>
+													<div class="col-xs-4 " style="width:auto" ng-repeat="choice in sensop">
+														<input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.sensop_tr" ng-change="choixSensOp($parent.sensop_tr)">
+														{{choice.reponse}}
+													</div>
+                                                </div>
+											</div>
+										</div>
+									</div>
+									<!-- fin col 6 2 -->
+                                </div>
+								<!-- fin div row -->
+                            </div>
+							<!-- fin div body -->
+                    </section>
+                    <section class="box ">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Options de la demande</h2>
+								 <div class="actions panel_actions pull-right" >
+                                    <i id="box_toggle_less"  class="box_toggle material-icons" style="color:#1065a8" on-load-clicker_>expand_less</i>
+                                </div>
+                            </header>
+                            <div class="content-body">
+                                <!-- START -->
+                                <br>
+                                <div class='row'>
+                                    <div class="col-xs-6">
+										<div class="form-group">
+											<div class='row'>
+                                                <div class="col-xs-4 " style="width:auto">
+                                                    <label class="form-label" for="field-1">TOUTES LES BANQUES</label>
+                                                </div>
+												<div class="col-xs-1 " style="width:auto" ng-repeat="choice in toutes">
+                                                    <input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.toute_tr" ng-change="choixToutes($parent.toute_tr)">
+                                                    {{choice.reponse}}
+                                                </div>
+                                            </div>
+										</div>
+										<div class="form-group">
+											<div class="controls" style="width: 100%;height: 150px;overflow:auto;" ng-show="!isToute">
+												<table style="width: 100%;height: 100px;overflow:auto;" class="table table-hover">
+													<thead>
+														<tr>
+															<th>CHOIX</th>
+															<th>NOM</th>
+															<th>VILLE</th>
+															<th>PAYS</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="bk in listBksByLoc">
+															<td>
+																<input id="checkbxinput" ng-class="{'allowclickinput': chexBoxAllow}" class="bk_{{bk.idInstitution}}" style="color:#1065a8;width:15px;height:15px" type="checkbox" value="{{bk.idInstitution}}" ng-checked="selectionbk.indexOf(bk.idInstitution) > -1" ng-click="changeBkAttach(bk.idInstitution)" class="input-sm"/>
+															</td>
+															<td>{{bk.nom}}</td>
+															<td>{{bk.localityIdLocalite.ville}}</td>
+															<td>{{bk.localityIdLocalite.pays}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class='row' style="width:auto">
+                                                <div class="col-xs-4 " style="width:auto">
+                                                    <label class="form-label" for="field-1">ENCHÈRE À UN TOUR</label>
+                                                </div>
+												<div class="col-xs-4 " style="width:auto" ng-repeat="choice in enchersm">
+                                                    <input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.encherem_tr" ng-change="choixEnchersm($parent.encherem_tr)">
+                                                    {{choice.reponse}}
+                                                </div>
+                                            </div>
+										</div>
+										<div class="form-group">
+											<div class='row'>
+                                                <div class="col-xs-3 " style="width:auto">
+                                                    <label class="form-label" for="field-1">ATTACHER DOCUMENT</label>
+                                                </div>
+												<div class="col-xs-1 " style="width:auto" ng-repeat="choice in docus">
+                                                    <input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.doc_tr" ng-change="ifDocUp($parent.doc_tr)">
+                                                    {{choice.reponse}}
+                                                </div>
+                                            </div>
+										</div>
+										<div class="form-group">
+											<div class="controls" style="width: 100%;height: 150px;overflow: auto;" ng-show="isUpload">
+												<table style="width: 100%;overflow:auto;" class="table table-hover">
+														<thead>
+															<tr>
+																<th>CHOIX</th>
+																<th>NOM</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr ng-repeat="document in listDocuments">
+																<td>
+																	 <input id="checkbxinput" ng-class="{'allowclickinput': chexBoxAllow}" class="doc_{{document.idDocuments}}" style="color:#1065a8;width:15px;height:15px" type="checkbox" value="{{document.idDocuments}}" ng-checked="selection.indexOf(document.idDocuments) > -1" ng-click="changeDoc_attach(document.idDocuments)" class="input-sm"/>
+																</td>
+																<td>{{document.nom}}</td>
+															</tr>
+														</tbody>
+												</table> 
+											</div>
+										</div>
+                                    </div>
+									<!-- fin col 6 1 -->
+									<div class="col-xs-6">
+										<div class="form-group" style="width: 100%;height: 100px;">
+											<div class='row'>
+												<div class="col-xs-4" style="width:auto">
+													<label class="form-label" for="field-1">DATE DÉBUT </label>
+                                                    <div class="input-group" inputgroup>
+                                                        <input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="date" name="date_debut_tr" class="form-control datepicker" uib-datepicker-popup ng-model="date_debut_tr" ng-change="changeDate_debut(date_debut_tr)" is-open="dtpick.opened2" min-date="aujourdhui" max-date="'2020-11-28'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close"/>
+                                                        <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                                    </div>
+													<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span>
+													<span ng-show="erreurReady && (!(idDetail && isOperation==null)&&!(!idDetail && isOperation==null)&&!(!isOperation && isOperation!=null))&&
+																	(isOperation || !isOperation && isOperation!=null) && date_debut_tr!=null&&
+																					(aujourdhui.getFullYear()>date_debut_tr.getFullYear()||
+																					aujourdhui.getFullYear()==date_debut_tr.getFullYear()&&
+																					(aujourdhui.getMonth()+1)>(date_debut_tr.getMonth()+1)||
+																					aujourdhui.getFullYear()==date_debut_tr.getFullYear()&&
+																					(aujourdhui.getMonth()+1)==(date_debut_tr.getMonth()+1)&&
+																					aujourdhui.getDate()>date_debut_tr.getDate())" style="color:#ff8000">
+																			La date de début ne doit pas être inférieure à celle d'aujourd'hui.
+													</span>
+												</div>
+												<div class="col-xs-1"></div> 
+												<div class="col-xs-1" style="width:auto;bottom:38px">
+													<div class="form-group" ng-controller="TimepickerDemoCtrl">
+														<uib-timepicker ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group" style="width: 100%;height: 100px;">
+											<div class='row'>
+												<div class="col-xs-4" style="width:auto;">
+													<label class="form-label" for="field-1">DATE FIN </label>
+                                                        <div class="input-group" inputgroup>
+                                                            <input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="date" name="date_fin_tr" class="form-control datepicker" uib-datepicker-popup ng-model="date_fin_tr" ng-change="changeDate_fin(date_fin_tr)" is-open="dtpick.opened2" min-date="aujourdhui" max-date="'2020-11-28'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close"/>
+                                                            <span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+                                                        </div>
+														<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span>
+														<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && date_debut_tr>date_fin_tr" style="color:#ff8000">La date de fin ne doit pas être inférieure à la date de début.</span>
+														<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && (date_valeur2<=date_fin_tr)" style="color:#ff8000">La date de fin ne doit pas être supérieure ou égale à la date de valeur.</span>
+												</div>
+												<div class="col-xs-1"></div> 
+												<div class="col-xs-1" style="width:auto;bottom:38px">
+													<div class="form-group" ng-controller="TimepickerDemoCtrl">
+														<uib-timepicker ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class='row' style="width:auto">
+                                                <div class="col-xs-4 " style="width:auto">
+                                                    <label class="form-label" for="field-1">ENCHÈRE ANONYME</label>
+                                                </div>
+												<div class="col-xs-4 " style="width:auto" ng-repeat="choice in enchersa">
+                                                    <input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.encherea_tr" ng-change="choixEnchersa($parent.encherea_tr)">
+                                                    {{choice.reponse}}
+                                                </div>
+                                            </div>
+										</div>
+										<div class="form-group">
+											<label class="form-label" for="field-1">TAUX MAX</label>
+											<div class="controls">
+												<div class='row'>
+														<div class="col-xs-4">
+															<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="number" ng-model="taux_max_tr" ng-change="changeTaux(taux_max_tr)" class="form-control">
+														</div>
+														<div class="col-xs-1">
+															<span>%</span>
+														</div>
+												</div>
+												<span ng-show="erreurReady && (isErrorTaux || taux_max_tr<0 || taux_max_tr==undefined)" style="color:#ff8000">Le taux max ne doit pas être inférieur à zéro.</span>
+											</div>
+										</div>
+                                    </div>
+									<!-- fin col 6 2 -->
+                                </div>
+								<!-- fin div row -->
+                            </div>
+							<!-- fin div body -->
+                    </section>
+					<!-- OFFRE -->
+					<section class="box " ng-if="isOfferTrue">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">LISTES DES OFFRES DE LA DEMANDE</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i id="box_toggle_more" class="box_toggle material-icons" style="color:#1065a8" on-load-clicker>expand_more</i>
+                                </div>
+                            </header>
+                            <div class="content-body">
+                                <!-- START -->
+                                <br>
+                                <div class='row'>
+									<div class="col-sm-12"> 
+										<div class="form-group" style="width: 100%;height: 150px;" ng-if="isOfferNull">
+											<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+												<div>
+													<table class="table table-striped table-bordered" cellspacing="0">
+														<thead>
+															<tr>
+																<th style="width: auto">N°</th>
+																<th style="width: auto">BANQUE</th>
+																<th style="width: auto">TAUX</th>
+																<th style="width: auto">EST-CE SÉLECTONNÉE?</th>
+																<th style="width: auto">ACTION</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr ng-repeat="offre in listOffres | orderBy:'-offer.idOffre'" ng-if="offre.offer.etat==2 || offre.offer.etat==3 ? back='#1f93f6' : back='transparent'" style="background:{{back}};background-color:{{back}}">
+																<td>{{offre.offer.idOffre}}</td>
+																<td>{{offre.offer.userBanqueIdUserBanque.groupeIdGroupe.institution.nom}}</td>
+																<td>{{offre.offer.taux}}</td>
+																<td>
+																	<a ng-if="offre.offer.etat!=2 && offre.offer.etat!=3" style="color:black;">Non<a>
+																	<a ng-if="offre.offer.etat==2" style="color:black;">pré-sélection<a>
+																	<a ng-if="offre.offer.etat==3" style="color:black;">Oui<a>
+																</td>
+																<td>
+																	<i class='material-icons' ng-class="{'disabled': offreWin}" style="cursor:pointer;" ng-click="visualOffer(offre)">remove_red_eye</i>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="form-group" ng-if="!isOfferNull">
+											<div style="text-align:center;">
+												<span>Vous n'avez aucune offre sur cette demande.</span>
+											</div>
+										</div>
+									</div>
+									<!-- fin col-->
+                                </div>
+								<br>
+                                <div class='row' ng-if="loadSelect">
+									<div class="col-sm-12"> 
+										<div class="form-group">
+											<div style="text-align:center;">
+												<img id="mySpinner" src="img/loading.gif" ng-show="loadSelect" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- fin div row -->
+                            </div>
+							<!-- fin div body -->
+                    </section>
+					<br>
+					<div style="text-align:center;">
+						<button type="button"  ng-if="idDetail && isOperation==null" ng-click="cancel()" class="btn" style="background:#ff8000;">Fermer</button>
+						<img id="mySpinner" src="img/loading.gif" ng-show="!idDetail && (isOperation || !isOperation || isOperation==null) && loading" />&nbsp;&nbsp;&nbsp;
+						<button type="submit" ng-if="!idDetail && (isOperation || !isOperation || isOperation==null)" ng-click="addenToPtR()" class="btn btn-success" ng-disabled="
+														loading ||
+														idDetail && isOperation==null ||
+														isErrorNumb ||
+														(isErrorTaux || taux_max_tr<0 || taux_max_tr==undefined) ||
+														date_valeur_tr==null ||
+														date_valeur2<=date_fin_tr ||
+														(isOperation || !isOperation && isOperation!=null) && 
+														form.montant_tr.$invalid||
+														form.date_valeur_tr.$invalid||
+														form.devise_tr.$invalid||
+														form.date_debut_tr.$invalid||
+														form.banque_.$invalid||
+														form.date_fin_tr.$invalid||
+														date_debut_tr>date_fin_tr||
+														date_valeur_tr!=null&&
+														date_debut_tr!=null&&
+														date_fin_tr&&
+														((aujourdhui.getFullYear()>date_valeur_tr.getFullYear()||
+														aujourdhui.getFullYear()==date_valeur_tr.getFullYear()&&
+														(aujourdhui.getMonth()+1)>(date_valeur_tr.getMonth()+1)||
+														aujourdhui.getFullYear()==date_valeur_tr.getFullYear()&&
+														(aujourdhui.getMonth()+1)==(date_valeur_tr.getMonth()+1)&&
+														aujourdhui.getDate()>date_valeur_tr.getDate())||
+														
+														(aujourdhui.getFullYear()>date_debut_tr.getFullYear()||
+														aujourdhui.getFullYear()==date_debut_tr.getFullYear()&&
+														(aujourdhui.getMonth()+1)>(date_debut_tr.getMonth()+1)||
+														aujourdhui.getFullYear()==date_debut_tr.getFullYear()&&
+														(aujourdhui.getMonth()+1)==(date_debut_tr.getMonth()+1)&&
+														aujourdhui.getDate()>date_debut_tr.getDate()))">VALIDER</button>
+									&nbsp;
+									&nbsp;
+						<button type="button" ng-if="!idDetail && (isOperation || !isOperation || isOperation==null)" ng-click="cancel()" class="btn" style="background:#ff8000;">ANNULER</button>
+					</div>
+					<br>
+					<br>
+					<span ng-show="erreurReady && form.montant_tr.$invalid||
+											form.date_valeur_tr.$invalid||
+											form.devise_tr.$invalid||
+											form.date_debut_tr.$invalid||
+											form.banque_.$invalid||
+											form.date_fin_tr.$invalid" style="color:#ff8000">
+											* Veuillez renseigner les champs obligatoires.
+					</span>
+					<span style="color:#ff8000" ng-show="isSuccess">{{message}}</span>
+					<br>
+					<div class="form-group">
+						<div class="form-group">
+						</div>
+                    </div>
+				</form>
+        </div>
+</div>
+

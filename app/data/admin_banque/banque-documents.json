@@ -1,0 +1,34 @@
+[
+    {
+        "avatar": "data/patients/patient-1.jpg",
+        "nom": "Document 1",
+        "mot-cle": "HouseWife",
+        "categorie": "cat1",
+        "file": "",
+        "date": "15-06-2017"
+    }, 
+    {
+        "avatar": "data/patients/patient-2.jpg",
+        "nom": "Document 2",
+        "mot-cle": "Teacher",
+        "categorie": "cat1",
+        "file": "",
+        "date": "15-06-2017"
+    }, 
+    {
+        "avatar": "data/patients/patient-3.jpg",
+        "nom": "Document 3",
+        "mot-cle": "Journalist",
+        "categorie": "cat2",
+        "file": "",
+        "date": "15-06-2017"
+    }, 
+    {
+        "avatar": "data/patients/patient-4.jpg",
+        "nom": "Document 4",
+        "mot-cle": "Industrialist",
+        "categorie": "cat2",
+        "file": "",
+        "date": "15-06-2017"
+    }
+]

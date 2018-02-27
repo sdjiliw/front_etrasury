@@ -1,0 +1,91 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="pull-left">
+        <!-- <div class="btn-group mail_more_btn" uib-dropdown> -->
+        <!-- <button type="button" class="btn btn-secondary">Filter</button> -->
+        <!-- <button type="button" class="btn btn-secondary dropdown-toggle" uib-dropdown-toggle> -->
+        <!-- <span class="caret"></span> -->
+        <!-- <span class="sr-only">Filtre</span> -->
+        <!-- </button> -->
+        <!-- <ul class="dropdown-menu" role="menu"> -->
+        <!-- <li><a ui-sref="app.mail.list({fold:''})">Tous</a></li> -->
+        <!-- <li><a ui-sref="app.mail.list({fold:'unread'})">Unread</a></li> -->
+        <!-- <li><a ui-sref="app.mail.list({fold:'starred'})">Starred</a></li> -->
+        <!-- </ul> -->
+        <!-- </div> -->
+    </div>
+    <!-- <nav class='pull-right'> -->
+    <!-- <ul class="pager mail_nav"> -->
+    <!-- <li><a href="#"><i class='material-icons icon-secondary'>keyboard_arrow_left</i></a></li> -->
+    <!-- <li><a href="#"><i class='material-icons icon-secondary'>keyboard_arrow_right</i></a></li> -->
+    <!-- </ul> -->
+    <!-- </nav> -->
+    <!-- <span class='pull-right mail_count_nav text-muted'><strong>1</strong> to <strong>20</strong> of 3247</span> -->
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <section class="box ">
+        <!-- <header class="panel_header"> -->
+        <!-- <h2 class="title pull-left">Tous les documents reçus</h2> -->
+        <!-- <div class="actions panel_actions pull-right"> -->
+        <!-- <i class="box_toggle material-icons">expand_more</i> -->
+        <!-- </div> -->
+        <!-- </header> -->
+        <div class="content-body padding-bottom-0">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="row" data-ng-controller="bankController">
+                        <div class="col-md-12 col-sm-12 col-xs-12" ng-if="documentsUserBank.length==0">
+                            <div style="text-align:center;">
+                                <h4>Aucun document trouvé.</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-md-4 col-md-12" ng-repeat="doc in documentsUserBank">
+                            <div class="team-member">
+                                <div class="team-img col-md-12 col-sm-12 col-xs-12">
+                                    <img class="img-responsive" ng-src="data/patients/pdf2.png" alt=""><br>
+                                    <div class="team-info" style="margin-left:10px">
+                                        <a title="visualiser" ng-click="goToVisual($event,doc)">
+                                            <!--                                         ui-sref="app.mes-docs.visualbk_byname({name: name, named : doc.nom, url_ : doc.urlDocument,id : doc.idDocuments})" -->
+                                            <i class='fa fa-eye' style="cursor:pointer"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a title="piste d'audit" ng-click="showPiste(doc);">
+                                            <i class='fa fa-external-link' style="cursor:pointer;"></i>
+                                        </a>
+                                        <div style="margin-top:7px;"></div>
+                                        Document: <span style='color: #1f93f6;'>{{doc.nom}}.pdf</span><br> Catégorie: <span style='color: #1f93f6;'>{{doc.category.libelle}}</span><br> Date de création: <span style='color: #1f93f6;'>{{doc.dateDocument | date:'dd/MM/yyyy'}}</span><br>                                        Mots Clefs: <span style='color: #1f93f6;'>{{doc.motsCles}}</span><br>
+
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                             <div class="col-lg-3 col-sm-6 col-md-4 col-md-12" ng-repeat="doc in documentsUserBank"> -->
+                        <!--                                 <div class="team-member" style="margin-left:10px"> -->
+                        <!--                                    <div class="team-img col-md-12 col-sm-12 col-xs-12"> -->
+                        <!--                                         <img class="img-responsive" ng-src="{{doc.avatar}}" alt=""> -->
+                        <!-- 										<img class="img-responsive" ng-src="data/patients/pdf.png" alt=""> -->
+                        <!-- 										<span class='team-member-edit'> -->
+                        <!--                                         <a ui-sref="app.mes-docs.visualbk_byname({name: name, named : doc.nom, url_ : doc.urlDocument,id : doc.idDocuments})"> -->
+                        <!--                                         <i class='material-icons icon-sm' style="cursor:pointer">remove_red_eye</i></a> -->
+                        <!--                                         </span> -->
+                        <!-- 										<i class='img-responsive material-icons' style="font-size:300px;color:#1f93f6;margin-left:0px;padding-left:0px;">picture_as_pdf</i> -->
+                        <!--                                     	<div class="team-info"> -->
+                        <!-- 	                                        Document: <span style='color: #1f93f6;'>{{doc.nom}}.pdf</span><br> -->
+                        <!-- 	                                        Catégorie: <span style='color: #1f93f6;'>{{doc.category.libelle}}</span><br> -->
+                        <!-- 	                                        Date de création: <span style='color: #1f93f6;'>{{doc.dateDocument | date:'dd/MM/yyyy'}}</span><br> -->
+                        <!-- 	                                        Mots Clefs: <span style='color: #1f93f6;'>{{doc.motsCles}}</span> -->
+                        <!-- 	                                    </div> -->
+                        <!--                                     </div> -->
+                        <!--                                 </div> -->
+                        <!--                             </div> -->
+                    </div>
+                    <div class="row" data-ng-controller="PaginationDemoCtrl" ng-if="documentsUserBank.length!=0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center padding-top-30 padding-bottom-30">
+                            <uib-pagination total-items="totalItems" ng-model="currentPage"></uib-pagination>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

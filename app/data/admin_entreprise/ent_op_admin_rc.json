@@ -1,0 +1,22 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"date": "13/09/2017",
+		"produit": "Depot a terme",
+		"banque": "UBA",
+		"prenom": "Qualshore",
+		"nom": "QS",
+		"telmobile": "707007070",
+		"mail": "elhadj.diop@qualshore.com",
+		"groupe": "Admin qsentreprise_test",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>remove_red_eye</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;"
+	}
+] }
+
+
+
+
+
+
+
+

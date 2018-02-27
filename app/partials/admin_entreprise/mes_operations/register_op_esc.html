@@ -1,0 +1,461 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Escompte';">  
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+		<form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                    <section class="box ">
+                            <header class="panel_header">
+                                <h2 class="title pull-left" ng-if="isOperation">CARACTÉRISTIQUES PRINCIPALES DE LA DEMANDE</h2>
+								<h2 class="title pull-left" ng-if="!isOperation && isOperation!=null">MODIFIER INFORMATIONS DE LA DEMANDE</h2>
+								<h2 class="title pull-left" ng-if="idDetail && isOperation==null">DÉTAILS DE LA DEMANDE</h2>
+								<h2 class="title pull-left" ng-if="!idDetail && isOperation==null">VALIDATION DE LA DEMANDE</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i id="box_toggle_more" class="box_toggle material-icons" id="box_toggle" style="color:#1065a8" on-load-clicker>expand_more</i>
+                                </div>
+                            </header>
+                            <div class="content-body">
+								<br>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="form-label" for="field-1">MONTANT <span style="color:#ff8000">*</span></label>
+											<div class="controls">
+												<div class='row'>
+													<div class="col-xs-5" style="width:80%">
+														<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" name="montant_esc" ng-change="changeMontant(montant_esc)" type="number" ng-model="montant_esc" placeholder="0"  class="form-control" required>
+													</div>
+													<div class="col-xs-1">
+														<span>{{devise_esc}}</span>
+													</div>
+												</div>
+												<span ng-show="erreurReady && form.montant_esc.$submitted && form.montant_esc.$error.required" style="color:#ff8000">Le montant est obligatoire.</span>
+												<span ng-show="erreurReady && form.montant_esc.$touched && form.montant_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+												<span ng-show="erreurReady && form.input.$error.number" style="color:#ff8000">Le format est incorrect.</span>
+												<span ng-show="erreurReady && isErrorNumb" style="color:#ff8000">Le montant doit être supérieur à zéro.</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="form-group">
+												<label class="form-label" for="formfield1">DEVISE <span style="color:#ff8000">*</span></label>
+												<div class="controls">
+													<select ng-disabled="true" name="devise_esc" class="form-control" ng-model="devise_esc" ng-change="changeDevise(devise_esc)" required>
+														<option ng-repeat="devis in listDevises" value="{{devis.description}}">{{devis.description}}</option>
+														<!-- <option value="XOF" selected>XOF</option> -->
+														<!-- <option value="USD">USD</option> -->
+														<!-- <option value="CAD">CAD</option> -->
+														<!-- <option value="CHF">CHF</option> -->
+														<!-- <option value="GBP">GBP</option> -->
+													</select>
+													<span ng-show="erreurReady && form.devise_esc.$submitted && form.devise_esc.$error.required" style="color:#ff8000">La devise est obligatoire.</span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="form-label" for="field-1">TIRÉ <span style="color:#ff8000">*</span></label>
+											<div class="controls">
+												<div class='row'>
+													<div class="col-xs-5">
+														<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" name="tire_esc" ng-change="changeTireEsc(tire_esc)" type="text" ng-model="tire_esc" class="form-control" required>
+													</div>
+												</div>
+												<span ng-show="erreurReady && form.tire_esc.$submitted && form.tire_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+												<span ng-show="erreurReady && form.tire_esc.$touched && form.tire_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+											</div>
+										</div>
+										<!-- <div class="form-group"> -->
+											<!-- <label class="form-label" for="field-1">TIREUR <span style="color:#ff8000">*</span></label> -->
+											<!-- <div class="controls"> -->
+												<!-- <div class='row'> -->
+													<!-- <div class="col-xs-5"> -->
+														<!-- <input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" name="tireur_esc" ng-change="changeTireurEsc(tireur_esc)" type="text" ng-model="tireur_esc" class="form-control" required> -->
+													<!-- </div> -->
+												<!-- </div> -->
+												<!-- <span ng-show="erreurReady && form.tireur_esc.$submitted && form.tireur_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span> -->
+												<!-- <span ng-show="erreurReady && form.tireur_esc.$touched && form.tireur_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span> -->
+											<!-- </div> -->
+										<!-- </div> -->
+									</div>
+									<!-- fin col-sm-6 n1 -->
+									<div class="col-sm-6">
+										<div class="form-group">
+                                            <label class="form-label" for="field-1">DATE D'ESCOMPTE <span style="color:#ff8000">*</span></label>
+                                            <div class="input-group" inputgroup>
+												<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="date" name="date_escompte_esc" class="form-control datepicker" uib-datepicker-popup ng-model="date_escompte_esc" ng-change="changeDate_valeur(date_escompte_esc)" is-open="dtpick.opened2" min-date="aujourdhui" max-date="'2020-11-28'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required/>
+												<span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span> 
+                                            </div>
+											<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.date_escompte_esc.$submitted && form.date_escompte_esc.$error.required" style="color:#ff8000">La date d'escompte est obligatoire.</span>
+											<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.date_escompte_escdv.$touched && form.date_escompte_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+											<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span>
+											<span ng-show="erreurReady &&  (!(idDetail && isOperation==null)&&!(!idDetail && isOperation==null)&&!(!isOperation && isOperation!=null))&&
+																	(isOperation || !isOperation && isOperation!=null) && date_escompte_esc!=null&&
+																	(aujourdhui.getFullYear()>date_escompte_esc.getFullYear()||
+																	aujourdhui.getFullYear()==date_escompte_esc.getFullYear()&&
+																	(aujourdhui.getMonth()+1)>(date_escompte_esc.getMonth()+1)||
+																	aujourdhui.getFullYear()==date_escompte_esc.getFullYear()&&
+																	(aujourdhui.getMonth()+1)==(date_escompte_esc.getMonth()+1)&&
+																	aujourdhui.getDate()>date_escompte_esc.getDate())" style="color:#ff8000">
+														La date d'escompte ne doit pas être inférieure à celle d'aujourd'hui.
+											</span>
+                                        </div>
+										<div class="form-group">
+											<label class="form-label" for="field-1">DATE DE MATURITÉ <span style="color:#ff8000">*</span></label>
+												<div class="input-group" inputgroup>
+													<input ng-disabled="erreurReady && (idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="date" name="date_maturite_esc"  class="form-control datepicker" uib-datepicker-popup ng-model="date_maturite_esc" ng-change="changeDate_maturite(date_maturite_esc)" is-open="dtpick.opened2" min-date="aujourdhui" max-date="'2020-11-28'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required/>
+													<span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+												</div>
+												<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.date_maturite_esc.$submitted && form.date_maturite_esc.$error.required" style="color:#ff8000">La date d'escompte est obligatoire.</span> 
+												<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.date_maturite_esc.$touched && form.date_maturite_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span> 
+												<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span> 
+												<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && date_escompte_esc>date_maturite_esc" style="color:#ff8000">La date de maturité ne doit pas être inférieure à la date d'escompte.</span> 
+										</div>
+										<div class="form-group">
+											<!-- <label class="form-label" for="field-1">DURÉE <span style="color:#ff8000">*</span></label> -->
+											<!-- <div class="controls"> -->
+												<!-- <div class='row'> -->
+													<!-- <div class="col-xs-4"> -->
+														<!-- <label class="form-label" for="field-1">DURÉE <span style="color:#ff8000">*</span></label> -->
+														<!-- <select ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" name="duree_esc" class="form-control" ng-model="duree_esc" ng-change="changeDureeEsc(duree_esc)" required> -->
+															<!-- <option value="" selected></option> -->
+															<!-- <option value="jour(s)">Jour(s)</option> -->
+															<!-- <option value="mois">Mois</option> -->
+															<!-- <option value="année(s)">Année(s)</option> -->
+														<!-- </select> -->
+													<!-- </div> -->
+													<!-- <div class="col-xs-4"> -->
+														<!-- <label class="form-label" for="field-1">NOMBRE <span style="color:#ff8000">*</span></label> -->
+														<!-- <input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" name="nb_duree_esc" ng-change="changeNbDuree(nb_duree_esc)" type="number" ng-model="nb_duree_esc" class="form-control" required> -->
+													<!-- </div> -->
+												<!-- </div> -->
+												<!-- <span ng-show="erreurReady && form.duree_esc.$submitted && form.duree_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span> -->
+												<!-- <span ng-show="erreurReady && form.duree_esc.$touched && form.duree_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span> -->
+												<!-- <span ng-show="erreurReady && form.nb_duree_esc.$submitted && form.nb_duree_esc.$error.required" style="color:#ff8000">Le nombre {{duree_esc}} est obligatoire.</span> -->
+												<!-- <span ng-show="erreurReady && form.nb_duree_esc.$touched && form.nb_duree_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span> -->
+												<!-- <span ng-show="erreurReady && form.input.$error.number" style="color:#ff8000">Le format est incorrect.</span> -->
+												<!-- <span ng-show="erreurReady && isErrorNb_duree" style="color:#ff8000">Le nombre {{duree_esc}} doit être supérieur à zéro.</span> -->
+											<!-- </div> -->
+											<div class="form-group">
+											<label class="form-label" for="field-1">TIREUR <span style="color:#ff8000">*</span></label>
+											<div class="controls">
+													<div class='row'>
+														<div class="col-xs-5">
+															<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" name="tireur_esc" ng-change="changeTireurEsc(tireur_esc)" type="text" ng-model="tireur_esc" class="form-control" required>
+														</div>
+													</div>
+													<span ng-show="erreurReady && form.tireur_esc.$submitted && form.tireur_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+													<span ng-show="erreurReady && form.tireur_esc.$touched && form.tireur_esc.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- fin col-sm-6 n2 -->
+								</div>
+								<!-- Fin row -->
+                            </div>
+							<!-- fin div body -->
+                    </section>
+					<!-- fin section  1-->
+                    <section class="box ">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">OPTIONS DE LA DEMANDE</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i id="box_toggle_less" class="box_toggle material-icons" style="color:#1065a8" on-load-clicker_>expand_less</i>
+                                </div>
+                            </header>
+                            <div class="content-body">
+								<br>
+                                <div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<div class='row'>
+                                                <div class="col-xs-3 " style="width:auto">
+                                                    <label class="form-label" for="field-1">TOUTES LES BANQUES</label>
+                                                </div>
+                                                <div class="col-xs-1 " style="width:auto" ng-repeat="choice in toutes">
+                                                    <input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.toute_esc" ng-change="choixToutes($parent.toute_esc)">
+                                                    {{choice.reponse}}
+                                                </div>
+                                            </div>
+										</div>
+										<div class="form-group">
+											<div class="controls" style="width: 100%;height: 150px;overflow:auto;" ng-show="!isToute">
+												<table style="width: 100%;height: 100px;overflow:auto;" class="table table-hover">
+													<thead>
+														<tr>
+															<th>CHOIX</th>
+															<th>NOM</th>
+															<th>VILLE</th>
+															<th>PAYS</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="bk in listBksByLoc">
+															<td>
+																<input id="checkbxinput" ng-class="{'allowclickinput': chexBoxAllow}" class="bk_{{bk.idInstitution}}" style="color:#1065a8;width:15px;height:15px" type="checkbox" value="{{bk.idInstitution}}" ng-checked="selectionbk.indexOf(bk.idInstitution) > -1" ng-click="changeBkAttach(bk.idInstitution)" class="input-sm"/>
+															</td>
+															<td>{{bk.nom}}</td>
+															<td>{{bk.localityIdLocalite.ville}}</td>
+															<td>{{bk.localityIdLocalite.pays}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="form-group">
+											 <div class='row'>
+                                                <div class="col-xs-3 " style="width:auto">
+                                                    <label class="form-label" for="field-1">ENCHÈRE MULTITOURS</label>
+                                                </div>
+												<div class="col-xs-1 " style="width:auto" ng-repeat="choice in enchersm">
+                                                    <input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.encherem_esc" ng-change="choixEnchersm($parent.encherem_esc)">
+                                                    {{choice.reponse}}
+                                                </div>
+                                            </div>
+										</div>
+										<div class="form-group">
+											<div class='row'>
+                                                <div class="col-xs-4 " style="width:auto">
+                                                    <label class="form-label" for="field-1">ATTACHER DOCUMENT</label>
+                                                </div>
+                                                <div class="col-xs-4 " style="width:auto" ng-repeat="choice in docus">
+													<input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.doc_esc" ng-change="ifDocUp($parent.doc_esc)">
+													{{choice.reponse}}
+                                                </div>
+                                            </div>
+										</div>
+										<div class="form-group">
+											<div class="controls" style="width: 100%;height: 150px;overflow: auto;" ng-show="isUpload">
+												<table style="width: 100%;overflow:auto;" class="table table-hover">
+														<thead>
+															<tr>
+																<th>CHOIX</th>
+																<th>NOM</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr ng-repeat="document in listDocuments">
+																<td>
+																	 <input id="checkbxinput" ng-class="{'allowclickinput': chexBoxAllow}" class="doc_{{document.idDocuments}}" style="color:#1065a8;width:15px;height:15px" type="checkbox" value="{{document.idDocuments}}" ng-checked="selection.indexOf(document.idDocuments) > -1" ng-click="changeDoc_attach(document.idDocuments)" class="input-sm"/>
+																</td>
+																<td>{{document.nom}}</td>
+															</tr>
+														</tbody>
+												</table> 
+											</div>
+										</div>
+									</div>
+									<!-- fin col-sm-6 n1 -->
+									<div class="col-sm-6">
+										<div class="form-group" style="width: 100%;height: 100px;">
+											<div class='row'>
+                                                <div class="col-xs-4 " style="width:auto">
+                                                     <label class="form-label" for="field-1">DATE DÉBUT </label>
+													<div class="input-group" inputgroup>
+														<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="date" name="date_debut_esc" class="form-control datepicker" uib-datepicker-popup ng-model="date_debut_esc" ng-change="changeDate_debut(date_debut_esc)" is-open="dtpick.opened2" min-date="aujourdhui" max-date="'2020-11-28'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close"/>
+														<span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+													</div>
+													<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span>
+													<span ng-show="erreurReady && (!(idDetail && isOperation==null)&&!(!idDetail && isOperation==null)&&!(!isOperation && isOperation!=null))&&
+																	(isOperation || !isOperation && isOperation!=null) && date_debut_esc!=null&&
+																							(aujourdhui.getFullYear()>date_debut_esc.getFullYear()||
+																							aujourdhui.getFullYear()==date_debut_esc.getFullYear()&&
+																							(aujourdhui.getMonth()+1)>(date_debut_esc.getMonth()+1)||
+																							aujourdhui.getFullYear()==date_debut_esc.getFullYear()&&
+																							(aujourdhui.getMonth()+1)==(date_debut_esc.getMonth()+1)&&
+																							aujourdhui.getDate()>date_debut_esc.getDate())" style="color:#ff8000">
+																					La date de début ne doit pas être inférieure à celle d'aujourd'hui.
+													</span>
+												</div>
+												<div class="col-xs-1"></div>
+												<div class="col-xs-1" style="width:auto;bottom:38px">
+													<div class="form-group" ng-controller="TimepickerDemoCtrl">
+														<uib-timepicker ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+													</div>
+												</div>
+                                            </div>
+										</div>
+										<div class="form-group" style="width: 100%;height: 100px;">
+											<div class='row'>
+												<div class="col-xs-4 " style="width:auto">
+													<label class="form-label" for="field-1">DATE FIN </label>
+													<div class="input-group" inputgroup>
+														<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="date" name="date_fin_esc" class="form-control datepicker" uib-datepicker-popup ng-model="date_fin_esc" ng-change="changeDate_fin(date_fin_esc)" is-open="dtpick.opened2" min-date="aujourdhui" max-date="'2020-11-28'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+														<span class="input-group-addon"><i class="fa fa-calendar" style="color: #999;"></i></span>
+													</div>
+													<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && form.input.$error.date" style="color:#ff8000">Le format est incorrect.</span>
+													<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && date_debut_esc>date_fin_esc" style="color:#ff8000">La date de fin ne doit pas être inférieure à la date de début.</span>
+													<span ng-show="erreurReady && (isOperation || !isOperation && isOperation!=null) && date_valeur2<=date_fin_esc" style="color:#ff8000">La date de fin ne doit pas être supérieure ou égale à la date d'escompte.</span>
+												</div>
+												<div class="col-xs-1"></div>
+												<div class="col-xs-1" style="width:auto;bottom:38px">
+													<div class="form-group" ng-controller="TimepickerDemoCtrl">
+														<uib-timepicker ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class='row'>
+                                                <div class="col-xs-4 " style="width:auto">
+                                                    <label class="form-label" for="field-1">ENCHÈRE ANONYME</label>
+                                                </div>
+												<div class="col-xs-1 " style="width:auto" ng-repeat="choice in enchersa">
+                                                    <input style="width:15px;height:15px;" ng-class="{'allowclickinput': chexBoxAllow}" class="{{choice.id}}" id="{{choice.id}}" type="radio" ng-value="{{choice.id}}" ng-model="$parent.encherea_esc" ng-change="choixEnchersa($parent.encherea_esc)">
+                                                    {{choice.reponse}}
+                                                </div>
+                                            </div>
+										</div>
+										<div class="form-group">
+											<label class="form-label" for="field-1">TAUX MAX</label>
+											<div class="controls">
+												<div class='row'>
+													<div class="col-xs-4">
+														<input ng-disabled="(idDetail &&  isOperation==null)||(!idDetail && isOperation==null)" type="number" ng-change="changeTaux(taux_max_esc)" ng-model="taux_max_esc" class="form-control">
+													</div>
+													<div class="col-xs-1">
+														<span>%</span>
+													</div>
+												</div>
+												<span ng-show="erreurReady && (isErrorTaux || taux_max_esc<0 || taux_max_esc==undefined)" style="color:#ff8000">Le taux max ne doit pas être inférieur à zéro.</span>
+											</div>
+										</div>
+									</div>
+									<!-- fin col-sm-6 n2 -->
+								</div>
+								<!-- Fin row -->
+                            </div>
+							<!-- fin div body -->
+                    </section>
+					<!-- fin section  2-->
+					<!-- OFFRE -->
+					<section class="box " ng-if="isOfferTrue">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">LISTES DES OFFRES DE LA DEMANDE</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i id="box_toggle_more" class="box_toggle material-icons" style="color:#1065a8" on-load-clicker>expand_more</i>
+                                </div>
+                            </header>
+                            <div class="content-body">
+                                <!-- START -->
+                                <br>
+                                <div class='row'>
+									<div class="col-sm-12"> 
+										<div class="form-group" style="width: 100%;height: 150px;" ng-if="isOfferNull">
+											<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+												<div>
+													<table class="table table-striped table-bordered" cellspacing="0">
+														<thead>
+															<tr>
+																<th style="width: auto">N°</th>
+																<th style="width: auto">BANQUE</th>
+																<th style="width: auto">TAUX</th>
+																<th style="width: auto">EST-CE SÉLECTONNÉE?</th>
+																<th style="width: auto">ACTION</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr ng-repeat="offre in listOffres | orderBy:'-offer.idOffre'" ng-if="offre.offer.etat==2 || offre.offer.etat==3 ? back='#1f93f6' : back='transparent'" style="background:{{back}};background-color:{{back}}">
+																<td>{{offre.offer.idOffre}}</td>
+																<td>{{offre.offer.userBanqueIdUserBanque.groupeIdGroupe.institution.nom}}</td>
+																<td>{{offre.offer.taux}}</td>
+																<td>
+																	<a ng-if="offre.offer.etat!=2 && offre.offer.etat!=3" style="color:black;">Non<a>
+																	<a ng-if="offre.offer.etat==2" style="color:black;">pré-sélection<a>
+																	<a ng-if="offre.offer.etat==3" style="color:black;">Oui<a>
+																</td>
+																<td>
+																	<i class='material-icons' ng-class="{'disabled': offreWin}" style="cursor:pointer;" ng-click="visualOffer(offre)">remove_red_eye</i>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="form-group" ng-if="!isOfferNull">
+											<span>Vous n'avez aucune offre sur cette demande.</span>
+										</div>
+									</div>
+									<!-- fin col-->
+                                </div>
+								<br>
+                                <div class='row' ng-if="loadSelect">
+									<div class="col-sm-12"> 
+										<div class="form-group">
+											<div style="text-align:center;">
+												<img id="mySpinner" src="img/loading.gif" ng-show="loadSelect" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- fin div row -->
+                            </div>
+							<!-- fin div body -->
+                    </section>
+					<br>
+					<div style="text-align:center;">
+					<button type="button"  ng-if="idDetail && isOperation==null" ng-click="cancel()" class="btn" style="background:#ff8000;">Fermer</button>
+					<img id="mySpinner" src="img/loading.gif" ng-show="!idDetail && (isOperation || !isOperation || isOperation==null) && loading" />&nbsp;&nbsp;&nbsp;
+						<button type="submit" ng-if="!idDetail && (isOperation || !isOperation || isOperation==null)" ng-click="addenToPesC()" ng-disabled="
+													loading ||
+													idDetail && isOperation==null ||
+													isErrorNumb ||
+													(isErrorTaux || taux_max_esc<0 || taux_max_esc==undefined) ||
+													isErrorNb_duree ||
+													date_escompte_esc==null ||
+													date_valeur2<=date_fin_esc ||
+													date_escompte_esc>date_maturite_esc ||
+													(isOperation || !isOperation && isOperation!=null) &&
+													form.montant_esc.$invalid||
+													form.date_escompte_esc.$invalid||
+													form.devise.$invalid||
+													form.date_maturite_esc.$invalid||
+													form.date_debut_esc.$invalid||
+													form.banque_.$invalid||
+													form.tire_esc.$invalid||
+													form.tireur_esc.$invalid||
+													form.duree_esc.$invalid||
+													form.nb_duree_esc.$invalid||
+													form.date_fin_esc.$invalid||
+													date_debut_esc>date_fin_esc||
+													date_escompte_esc!=null&&
+													date_maturite_esc&&
+													date_debut_esc!=null&&
+													date_fin_esc&&
+													((aujourdhui.getFullYear()>date_escompte_esc.getFullYear()||
+													aujourdhui.getFullYear()==date_escompte_esc.getFullYear()&&
+													(aujourdhui.getMonth()+1)>(date_escompte_esc.getMonth()+1)||
+													aujourdhui.getFullYear()==date_escompte_esc.getFullYear()&&
+													(aujourdhui.getMonth()+1)==(date_escompte_esc.getMonth()+1)&&
+													aujourdhui.getDate()>date_escompte_esc.getDate())||
+													
+													(aujourdhui.getFullYear()>date_debut_esc.getFullYear()||
+													aujourdhui.getFullYear()==date_debut_esc.getFullYear()&&
+													(aujourdhui.getMonth()+1)>(date_debut_esc.getMonth()+1)||
+													aujourdhui.getFullYear()==date_debut_esc.getFullYear()&&
+													(aujourdhui.getMonth()+1)==(date_debut_esc.getMonth()+1)&&
+													aujourdhui.getDate()>date_debut_esc.getDate()))" class="btn btn-success">
+										VALIDER
+									</button>
+									&nbsp;
+									&nbsp;
+						<button type="button" ng-if="!idDetail && (isOperation || !isOperation || isOperation==null)" ng-click="cancel()" class="btn" style="background:#ff8000;">Annuler</button>
+					</div>
+					<br>
+					<br>
+					<span ng-show="form.montant.$invalid||
+												form.date_escompte_esc.$invalid||
+												form.devise.$invalid||
+												form.date_maturite_esc.$invalid||
+												form.date_debut_esc.$invalid||
+												form.banque_.$invalid||
+												form.date_fin_esc.$invalid" style="color:#ff8000">
+												* Veuillez renseigner les champs obligatoires.
+					</span>
+					<span style="color:#ff8000" ng-show="isSuccess">{{message}}</span>
+					<br>
+					<div class="form-group">
+						<div class="form-group">
+						</div>
+					</div>
+			</form>
+        </div>
+</div>
+

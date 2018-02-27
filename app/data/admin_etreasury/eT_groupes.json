@@ -1,0 +1,87 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 2,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 3,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 4,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 5,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 6,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 7,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 8,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 9,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 10,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 11,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 12,
+		"code": "ADMIN_ETREASURY",
+		"libelle": "Admin etreasury",
+		
+		"actions": "<i class='material-icons' style='color:black;cursor:pointer;'>settings</i>&nbsp;&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	}
+	
+] }

@@ -1,0 +1,51 @@
+<div class="col-lg-12 login_page">
+	<div class="login-wrapper">
+		<h1><a class="classe_logo"  title="Réinitialisation mot de passe" tabindex="-1">Vérouillage session</a></h1>
+		<section class="box nobox">
+				<div class="content-body">    <div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<!-- <h2 class="lockscreen_icon"><i class='material-icons icon-accent'>lock</i></h2> -->
+						<h4 class="lockscreen_info">
+							<i class='material-icons icon-accent'>lock</i>
+							<br>
+							<img src='{{app.photo}}'> {{app.prenom}}&nbsp;{{app.name}}
+						</h4>
+						<div class="login loginpage col-md-4 col-sm-6 col-xs-8 col-md-offset-4 col-sm-offset-3 col-xs-offset-2 lockscreen_search_area">
+							<form  name="form" class="lockscreen_search">
+								<div class="input-group accent">
+									<span class="input-group-addon">
+										<i class="material-icons icon-accent">lock_open</i>
+									</span>
+									<input type="password" name="lock_screen" ng-model="lock_screen" class="form-control" placeholder="Votre mot de passe et tapez entrée" required>
+									<!-- <input type='submit' value=""> -->
+								</div>
+								<br>
+								<div class="input-group accent">
+									<span ng-show="form.lock_screen.$submitted && form.lock_screen.$error.required" style="color:#ff8000">Le mot de passe est obligatoire.</span>
+									<span ng-show="form.lock_screen.$touched && form.lock_screen.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+								</div>
+								<br>
+								<button type="submit" class="btn btn-accent btn-block" ng-disabled="form.$invalid">Valider</button>
+								<br>
+								<button type="button" onclick="window.history.go(-1); return false;" class="btn" style="background:#ff8000;">ANNULER</button>           
+							</form>
+							<div class="clearfix"></div>
+								<h1 class="lockscreen_tagline" style="color:#fff">S'il vous plait tapez votre mot de passe pour y accéder.</h1>
+							<div class="clearfix"></div>
+							<footer class="classe_footer">
+										<label style="text-align:center;font-size:10px;margin-top:90px;">
+											Copyright © Etreasury | All rights reserved
+										</label>
+										<label style="text-align:center;font-size:10px;">
+											Privacy policy | Terms of service
+										</label>
+							</footer>
+						</div>
+					</div>
+				</div>
+		</section>
+	</div>
+</div>
+
+
+

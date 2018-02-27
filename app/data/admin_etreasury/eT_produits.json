@@ -1,0 +1,122 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 2,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 3,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 4,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 5,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 6,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 7,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 8,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 9,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 10,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 11,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	},
+	{
+		"id": 12,
+		"type": "change",
+		"nom": "Flexiterm",
+		"avantage": "Fixer aujourd hui le cours de change valable sur une période.",
+		"inconvenient": "",
+		"negociable": "<img src='img/non.png' style='cursor:pointer;'>oui",
+		"banque": "Standard chart_civ",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>details</i>"
+	}
+] }

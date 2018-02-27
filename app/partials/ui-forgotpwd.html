@@ -1,0 +1,58 @@
+<div class="login_page">
+<div class="login-wrapper">
+    <h1 class="loginPage"><a class="classe_logo" href="#" title="Réinitialisation mot de passe" tabindex="-1">Réinitialisation mot de passe E-TREASURY</a></h1>
+    <div id="forgotpass" style="box-shadow: 2px 2px 9px 2px #999;" class="login loginpage col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">        
+		<h2 class="loginPage_" style="text-align:center;color:#F5F5F5">Mot de passe oublié</h2>	
+
+        <form name="form" class="form-validation" ng-init="isCollapsed=true">
+    
+          <div class="text-danger text-center message" ng-show="authError">
+              <!-- {{authError}} -->
+          </div>
+
+            <p>
+                <!-- <label for="user_login">Email<br /> -->
+				<i class="material-icons" style="position:absolute; margin: 6px 0 15px -195px;">contact_mail</i>
+                <input type="email" autocomplete='off' ng-init="email_=''" style="padding-left: 25px;" name="email_" ng-change="myFunc()" id="email_" placeholder="Tapez votre E-mail" class="input" ng-model="email_"/>
+				<!-- <span ng-show="form.email.$touched && form.email.$invalid" style="color:#ff8000">L'e-mail est oblibatoire.</span> -->
+				<span ng-show="form.email_.$error.email" style="color:#ff8000">Veuillez entrer un e-mail valide.</span>
+				<!-- <span ng-show="form.email_.$touched && form.email_.$error.required" style="color:#ff8000">Ce champ ne doit pas être vide.</span> -->
+				<!-- <span ng-show="form.email_.$submitted && form.email_.$error.required" style="color:#ff8000">L'e-mail est obligatoire.</span> -->
+				<span ng-show="isInvalidEmail" style="color:#ff8000">L'e-mail est incorrect ou est inactif.</span>
+				</label>
+            </p>
+
+            <p class="submit">
+				<button type="submit" ng-disabled="form.$invalid || form.email_.$error.email || email_==''"  class="btn btn-accent btn-block" ng-click="forgotPassword(email_)" >
+					Ré-initialiser mot de passe
+				</button>            
+            </p>
+			<p class="submit"> 
+			<!-- onclick="window.history.go(-1); return false;" -->
+				<button type="submit" ng-click="backHeader()" class="btn" style="background:#ff8000;width: 100%;">ANNULER</button>   
+			</p> 
+
+        <div class="m-t" ng-show="isVAlidEmail">
+          <div class="alert alert-success">
+            <p class="blink_me">Un nouveau mot de passe est envoyé à l'adresse mail <a style="color: #1065a8;" href="mailto:{{email_}}">{{email_}}</a>.&nbsp;&nbsp;&nbsp;<a ui-sref="access.login" style='color:#ffffff;font-weight:normal;'>Cliquer ici pour vous connecter.</a></p>
+          </div>
+        </div>
+
+
+        </form>
+		
+		<footer class="classe_footer">
+					<label style="text-align:center;font-size:10px;margin-top:20px;">
+						Copyright © Etreasury | All rights reserved
+					</label>
+					<label style="text-align:center;font-size:10px;">
+						Privacy policy | Terms of service
+					</label>
+		</footer>
+    </div>
+</div>
+</div>
+
+
+
+

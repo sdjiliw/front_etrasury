@@ -1,0 +1,86 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 2,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 3,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 4,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 5,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 6,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 7,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 8,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 9,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 10,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 11,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 12,
+		"nom": "cie",
+		"tel": "0022521233300",
+		"localite": "COTE DIVOIRE",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	}
+] }

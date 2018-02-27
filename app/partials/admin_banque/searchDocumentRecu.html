@@ -1,0 +1,78 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Recherche sur les documents reçus';">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" data-ng-controller="bankController">
+     <div class="col-md-6 col-sm-6 col-xs-12">
+    	<div class="controls">
+					<div class="input-group default">
+						<span class="input-group-addon"> <i class="material-icons" style="color: #1f93f6;">search</i>
+						</span> 
+						<input type="text" 
+							class="form-control"
+							ng-model="rechercheDoc.chaine" 
+							placeholder="Tapez le nom, l'entreprise ou l'auteur du document à chercher...">
+					</div>
+				</div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+		<nav class='pull-right search-paging'>
+             <uib-pagination ng-model="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit" class="pull-right"></uib-pagination>
+        </nav>
+	</div>
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Tous les documents reçus</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body padding-bottom-0">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row" style="height: 700px;overflow-x: scroll; width: 100%;">
+                        	<div class="row" data-ng-controller="bankController">
+                        	<div class="col-md-12 col-sm-12 col-xs-12" ng-if="docBankRecuListSearch.length==0">
+								<div style="text-align:center;">
+									<h4>Aucun document trouvé.</h4>
+								</div> 
+							</div> 
+<!--                             ng-repeat="doc in resultatDocBank" -->
+                            <div class="col-lg-3 col-sm-6 col-md-4 col-md-12" 
+                            ng-repeat="doc in filtered = docBankRecuListSearch | filter:rechercheDoc | startSearchFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                                <div class="team-member">
+                                    <div class="team-img col-md-12 col-sm-12 col-xs-12">
+										<img class="img-responsive" ng-src="data/patients/pdf2.png" alt="">
+                                        <a ui-sref="app.docs-recus-bk.visualbk_byname({name: name, named : doc.nom, url_ : doc.urlDocument,id : doc.idDocuments})">
+<!--                                         app.docs-recus-bk.visualbk_byname({name: name, named : doc.documents.nom, url_ : doc.documents.urlDocument,id : doc.documents.idDocuments}) -->
+                                        <i class='material-icons icon-sm' style="cursor:pointer">remove_red_eye</i>
+                                        </a>&nbsp;&nbsp;
+                                        <a title="piste d'audit" ng-click="showPistedocRecu(doc);">
+                                        	<i class='fa fa-external-link' style="cursor:pointer;"></i>
+                                        </a>
+                                        <br>
+                                       <div class="team-info">
+                                        Document: <span style='color: #1f93f6;'>{{doc.nom}}.pdf</span><br>
+                                        Date de publication: <span style='color: #1f93f6;'>{{doc.datePublication | date:'dd/MM/yyyy'}} à {{doc.datePublication | date:'HH:mm:ss'}}</span><br>
+                                        Entreprise: <span style='color: #1f93f6;'>{{doc.category.userIdUtilisateur.groupeIdGroupe.institution.nom}}</span><br>
+                                        Auteur: <span style='color: #1f93f6;'>{{doc.category.userIdUtilisateur.nom}} {{doc.category.userIdUtilisateur.prenom}}</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+<!--                             <div ng-if="filtered.length===0"> -->
+<!--                                 	Aucun document trouvé -->
+<!--                                 </div> -->
+                        </div>
+                        </div>
+
+<!--                         <div class="row" data-ng-controller="PaginationDemoCtrl" ng-if="resultatDocBank.length!=0"> -->
+<!--                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center padding-top-30 padding-bottom-30"> -->
+<!--                                 <uib-pagination total-items="totalItems" ng-model="currentPage"></uib-pagination> -->
+<!--                             </div> -->
+<!--                         </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

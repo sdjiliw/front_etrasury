@@ -1,0 +1,49 @@
+<div class="modal-header">
+	<div style="text-align: center;">
+		<h2 class="modal-title">
+			Attention&nbsp;&nbsp; <i class="material-icons"
+				style="color: #ff8000; position: absolute; top: 25px; font-size: 40px;">warning</i>
+		</h2>
+	</div>
+</div>
+<div style="text-align: center;">
+	<div class="modal-body">
+		<div ng-if="isNotNull">
+			<span style="color: #ff8000"> La suppression de ce groupe va
+				engendrer des modifications sur les utilisateurs suivants, </span><br>
+		</div>
+		<span style="color: #ff8000">Voulez-vous vraiment supprimer ce
+			groupe?<br>
+		</span> <br>
+		<div ng-if="isNotNull">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+					<table style="width: 100%"
+						class="table table-striped table-bordered"
+						class="table table-striped">
+						<thead>
+							<tr>
+								<th style="width: auto">NUMÉRO</th>
+								<th style="width: auto">NOM</th>
+								<th style="width: auto">PRENOM</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in usersGroupbyId">
+								<td style="width: auto">{{$index+1}}</td>
+								<td style="width: auto">{{user.nom}}</td>
+								<td style="width: auto">{{user.prenom}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<div style="text-align: center;">
+		<button class="btn btn-primary" style="background: #ff8000;" ng-click="confirmDelete()">Confirmer</button>
+		<button class="btn btn-default" style="background: #1f93f6;" ng-click="cancel()">Annuler</button>
+	</div>
+</div>

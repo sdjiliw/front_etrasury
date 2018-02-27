@@ -1,0 +1,16 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"type": "admin_entreprise",
+		"login": "entreprise",
+		"mdp": "entreprise",
+		"mail": "sega.ndiaye@qualshore.com"
+	},
+	{
+		"id": 2,
+		"type": "admin_etreasury",
+		"login": "toto",
+		"mdp": "tata",
+		"mail": "thiame.sow@qualshore.com"
+	}
+] }

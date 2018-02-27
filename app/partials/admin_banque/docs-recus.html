@@ -1,0 +1,155 @@
+<!-- <div class='content-wrapper' ng-init="app.settings.pagetitle = 'Documents reçus';"> -->
+<!--     <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" data-ng-controller="bankController"> -->
+<!--         <section class="box "> -->
+<!--             <header class="panel_header"> -->
+<!--                 <h2 class="title pull-left">Tous les documents reçus</h2> -->
+<!--                 <div class="actions panel_actions pull-right"> -->
+<!--                     <i class="box_toggle material-icons">expand_more</i> -->
+<!--                 </div> -->
+<!--             </header> -->
+<!--             <div class="content-body padding-bottom-0"> -->
+<!--                 <div class="row"> -->
+<!--                     <div class="col-md-12 col-sm-12 col-xs-12"> -->
+<!--                         <div class="row"> -->
+<!--                         	<div class="col-md-12 col-sm-12 col-xs-12" ng-if="docBankRecuList.length==0"> -->
+<!-- 								<div style="text-align:center;"> -->
+<!-- 									<h4>Vous n'avez aucun document reçu.</h4> -->
+<!-- 								</div>  -->
+<!-- 							</div>  -->
+<!--                             <div class="col-lg-3 col-sm-6 col-md-4 col-md-12" ng-repeat="doc in docBankRecuList"> -->
+<!--                                 <div class="team-member "> -->
+<!--                                     <div class="team-img col-md-12 col-sm-12 col-xs-12"> -->
+<!--                                         <img class="img-responsive" ng-src="{{doc.avatar}}" alt=""> -->
+<!-- 										<img class="img-responsive" ng-src="data/patients/pdf.png" alt=""> -->
+<!-- 										<i class='img-responsive material-icons' style="font-size:300px;color:#1f93f6;margin-left:0px;padding-left:0px;">picture_as_pdf</i> -->
+<!--                                     </div> -->
+<!--                                     <div class="team-info col-md-12 col-sm-12 col-xs-12"> -->
+<!--                                         <h4 class='margin-top-15 margin-bottom-10 text-primary'><a ui-sref="app.hos-patient-profile">{{doc.nom}}</a></h4> -->
+<!--                                         <span class='team-member-edit'> -->
+<!--                                         	<a ui-sref="app.doc-bk-show({url_ : doc.documents.urlDocument, name : doc.documents.nom, id : doc.documents.idDocuments})"> -->
+<!--                                         		<i class='material-icons icon-sm' ng-click="DocRecuEntDetail(doc)" style="cursor:pointer">remove_red_eye</i> -->
+<!--                                         	</a> -->
+<!--                                         </span> -->
+<!--                                         <span>Document: {{doc.nom}} <br>Catégorie: {{doc.documents.category.libelle}} yrs<br>Date de publication: {{doc.datePublication | date : 'dd/MM/yyyy'}} à {{doc.datePublication | date:'HH:mm:ss'}}</span> -->
+<!--                                         <div class="clearfix"></div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+
+<!--                         <div class="row" data-ng-controller="PaginationDemoCtrl" ng-if="docBankRecuList.length!=0"> -->
+<!--                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center padding-top-30 padding-bottom-30"> -->
+<!--                                 <uib-pagination total-items="totalItems" ng-model="currentPage"></uib-pagination> -->
+<!--                             </div> -->
+<!--                         </div> -->
+
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </section> -->
+<!--     </div> -->
+<!-- </div> -->
+
+<!-- separateur -->
+<!-- separateur -->
+<!-- separateur -->
+<!-- separateur -->
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Documents reçus';">
+    <form id="general_validat" action="javascript:;" name="form" role="form">
+        <div class="col-lg-12" data-ng-controller="bankController">
+            <!-- ng-click="bKesPmesDocaddCat()" -->
+            <div class="col-sm-11">
+                <div class="controls">
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="controls">
+                    <button type="button" class="btn btn-warning" ng-click="showRechercheDocRecu();"><i class="fa fa-search"></i></button>
+                    <!-- 					<div class="input-group primary"> -->
+                    <!-- 						<span class="input-group-addon"> <i class="material-icons">search</i> -->
+                    <!-- 						</span>  -->
+                    <!-- 						<input type="text"  -->
+                    <!-- 							ng-click="showTest()"  -->
+                    <!-- 							class="form-control"  -->
+                    <!-- 							placeholder="Recherche sur les documents reçus..."> -->
+                    <!-- 					</div> -->
+                </div>
+            </div>
+            <section class="box ">
+                <header class="panel_header">
+                    <h2 class="title pull-left">Tous les documents reçus par institution</h2>
+                    <div class="actions panel_actions pull-right">
+                        <i class="box_toggle material-icons">expand_more</i>
+                    </div>
+                </header>
+                <div class="content-body padding-bottom-0">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-12">
+                                <section class="box nobox">
+                                    <div class="content-body">
+                                        <div class="row">
+                                            <div class="col-xs-12 padding-right-0">
+                                                <div class="col-xs-11">
+                                                    <!-- /*DOCUMENTS OPERATIONS -->
+                                                    <button style="background:#ff8000;color:#fff" type="button" ng-if="boolDocRecu" ng-click="suppDocRecu();" class="btn">
+													<i class="material-icons" style="position:absolute;top:5px;left:0px;">delete</i>&nbsp;&nbsp;&nbsp;Supprimer le document {{nameDoc}}
+												</button>
+                                                    <!-- /*DOCUMENTS OPERATIONS -->
+                                                </div>
+                                                <div class="col-xs-1">
+                                                    <div class="controls">
+                                                        <button type="button" ng-if="boolDocRecu" style="background-color:#1f93f6;" title="Piste d'audit" class="btn btn-warning" ng-click="showPistedocRecu2();">
+													<i class='fa fa-external-link' style="cursor:pointer;"></i>
+													</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                            <div class="col-md-2 col-sm-2 col-xs-2 padding-right-0 margin-top-30">
+                                                <div class="mail-wrapper">
+                                                    <div data-ng-controller="AccordionDemoCtrl" class='collapsed accordion'>
+                                                        <uib-accordion close-others="oneAtATime">
+                                                            <div ng-repeat="ent in listEntrpriseDoc | orderBy : '-idInstitution'">
+                                                                <uib-accordion-group>
+                                                                    <uib-accordion-heading>
+                                                                        <a class="panel-title" style="cursor: pointer" ng-click="getDocsRecu(ent.nom,ent.idInstitution)">
+                                                                            <span style="cursor:pointer;">
+																		 {{ent.nom}}
+																		<i class="pull-right glyphicon"
+																		ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+																	</span>
+                                                                        </a>
+                                                                    </uib-accordion-heading>
+                                                                    <ul ng-repeat="docs in lesdocRecus">
+                                                                        <a style="cursor:pointer" ng-click="docBankRecuDetail(docs,docs.documents.nom,docs.documents.urlDocument,docs.documents.idDocuments)">
+																{{docs.documents.nom}}.pdf
+																</a>
+                                                                    </ul>
+                                                                    <!-- 															<div ng-repeat="doc in fold.docs"><span ng-if="doc.name!=''" ng-click="catDocBkDetail(1)" style="cursor:pointer">{{doc.name}}</span></div> -->
+                                                                </uib-accordion-group>
+                                                            </div>
+                                                        </uib-accordion>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10 col-sm-10 col-xs-10  margin-top-30 padding-left-0">
+
+                                                <div class="mail_content">
+                                                    <div class="row">
+                                                        <div ui-view class="fade-in"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+</div>

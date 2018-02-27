@@ -1,0 +1,87 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 2,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 3,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 4,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 5,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 6,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 7,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 8,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 9,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 10,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 11,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	},
+	{
+		"id": 12,
+		"code": "E_ADMIN_CIE",
+		"libelle": "Admin cie",
+		"entreprise": "cie",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	}
+	
+] }

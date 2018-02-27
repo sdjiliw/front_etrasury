@@ -1,0 +1,11 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"prenom": "",
+		"nom": "",
+		"email": "",
+		"tel": "",
+		"banque": "",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>"
+	}
+] }

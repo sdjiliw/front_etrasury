@@ -1,0 +1,42 @@
+[
+    {
+		"id": 1,
+        "avatar": "data/patients/pdf.png",
+        "nom": "Document 1",
+        "mot-cle": "HouseWife",
+        "categorie": "cat1",
+        "file": "",
+        "date": "15-06-2017",
+		"src": "documents/pdf_.pdf"
+    }, 
+    {
+		"id": 2,
+        "avatar": "data/patients/pdf.png",
+        "nom": "Document 2",
+        "mot-cle": "Teacher",
+        "categorie": "cat1",
+        "file": "",
+        "date": "15-06-2017",
+		"src": "documents/pdf_2.pdf"
+    }, 
+    {
+		"id": 3,
+        "avatar": "data/patients/pdf.png",
+        "nom": "Document 3",
+        "mot-cle": "Journalist",
+        "categorie": "cat2",
+        "file": "",
+        "date": "15-06-2017",
+		"src": "documents/pdf_3.pdf"
+    }, 
+    {
+		"id": 4,
+        "avatar": "data/patients/pdf.png",
+        "nom": "Document 4",
+        "mot-cle": "Industrialist",
+        "categorie": "cat2",
+        "file": "",
+        "date": "15-06-2017",
+		"src": "documents/pdf_4.pdf"
+    }
+]

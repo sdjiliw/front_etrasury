@@ -1,0 +1,66 @@
+<div class="login_page">
+<div class="login-wrapper">
+    <h1 class="loginPage"><a class="classe_logo"  title="Réinitialisation mot de passe" tabindex="-1">Confirmation mot de passe</a></h1>
+    <div id="forgotpass" style="padding-bottom:10px;box-shadow: 2px 2px 9px 2px #999;" class="login loginpage col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">        
+		<h2 class="loginPage_" style="text-align:center;color:#F5F5F5">Validation du token</h2>	
+
+        <form name="form" class="form-validation" ng-init="isCollapsed=true" ng-submit="confirmToken(token)">
+    
+            <div class="text-danger text-center message" ng-show="loadConfLog"> 
+				<img id="mySpinner" style="color:#fff;background:#ff;width: 20px;" src="img/loading.gif" ng-show="loadConfLog" />
+            </div>
+
+            <p>
+                <!-- <label for="user_login">Email<br /> -->
+				<i class="material-icons" style="position:absolute;margin: 5px 0 15px 0;right: 45px;" ng-show="!form.token.$invalid && !form.token.$error.minlength && !form.token.$error.maxlength" style="position:absolute;margin: 5px 0 15px 0;">done</i>
+                <input type="text" name="token" ng-change="myFunc()" ng-maxlength=7 ng-minlength=7 id="user_token" placeholder="Saisissez votre token" class="input" ng-model="token" autocomplete='off' capitalize-all required></label>
+				<!-- <span ng-show="form.token.$touched && form.token.$invalid" style="color:red">Le token est oblibatoire.</span> -->
+				<span ng-show="isInvalidToken && form.token.$submitted && form.token.$error.required" style="color:#ff8000">Le token est obligatoire.</span>
+				<span ng-show="isInvalidToken && form.token.$touched && form.token.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+				<span ng-show="isInvalidToken && form.token.$error.minlength" style="color:#ff8000">Le nombre minimum de caractères est de 7.</span>
+				<span ng-show="isInvalidToken && form.token.$error.maxlength" style="color:#ff8000">Le nombre maximum de caractères est de 7.</span>
+				<!-- <span ng-show="form.token.$dirty" style="color:red">Attention ce champ est oblibatoire.</span> -->
+            </p>
+			<p>
+				<span ng-show="!isInvalidToken" style="color:#ff8000">{{messageToken}}</span>
+				</label>
+				<span ng-show="!isMaxToken" style="color:#ff8000">Vous avez ateint le nombre maximum d'essai, vous allez vous rediriger dans 5s.</span>
+				</label>
+				<span ng-show="isExpiredToken" style="color:#ff8000">{{messageToken}}</span>
+				</label>
+			</p>
+            <p class="submit">
+				<!-- <button type="submit" ng-disabled="form.$invalid"  class="btn btn-accent btn-block" ng-click="isCollapsed = !isCollapsed" > -->
+					<!-- Valider -->
+				<!-- </button>  -->
+				<button type="submit" class="btn btn-accent btn-block" ng-disabled="form.token.$invalid	|| form.token.$error.required || isExpiredToken || !isMaxToken || loadConfLog">
+					Valider
+				</button>
+				<!-- &nbsp; -->
+				<!-- &nbsp; -->
+				<!-- <button ng-hide="true" id="tokenpop" type="button" ng-click="tokenPop()" class="btn" style="background:#ff8000;"> -->
+					<!-- popup -->
+				<!-- </button> -->
+            </p>
+			 <div class="m-t" ng-show="true">
+			  <div class="alert alert-success">
+				<p class="blink_me">Un code de confirmation est envoyé à <a style="color: #1065a8;" href="mailto:{{email_V}}">{{email_V}}</a>, veuillez vérifier vos mails.</p>
+			  </div>
+			</div>
+        </form>
+		
+		<footer class="classe_footer">
+					<label style="text-align:center;font-size:10px;margin-top:20px;">
+						Copyright © Etreasury | All rights reserved
+					</label>
+					<label style="text-align:center;font-size:10px;">
+						Privacy policy | Terms of service
+					</label>
+		</footer>
+    </div>
+</div>
+</div>
+
+
+
+

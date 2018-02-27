@@ -1,0 +1,137 @@
+<div class="content-wrapper"  ng-init="app.settings.pagetitle">
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left" ng-if="isOperation">Ajouter utilisateur alerte banque</h2>
+				<h2 class="title pull-left" ng-if="!isOperation">MODIFIER CONTACT</h2>
+                <div class="actions panel_actions pull-right">
+                    <i id="box_toggle_more" class="box_toggle material-icons" on-load-clicker>expand_more</i>
+                </div> 
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 ">
+							<div class="form-group">
+                                <label class="form-label" for="formfield2">PRÉNOM <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="text" name="prenom" autocomplete='off' class="form-control" placeholder="Tapez le prénom" ng-model="prenom" required>
+									<span ng-show="form.prenom.$submitted && form.prenom.$error.required" style="color:#ff8000">Le prénom est obligatoire.</span>
+									<span ng-show="form.prenom.$touched && form.prenom.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield2">NOM <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="text" name="nom" autocomplete='off' class="form-control" placeholder="Tapez le nom" ng-model="nom" required>
+									<span ng-show="form.nom.$submitted && form.nom.$error.required" style="color:#ff8000">Le prénom est obligatoire.</span>
+									<span ng-show="form.nom.$touched && form.nom.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">TÉLÉPHONE MOBILE <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="number" ng-pattern="phoneNumbr" class="form-control" placeholder="Tapez + suivi de votre téléphone mobile"  name="telmobile" ng-model="telmobile" ng-change="showErrorNumbTm(telmobile)" required>
+									<span ng-show="form.telmobile.$submitted && form.telmobile.$error.required" style="color:#ff8000">Le téléphone mobile est obligatoire.</span>
+									<span ng-show="form.telmobile.$touched && form.telmobile.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+									<span ng-show="form.input.$error.number" style="color:#ff8000">Le format est incorrect.</span>
+									<span style="color: #ff8000" ng-show="form.telmobile.$error.pattern">Le format de téléphone est incorrect.</span>
+									<span ng-show="isErrorTm" style="color:#ff8000">Le format de téléphone est incorrect.</span>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="form-label" for="formfield9">TÉLÉPHONE FIXE</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="number" ng-pattern="phoneNumbr" class="form-control" placeholder="Tapez + suivi de votre téléphone fixe"  name="telfixe" ng-model="telfixe" ng-change="showErrorNumbTf(telfixe)">
+									<span style="color: #ff8000" ng-show="form.telfixe.$error.pattern">Le format de téléphone est incorrect.</span>
+									<span ng-show="isErrorTf" style="color:#ff8000">Le format de téléphone est incorrect.</span>
+									<span ng-show="form.input.$error.number" style="color: #ff8000">Le format de téléphone est incorrect.</span>
+                                    <!-- <span class='help-block text-danger' ng-show='form.confirm_password.$error.validator'>Passwords do not match!</span> -->
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="form-label" for="formfield3">E-MAIL <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="email" name="mail" autocomplete='off' class="form-control" placeholder="Tapez un e-mail" ng-model="mail" required>
+									<span ng-show="form.mail.$error.email" style="color:#ff8000">Veuillez entrer un e-mail valide.</span>
+									<span ng-show="form.mail.$touched && form.mail.$error.required" style="color:#ff8000">Ce champ ne doit pas être vide.</span>
+									<span ng-show="form.mail.$submitted && form.mail.$error.required" style="color:#ff8000">L'e-mail est obligatoire.</span>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="form-label" for="formfield3">LOGIN <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="text" name="login_" autocomplete='off' class="form-control" ng-model="login_" required>
+									<span ng-show="form.login_.$submitted && form.login_.$error.required" style="color:#ff8000">Le login est obligatoire.</span>
+									<span ng-show="form.login_.$touched && form.login_.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+							<div class="form-group" ng-if="false">
+                                <label class="form-label" for="formfield3">MOT DE PASSE</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="password" autocomplete='off' name="mdp" class="form-control"  ng-model="mdp">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="false">
+                                <label class="form-label" for="formfield3">CONFIRMER MOT DE PASSE</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="password" autocomplete='off' name="rmdp" class="form-control" ng-model="rmdp">
+                                </div>
+                            </div>
+							<!-- <div class="form-group"> -->
+                                <!-- <label class="form-label" for="formfield3">PROFIL <span style="color:#ff8000">*</span></label> -->
+                                <!-- <!-- <span class="desc">*</span> --> 
+                                <!-- <div class="controls"> -->
+                                    <!-- <select id="selection_profile" name="profil_u" class="form-control" ng-change="changeProfil(profil_u)" ng-model="profil_u" required> -->
+                                        <!-- <option value="">Sélectionnez un profil</option> -->
+                                        <!-- <option ng-repeat="profil in listProfils" value="{{profil.type}}">{{profil.type}}</option> -->
+                                    <!-- </select> -->
+                                    <!-- <span ng-show="form.profil_u.$submitted && form.profil_u.$error.required" style="color:#ff8000">Le profil est obligatoire.</span> -->
+                                    <!-- <span ng-show="form.profil_u.$touched && form.profil_u.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span> -->
+                                <!-- </div> -->
+                            <!-- </div> -->
+                            <div class="form-group">
+								<label class="form-label" for="formfield3">BANQUE <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <select ng-disabled="!isOperation" id="selection" name="banque" class="form-control" ng-change="changeBk(banque)" ng-model="banque" required>
+                                        <option value="">Sélectionnez une banque</option>
+                                        <option ng-repeat="bank in items" value="{{bank.nom}}">{{bank.nom}}</option>
+                                    </select>
+									<span ng-show="form.banque.$submitted && form.banque.$error.required" style="color:#ff8000">La banque est obligatoire.</span>
+									<span ng-show="form.banque.$touched && form.banque.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+							<div class="form-group">
+								 <div class="col-md-12 col-sm-12 col-xs-12">
+									<div style="text-align:center;">
+									<img id="mySpinner" src="img/loading.gif" ng-show="loading" />&nbsp;&nbsp;&nbsp;
+										<button type="submit" ng-click="addUserBk(prenom,nom,telmobile,telfixe,mail,login_,profil_u,banque)" ng-disabled="form.$invalid ||
+										form.telfixe.$error.pattern || form.telmobile.$error.pattern || isErrorTm || isErrorTf || loading" class="btn btn-success">Valider</button>
+										<button style="background:#ff8000;" ng-click="cancel()" type="button" class="btn">Annuler</button>
+									</div>
+								</div>
+							</div>
+                        </div>
+                        <div class="form-group">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="text-left">
+									<span style="color:#ff8000" ng-show="form.$invalid && !isSuccess">* Veuillez renseigner les champs obligatoires</span>
+									<span style="color:#ff8000" ng-show="isSuccess">{{message}}</span>
+								</div>
+							</div>
+						</div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

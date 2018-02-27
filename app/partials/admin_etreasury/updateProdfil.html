@@ -1,0 +1,106 @@
+<div class="content-wrapper" ng-init="app.settings.pagetitle"
+	data-ng-controller="infosUserController">
+	<div class="col-lg-12">
+		<section class="box ">
+			<header class="panel_header">
+				<h2 class="title pull-left">MODIFICATION DU PROFIL</h2>
+				<div class="actions panel_actions pull-right">
+					<i id="box_toggle_more" class="box_toggle material-icons"
+						on-load-clicker>expand_more</i>
+				</div>
+			</header>
+			<div class="content-body">
+				<div class="row">
+					<form id="general_validate" action="javascript:;" name="form"
+						class="form-validation">
+						<div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 ">
+							<div class="form-group">
+								<label class="form-label" for="formfield2">PRENOM <span
+									style="color: #ff8000">*</span></label>
+								<!-- <span class="desc"></span> -->
+								<div class="controls">
+									<input type="text" name="prenomP" class="form-control"
+										ng-model="prenomP" required> <span
+										ng-show="form.prenomP.$submitted && form.prenomP.$error.required"
+										style="color: #ff8000">Le prenom est obligatoire.</span> <span
+										ng-show="form.prenomP.$touched && form.prenomP.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="formfield2">NOM<span
+									style="color: #ff8000">*</span></label> <span class="desc"></span>
+								<div class="controls">
+									<input type="text" name="nomP" class="form-control"
+										ng-model="nomP" required> <span
+										ng-show="form.nomP.$submitted && form.nomP.$error.required"
+										style="color: #ff8000">Le nom est obligatoire.</span> <span
+										ng-show="form.newpass.$touched && form.newpass.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="formfield2">E-MAIL<span
+									style="color: #ff8000">*</span></label> <span class="desc"></span>
+								<div class="controls">
+									<input type="email" name="mailP" class="form-control"
+										ng-model="mailP" required> <span
+										ng-show="form.mailP.$submitted && form.mailP.$error.required"
+										style="color: #ff8000">L'adresse mail est obligatoire.</span>
+									<span
+										ng-show="form.mailP.$touched && form.mailP.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="formfield2">TELEPHONE MOBILE<span
+									style="color: #ff8000">*</span></label> <span class="desc"></span>
+								<div class="controls">
+									<input type="text" name="telP" class="form-control"
+										ng-model="telP" required> <span
+										ng-show="form.telP.$submitted && form.telP.$error.required"
+										style="color: #ff8000">Le numéro de téléphone mobile est
+										obligatoire.</span> <span
+										ng-show="form.telP.$touched && form.telP.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label" for="formfield2">TELEPHONE FIXE<span
+									style="color: #ff8000">*</span></label> <span class="desc"></span>
+								<div class="controls">
+									<input type="text" name="telF" class="form-control"
+										ng-model="telF" required> <span
+										ng-show="form.telF.$submitted && form.telF.$error.required"
+										style="color: #ff8000">Le numéro de téléphone fixe est
+										obligatoire.</span> <span
+										ng-show="form.telF.$touched && form.telF.$error.required"
+										style="color: #ff8000">Ce champ est obligatoire.</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div style="text-align: center;">
+										<button type="submit" ng-click="submitProfil();"
+											ng-disabled="form.$invalid" class="btn btn-success">Valider</button>
+										<button style="background: #ff8000;" ng-click="cancel()"
+											type="button" class="btn">Annuler</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="text-left">
+
+									<span style="color: #ff8000" ng-show="form.$invalid">*
+										Veuillez renseigner les champs obligatoires</span>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

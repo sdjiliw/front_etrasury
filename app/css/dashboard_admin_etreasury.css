@@ -1,0 +1,107 @@
+#accueil{
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background: transparent;
+	-webkit-border-radius: 10px;
+	border:3px solid #dbdfe5;
+	color : #F5F5F5;
+}
+
+#accueil1{
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background: transparent;
+	-webkit-border-radius: 10px;
+	border:3px solid #dbdfe5;
+	color : #F5F5F5;
+}
+
+#img_dash{ 
+    vertical-align: text-top; 
+    /* height: 15px;  */
+    /* width: :15px; */
+	padding-bottom: 10px;
+} 
+
+#accueil2{
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background: transparent;
+	-webkit-border-radius: 10px;
+	border:3px solid #dbdfe5;
+	color : #F5F5F5;
+}
+
+#accueil3{
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background: transparent;
+	-webkit-border-radius: 10px;
+	border:3px solid #dbdfe5;
+	color : #F5F5F5;
+}
+
+.container {
+    /* border: 10px solid red; */
+    width: auto;
+    padding-top: 5%;
+    padding-left: 10%;
+}
+
+#row {
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 20%;
+	cursor:pointer;
+}
+
+#row :hover{
+    background: #1065a8;
+    -webkit-border-radius: 10px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+body .accueil_page {
+    /* background-color: #ff8000; */
+    background-image: url('../img/bg3.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    max-height: 100%;
+    min-height: 99%;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    position: absolute;
+}
+
+/* .classe_logo { */
+    /* height: 92px; */
+    /* /* margin: 0px auto 0px auto; */ */
+    /* padding: 0; */
+    /* text-decoration: none; */
+    /* -moz-background-size: 345px 92px; */
+    /* -o-background-size: 345px 92px; */
+    /* background-size: 345px 92px; */
+    /* background-color: transparent; */
+    /* min-height: 92px; */
+    /* width: auto; */
+    /* background-image: url("../img/login-logo.png"); */
+    /* background-position: center top; */
+    /* background-repeat: no-repeat; */
+    /* text-indent: -9999px; */
+    /* outline: 0; */
+    /* overflow: hidden; */
+    /* display: block; */
+/* } */

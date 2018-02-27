@@ -1,0 +1,52 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'Mes documents';">
+    <div class="col-lg-12">
+				<!-- ng-click="bKesPmesDocaddCat()" -->
+				<button type="submit" class="btn btn-success"  ng-click="bKesPmesDocaddCat()">
+					<i class="material-icons" style="position:absolute;top:5px;left:0px;">add</i>&nbsp;&nbsp;&nbsp;Ajouter catégorie
+				</button>
+				<!-- ng-click="bKesPmesDocaddDoc()"  -->
+				<button style="background:#1f93f6;color:#fff" type="button" class="btn" ng-click="bKesPmesDocaddDoc()">
+					<i class="material-icons" style="position:absolute;top:5px;left:0px;">add</i>&nbsp;&nbsp;&nbsp;Ajouter document
+				</button>
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">MES DOCUMENTS</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body padding-bottom-15">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                        <table class="table table-striped" ui-jq="dataTable" ui-options="{
+          sAjaxSource: 'data/admin_banque/bK_op_esp_mesdoc.json',
+          aoColumns: 
+		  [
+			{ mData: 'id' },
+            { mData: 'categorie' },
+            { mData: 'document' },
+			{ mData: 'date' },
+			{ 
+				mData: 'actions',
+				bSortable : false
+			}
+          ]
+        }" class="table table-striped">
+                            <thead>
+                                <tr>
+									<th style="width:auto">NUMÉRO</th>
+									<th style="width:auto">CATÉGORIE</th>
+									<th style="width:auto">DOCUMENT</th>
+									<th style="width:auto">DATE</th>
+									<th style="width:auto">ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

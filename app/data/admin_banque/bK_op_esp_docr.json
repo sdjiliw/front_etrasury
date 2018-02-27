@@ -1,0 +1,8 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"categorie": "test_qs",
+		"document": "test",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>remove_red_eye</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>"
+	}
+] }

@@ -1,0 +1,118 @@
+<div class="content-wrapper"  ng-init="app.settings.pagetitle">
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">AJOUTER UTILISATEUR</h2>
+                <div class="actions panel_actions pull-right">
+                    <i id="box_toggle_more" class="box_toggle material-icons" on-load-clicker>expand_more</i>
+                </div> 
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 ">
+							<div class="form-group">
+                                <label class="form-label" for="formfield2">PRÉNOM <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="text" name="prenom" class="form-control" placeholder="Tapez le prénom" ng-model="prenom" required>
+									<span ng-show="form.prenom.$submitted && form.prenom.$error.required" style="color:#ff8000">Le prénom est obligatoire.</span>
+									<span ng-show="form.prenom.$touched && form.prenom.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield2">NOM <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="text" name="nom" class="form-control" placeholder="Tapez le nom" ng-model="nom" required>
+									<span ng-show="form.nom.$submitted && form.nom.$error.required" style="color:#ff8000">Le prénom est obligatoire.</span>
+									<span ng-show="form.nom.$touched && form.nom.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield8">TÉLÉPHONE MOBILE <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="text" class="form-control" placeholder="Tapez le téléphone mobile" ng-change="showErrorNumb(telmobile)"  name="telmobile" ng-model="telmobile" required>
+									<span ng-show="form.telmobile.$submitted && form.telmobile.$error.required" style="color:#ff8000">Le téléphone mobile est obligatoire.</span>
+									<span ng-show="form.telmobile.$touched && form.telmobile.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+									<span ng-show="form.input.$error.number" style="color:#ff8000">Le format est incorrect.</span>
+									<span ng-show="isErrorNumb" style="color:#ff8000">Le téléphone est différent de zéro.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield9">TÉLÉPHONE FIXE</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="text" class="form-control" placeholder="Tapez le téléphone fixe"  name="telfixe" ng-model="telfixe">
+                                    <!-- <span class='help-block text-danger' ng-show='form.confirm_password.$error.validator'>Passwords do not match!</span> -->
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="form-label" for="formfield3">E-MAIL <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="email" name="mail" class="form-control" placeholder="Tapez un e-mail" ng-model="mail" required>
+									<span ng-show="form.mail.$error.email" style="color:#ff8000">Veuillez entrer un e-mail valide.</span>
+									<span ng-show="form.mail.$touched && form.mail.$error.required" style="color:#ff8000">Ce champ ne doit pas être vide.</span>
+									<span ng-show="form.mail.$submitted && form.mail.$error.required" style="color:#ff8000">L'e-mail est obligatoire.</span>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="form-label" for="formfield3">LOGIN <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <input type="text" name="login_" class="form-control" ng-model="login_" required>
+									<span ng-show="form.login_.$submitted && form.login_.$error.required" style="color:#ff8000">Le login est obligatoire.</span>
+									<span ng-show="form.login_.$touched && form.login_.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label class="form-label" for="formfield3">MOT DE PASSE</label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="password" name="mdp" class="form-control"  ng-model="mdp">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield3">CONFIRMER MOT DE PASSE</label>
+                                <!-- <span class="desc"></span> -->
+                                <div class="controls">
+                                    <input type="password" name="rmdp" class="form-control" ng-model="rmdp">
+                                </div>
+                            </div>
+                            <div class="form-group">
+								<label class="form-label" for="formfield3">ENTREPRISE <span style="color:#ff8000">*</span></label>
+                                <!-- <span class="desc">*</span> -->
+                                <div class="controls">
+                                    <select name="entreprise" class="form-control" ng-model="entreprise" required>
+                                        <option value="">Sélectionnez une entreprise</option>
+                                        <option value="male">CIE_civ</option>
+                                        <option value="female">cie</option>
+                                    </select>
+									<span ng-show="form.entreprise.$submitted && form.entreprise.$error.required" style="color:#ff8000">L'entreprise est obligatoire.</span>
+									<span ng-show="form.entreprise.$touched && form.entreprise.$error.required" style="color:#ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+							<div class="form-group">
+								 <div class="col-md-12 col-sm-12 col-xs-12">
+									<div style="text-align:center;">
+										<button type="submit" ng-click="ok()" ng-disabled="form.$invalid || isErrorNumb" class="btn btn-success">Valider</button>
+										<button style="background:#ff8000;" ng-click="cancel()" type="button" class="btn">Annuler</button>
+									</div>
+								</div>
+							</div>
+                        </div>
+                        <div class="form-group">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="text-left">
+									<span style="color:#ff8000" ng-show="form.$invalid">* Veuillez renseigner les champs obligatoires</span>
+								</div>
+							</div>
+						</div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

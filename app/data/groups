@@ -1,0 +1,6 @@
+[
+  {"id": 1, "text": "admin"},
+  {"id": 2, "text": "trésorier"},
+  {"id": 3, "text": "comptable"},
+  {"id": 4, "text": "caissier"}
+]

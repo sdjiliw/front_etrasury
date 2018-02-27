@@ -1,0 +1,13 @@
+{ "aaData": [
+	{
+		"id": 1,
+		"status": "Validation niveau 1",
+		"date_debut": "29/08/2017",
+		"date_fin": "31/08/2017",
+		"sens": "Achat",
+		"negociation": "29/08/2017",
+		"date_valeur": "30/08/2017",
+		"montant": "100,000 USD",
+		"actions": "<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>remove_red_eye</i>&nbsp;<i class='material-icons' style='color:#1f93f6;cursor:pointer;'>mode_edit</i>&nbsp;<i class='material-icons' style='color:#ff8000;cursor:pointer;'>delete</i>&nbsp;"
+	}
+] }

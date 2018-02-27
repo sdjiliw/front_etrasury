@@ -1,0 +1,54 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle" data-ng-controller="eTBkCtrl">
+    <div class="col-lg-12">
+<!-- 		<button class="btn btn-primary btn-sm" ng-click="addeTbKgr()"> -->
+<!-- 			<i class="material-icons" style="position:absolute;top:5px;left:0px;">add</i>&nbsp;&nbsp;&nbsp;Ajouter groupe utilisateur banque -->
+<!-- 		</button> -->
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">LISTE DE NOS GROUPES</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body padding-bottom-15">
+                <div class="row">
+					<div class="col-xs-12" ng-if="!isDataGrReady">
+						<div style="text-align:center;">
+							<img id="mySpinner" style="width:50px" src="img/loading.gif" ng-show="!isDataGrReady" />
+						</div>
+					</div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 table-responsive" ng-if="isDataGrReady">
+                        <table class="table table-striped" ui-jq="dataTable" ui-options="">
+                            <thead>
+                                <tr>
+									<th style="width:auto">NUMÉRO</th>
+									<th style="width:auto">CODE</th>
+									<th style="width:auto">LIBELLÉ</th>
+									<th style="width:auto">BANQUE</th>
+									<!-- <th style="width:auto">ACTIONS</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                            	<tr ng-repeat="group in bankGroupes track by group.idGroupe">
+                            		<td style="width: auto">{{$index+1}}</td>
+                            		<td style="width: auto">{{group.nom}}</td>
+                            		<td style="width: auto">{{group.description}}</td>
+                            		<td style="width: auto">{{group.institution.nom}}</td>
+                            		<!-- <td style="width: auto"> -->
+										<!-- <a style='color: #1f93f6; cursor: pointer;' ng-click="editOneGrBk($index)"> -->
+											<!-- <i class='material-icons'>mode_edit</i> -->
+										<!-- </a>  -->
+										<!-- &nbsp;&nbsp;  -->
+										<!-- <a style='color: #ff8000; cursor: pointer;' ng-click="deleteOneGrBk($index)"> -->
+											<!-- <i class='material-icons'>delete</i> -->
+										<!-- </a> -->
+									<!-- </td> -->
+                            	</tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

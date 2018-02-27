@@ -1,0 +1,189 @@
+<style type="text/css">
+    #table-wrapper {
+        position: relative;
+    }
+    
+    #table-scroll {
+        height: 100%;
+        overflow: auto;
+        margin-top: 20px;
+    }
+    
+    #table-wrapper table {
+        width: 100%;
+    }
+    
+    #table-wrapper table thead th .text {
+        position: absolute;
+        top: -20px;
+        z-index: 2;
+        height: 20px;
+        width: 35%;
+        border: 1px solid red;
+    }
+</style>
+<div class='content-wrapper' ng-init="app.settings.pagetitle = 'VALIDATIONS';">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left" ng-if="selectedNotific.institution===undefined">Ajouter pérsonne à notifier</h2>
+                <h2 class="title pull-left" ng-if="selectedNotific.institution!=undefined">Ajouter pérsonne à notifier</h2>
+                <div class="actions panel_actions pull-right">
+                    <i id="box_toggle_more" class="box_toggle material-icons" style="color: #1065a8" on-load-clicker>expand_more</i>
+                </div>
+            </header>
+            <div class="content-body">
+                <form id="general_validate" action="javascript:;" name="form" class="form-validation">
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield1">PRODUIT <span
+									style="color: #ff8000">*</span></label>
+                                <div class="controls">
+                                    <select name="produit" class="form-control" ng-model="produit" required ng-disabled="selectedNotific.institution!=undefined" ng-options="produit as produit.nom for produit in etreasuryProduit 
+										track by produit.idProduits">
+									</select> <span ng-show="form.produit.$submitted && form.produit.$error.required" style="color: #ff8000">Le nom du produit est
+										obligatoire.</span> <span ng-show="form.produit.$touched && form.produit.$error.required" style="color: #ff8000">Ce champ est obligatoire.</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="formfield1">ENTREPRISE <span
+									style="color: #ff8000">*</span></label>
+                                <div class="controls">
+                                    <select name="banqueNotif" id="bank" class="form-control" ng-options="entNotif as entNotif.nom for entNotif in listEntrprise
+  										track by entNotif.idInstitution" ng-model="entNotif" required>
+									</select> <span ng-show="form.banqueNotif.$submitted && form.banqueNotif.$error.required" style="color: #ff8000">Le nom de l'entreprise est
+										obligatoire.</span> <span ng-show="form.banqueNotif.$touched && form.banqueNotif.$error.required" style="color: #ff8000">Ce champ est obligatoire.</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-8" ng-if="selectedNotific.institution===undefined">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield1">MES
+									UTILISATEURS <span style="color: #ff8000">*</span>
+								</label>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <div style="height: 200px; overflow: auto; margin-top: 15px">
+                                                <table id="tdj" style="width: 100%;" class="table table-striped table-bordered" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>CHOIX</th>
+                                                            <th>NOM & PRENOMS</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="user in bankUsersNotif">
+                                                            <td><input id="checkbxinput" style="color: #1065a8; cursor: pointer; width: 15px; height: 15px" type="checkbox" value="{{user.idUtilisateur}}" ng-checked="selectionN.indexOf(user.idUtilisateur) > -1"
+                                                                    ng-click="changeUserNf(user.idUtilisateur)" class="input-sm" /></td>
+                                                            <td>{{user.nom}} {{user.prenom}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" ng-if="selectedNotific.institution!=undefined">
+                            <div class="form-group">
+                                <label class="form-label" for="formfield1">MES
+									UTILISATEURS <span style="color: #ff8000">*</span>
+								</label>
+                                <div class="controls">
+                                    <div style="margin-top: 15px;">
+                                        <select name="userBank" class="form-control" ng-change="changeUserBnk(userBnk)" ng-model="userBnk" ng-options="userBnk as userBnk.prenom +' '+ userBnk.nom for userBnk in bankUsersNotif | orderBy:'prenom'  
+		 										track by userBnk.idUtilisateur" required>
+										</select> <span ng-show="form.userBank.$submitted && form.userBank.$error.required" style="color: #ff8000">Le nom de l'utilisateur est
+											obligatoire.</span> <span ng-show="form.userBank.$touched && form.userBank.$error.required" style="color: #ff8000">Ce champ est obligatoire.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row' ng-if="false">
+                        <div class="col-xs-12" style="height: auto">
+                            <label class="form-label" for="field-1">NOTIFIER PAR SMS</label>
+                            <div class='row'>
+                                <div class="col-xs-12" style="height: auto">
+                                    <div class="col-xs-4 " style="width: auto">
+                                        <div class="radio" style="cursor: pointer;">
+                                            <label> <input style="width: 15px; height: 15px"
+												type="radio" value="oui" ng-model="oki"> Oui
+											</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 " style="width: auto">
+                                        <div class="radio" style="cursor: pointer;">
+                                            <label> <input style="width: 15px; height: 15px"
+												type="radio" value="non" ng-model="oki"> Non
+											</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class='row' ng-if="selectedNotific.institution!=undefined">
+                        <!-- 						<div class="col-xs-6"> -->
+                        <!-- 							<div class="form-group"> -->
+                        <!-- 								<label class="form-label" for="formfield1">UTILISATEUR <span -->
+                        <!-- 									style="color: #ff8000">*</span></label> -->
+                        <!-- 								<div class="controls"> -->
+                        <!-- 									<select name="userBank" class="form-control" ng-model="userBnk" -->
+                        <!-- 										ng-options="userBnk as userBnk.prenom +' '+ userBnk.nom for userBnk in bankUsersNotif  -->
+                        <!--  										track by userBnk.idUtilisateur" required>  -->
+                        <!-- 									</select>  -->
+                        <!-- 									<span -->
+                        <!-- 										ng-show="form.userBank.$submitted && form.userBank.$error.required" -->
+                        <!-- 										style="color: #ff8000">Le nom de l'utilisateur est -->
+                        <!-- 										obligatoire.</span> <span -->
+                        <!-- 										ng-show="form.userBank.$touched && form.userBank.$error.required" -->
+                        <!-- 										style="color: #ff8000">Ce champ est obligatoire.</span> -->
+                        <!-- 								</div> -->
+                        <!-- 							</div> -->
+                        <!-- 						</div> -->
+                    </div>
+                    <br> <br>
+                    <div class='row'>
+                        <div class="col-xs-12"></div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-12">
+                            <div style="text-align: center;">
+                                <button type="submit" ng-click="submitNotif(entNotif)" ng-disabled="form.$invalid || disabl" class="btn btn-success">VALIDER</button> &nbsp; &nbsp;
+                                <button type="button" ng-click="cancel()" class="btn" style="background: #ff8000;">ANNULER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class='row'>
+                        <div class="col-xs-12">
+                            <span style="color: #ff8000" ng-show="form.$invalid">*
+								Veuillez renseigner les champs obligatoires</span>
+                        </div>
+                        <div ng-if="errorMessage!=null" style="color: #ff8000">
+                            <span>{{errorMessage}}</span>
+                        </div>
+                        <div ng-if="sucessMessage!=null" style="color: #1f93f6">
+                            <span>{{sucessMessage}}</span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

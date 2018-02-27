@@ -1,0 +1,84 @@
+#footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background: #37474F;
+    text-align: right;
+    color: #fff;
+    line-height: 30px;
+    padding-right: 20px;
+    z-index: 99999;
+    font-size: 12px !important;
+}
+
+#footer .ente {
+    color: #ff8000;
+}
+
+.footer_yes {
+    margin-bottom: 30px !important;
+}
+
+.email_user {
+    color: #337ab7;
+}
+
+@media screen and (max-height: 568px) {
+    #login {
+        padding-top: 20px !important;
+    }
+    #login .form-validation {
+        margin-top: 0px !important;
+    }
+}
+
+#login .loginPage_,
+#forgotpass .loginPage_ {
+    height: auto;
+}
+
+@media screen and (max-width: 496px) {
+    #login,
+    #forgotpass {
+        padding: 60px 20px 20px 20px;
+    }
+    #login .loginPage_,
+    #forgotpass .loginPage_ {
+        font-size: 20px;
+        height: auto;
+    }
+    .page-topbar .quick-area .info-menu li .dropdown-menu {
+        right: 78px !important;
+        left: auto !important;
+    }
+    .form-label {
+        font-size: 12px !important;
+    }
+    .box .panel_header .title {
+        height: auto !important;
+        font-size: 17px;
+    }
+    table.dataTable {
+        font-size: 11px !important;
+    }
+}
+
+div#DataTables_Table_0_paginate {
+    font-size: 11px;
+    margin-bottom: 15px !important;
+}
+
+.dataTables_wrapper .dataTables_info {
+    font-size: 11px;
+    margin-bottom: 15px !important;
+}
+
+.content_app {
+    overflow-x: hidden;
+}
+
+.btn {
+    margin-bottom: 15px !important;
+}

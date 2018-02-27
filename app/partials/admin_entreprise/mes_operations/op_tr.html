@@ -1,0 +1,203 @@
+<div class='content-wrapper' ng-init="app.settings.pagetitle='Transfert'">
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">LES DEMANDES ET VALIDATIONS TRANSFERT</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle material-icons">expand_more</i>
+                </div>
+            </header>
+            <div class="content-body padding-bottom-15">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <!-- Horizontal - start -->
+                        <div class="row">
+                            <div class="col-md-12" ng-controller="eNOpCtrl">
+                                <div ng-controller="TabsDemoCtrl">
+                                    <uib-tabset class="tab-container">
+                                        <uib-tab>
+                                            <uib-tab-heading>
+                                                DEMANDES
+                                            </uib-tab-heading>
+                                            <p>
+												<!-- <h3>LISTE</h3> -->
+												<button class="btn btn-primary btn-sm" ng-if="addTrans" ng-click="addenToPtR()">
+													<i class="material-icons" style="position:absolute;top:5px;left:0px;">add</i>&nbsp;&nbsp;&nbsp;Nouvelle demande
+												</button>
+												<div class="content-body padding-bottom-15">
+													<div class="row">
+														<div class="col-xs-12">
+															<div style="text-align:center;">
+																<img id="mySpinner" style="width:50px" src="img/loading.gif" ng-show="loading" />
+															</div>
+														</div>
+														<div class="col-md-12 col-sm-12 col-xs-12 table-responsive" ng-if="isDataReady">
+															<table class="table table-striped" ui-jq="dataTable" ui-options="" class="table table-striped">
+																<thead>
+																	<tr>
+																		<th style="width:auto">N°</th>
+																		<th style="width:auto">STATUT</th>
+																		<!-- <th style="width:auto">ENTREPRISE</th> -->
+																		<th style="width:auto">DATE DÉBUT</th>
+																		<th style="width:auto">DATE FIN</th>
+																		<th style="width:auto">MONTANT</th>
+																		<th style="width:auto">DEVISE</th>
+																		<th style="width:auto">DATE VALEUR</th>
+																		<!-- <th style="width:auto">OFFRE</th> -->
+																		<th style="max-width: 200px; width: 106px;min-width: 100px;">ACTIONS</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr ng-repeat="list in listByProduitDemande | orderBy:'-request.idDemande'">
+																		<td>{{list.request.numeroRequest}}</td>
+																		<!-- <td>{{list.request.product.nom}}</td>  -->
+																		<td>
+																			<span ng-if="list.request.etat==3" style='color: #ff8000'>{{list.request.nextValidationGroup}}</span> 
+																			<span ng-if="list.request.etat==5" style='color: #1f93f6'>{{list.request.nextValidationGroup}}</span> 
+																			<span ng-if="list.request.etat!=3 && list.request.etat!=5" style='color: green'>{{list.request.nextValidationGroup}}</span>
+																		</td> 
+																		<!-- <td>{{list.request.userEntreprise.groupeIdGroupe.institution.nom}}</td> -->
+																		<td>
+																			<span ng-if="list.request.dateDebutDemande==null || list.request.dateDebutDemande==='null'"></span>
+																			<span ng-if="list.request.dateDebutDemande!=null && list.request.dateDebutDemande!='null'">{{list.request.dateDebutDemande | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<td>
+																			<span ng-if="list.request.dateFinDemande==null || list.request.dateFinDemande==='null'"></span>
+																			<span ng-if="list.request.dateFinDemande!=null && list.request.dateFinDemande!='null'">{{list.request.dateFinDemande | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<td>{{list.request.montant}}</td>
+																		<td>{{list.request.devise.description}}</td>
+																		<td>
+																			<span ng-if="list.request.dateValeur==null || list.request.dateValeur==='null'"></span>
+																			<span ng-if="list.request.dateValeur!=null && list.request.dateValeur!='null'">{{list.request.dateValeur | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<!-- <td> -->
+																			<!-- <span ng-if=" list.request.etat==2">Oui</span> -->
+																			<!-- <span ng-if=" list.request.etat!=2">Non</span> -->
+																		<!-- </td> -->
+																		<td>
+																			<i class='material-icons' style='color:#1f93f6;cursor:pointer;' ng-click="detailEnoPtR(list)">remove_red_eye</i>
+																			&nbsp;
+																			<i ng-if="list.request.etat!=3 && list.request.etat!=4 && list.request.etat!=5 && editTrans && list.request.etat!=2 && list.request.etat!=1" class='material-icons' style='color:#1f93f6;cursor:pointer;' ng-click="editEnoPtR(list)">mode_edit</i>
+																			&nbsp;
+																			<i ng-if="suppTrans" class='material-icons' style='color:#ff8000;cursor:pointer;' ng-click="delEnProduitDemande(list)">delete</i>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</p>
+                                        </uib-tab>
+                                        <uib-tab>
+                                            <uib-tab-heading>
+                                                VALIDATIONS
+                                            </uib-tab-heading>
+                                            <p>
+												<!-- <h3>Validations</h3> -->
+												<!-- <h4> -->
+													<!-- <button type="submit" class="btn btn-success" ng-click=""> -->
+														<!-- <i class="material-icons" style="position:absolute;top:5px;left:0px;">add</i>&nbsp;&nbsp;&nbsp;Validations -->
+													<!-- </button> -->
+												<!-- </h4> -->
+												<div class="content-body padding-bottom-15">
+													<div class="row">
+														<div class="col-md-12 col-sm-12 col-xs-12 table-responsive" ng-if="isDataReadyUserV">
+															<table class="table table-striped" ui-jq="dataTable" ui-options="" class="table table-striped">
+																<thead>
+																	<tr>
+																		<th style="width:auto">N°</th>
+																		<th style="width:auto">STATUT</th>
+																		<!-- <th style="width:auto">ENTREPRISE</th> -->
+																		<th style="width:auto">DATE DÉBUT</th>
+																		<th style="width:auto">DATE FIN</th>
+																		<th style="width:auto">MONTANT</th>
+																		<th style="width:auto">DEVISE</th>
+																		<th style="width:auto">DATE VALEUR</th>
+																		<!-- <th style="width:auto">OFFRE</th> -->
+																		<th style="max-width: 200px; width: 106px;min-width: 100px;">ACTIONS</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr ng-repeat="list in listValitionsUSER | orderBy:'-request.idDemande'">
+																		<td>{{list.request.numeroRequest}}</td> 
+																		<!-- <td>{{list.request.product.nom}}</td>  -->
+																		<td>
+																			{{list.request.nextValidationGroup}}
+																		</td> 
+																		<!-- <td>{{list.request.userEntreprise.groupeIdGroupe.institution.nom}}</td> -->
+																		<td>
+																			<span ng-if="list.request.dateDebutDemande==null || list.request.dateDebutDemande==='null'"></span>
+																			<span ng-if="list.request.dateDebutDemande!=null && list.request.dateDebutDemande!='null'">{{list.request.dateDebutDemande | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<td>
+																			<span ng-if="list.request.dateFinDemande==null || list.request.dateFinDemande==='null'"></span>
+																			<span ng-if="list.request.dateFinDemande!=null && list.request.dateFinDemande!='null'">{{list.request.dateFinDemande | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<td>{{list.request.montant}}</td>
+																		<td>{{list.request.devise.description}}</td>
+																		<td>
+																			<span ng-if="list.request.dateValeur==null || list.request.dateValeur==='null'"></span>
+																			<span ng-if="list.request.dateValeur!=null && list.request.dateValeur!='null'">{{list.request.dateValeur | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<!-- <td> -->
+																			<!-- <span ng-if=" list.request.etat==2">Oui</span> -->
+																			<!-- <span ng-if=" list.request.etat!=2">Non</span> -->
+																		<!-- </td> -->
+																		<td>
+																			<i ng-if="list.request.etat!=3 && list.request.etat!=5" class='material-icons' style='color: 2px solid green;cursor:pointer;' ng-click="validationTr(list)">done</i>
+																			&nbsp;
+																			&nbsp;
+																			<i ng-if="list.request.etat!=3 && list.request.etat!=4 && list.request.etat!=5 && editTrans && list.request.etat!=2 && list.request.etat!=1" class='material-icons' style='color:#1f93f6;cursor:pointer;' ng-click="editEnoPtR(list)">mode_edit</i>
+																		</td>
+																	</tr>
+																	<!-- avec offre -->
+																	<tr ng-repeat="list in listValitionsUSER2 | orderBy:'-idDemande'">
+																		<td>{{list.numeroRequest}}</td>
+																		<td style='color:#1f93f6;cursor:pointer;'>
+																			{{list.nextValidationGroup}}
+																		</td> 
+																		<td>
+																			<span ng-if="list.dateDebutDemande==null || list.dateDebutDemande==='null'"></span>
+																			<span ng-if="list.dateDebutDemande!=null && list.dateDebutDemande!='null'">{{list.dateDebutDemande | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<td>
+																			<span ng-if="list.dateFinDemande==null || list.dateFinDemande==='null'"></span>
+																			<span ng-if="list.dateFinDemande!=null || list.dateFinDemande!='null'">{{list.dateFinDemande | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<td>{{list.montant}}</td>
+																		<td>{{list.devise.description}}</td>
+																		<td>
+																			<span ng-if="list.dateValeur==null || list.dateValeur==='null'"></span>
+																			<span ng-if="list.dateValeur!=null && list.dateValeur!='null'">{{list.dateValeur | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<td>
+																			<span ng-if="list.dateEcheance==null || list.dateEcheance==='null'"></span>
+																			<span ng-if="list.dateEcheance!=null && list.dateEcheance!='null'">{{list.dateEcheance | date:'dd/MM/yyyy'}}</span>
+																		</td>
+																		<td>
+																			<i ng-if="list.etat!=3 && list.etat!=5" class='material-icons' style='color: 2px solid green;cursor:pointer;' ng-click="validationTr2(list)">done</i>
+																			&nbsp;
+																			&nbsp;
+																			<!-- <i ng-if="list.etat!=3 && list.etat!=5 && list.etat!=2" class='material-icons' style='color:#1f93f6;cursor:pointer;' ng-click="editEnoPcRsPot(list)">mode_edit</i> -->
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</p>
+                                        </uib-tab>
+                                    </uib-tabset>
+                                </div>
+                            </div>
+						</div>
+                        <!-- Vertical - end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
